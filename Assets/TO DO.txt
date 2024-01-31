@@ -1,0 +1,141 @@
+\\ FIX GIT PUSHING //
+//                 \\
+
+
+~~~~~  VALUE TWEAKING  ~~~~~
+
+
+[Enemy Attacking]
+    [[Particle Cleanup]]
+        - Archer/Mage need better attack animations?
+
+[Player Attacking]    
+    - Clean up Slime's animation
+    - Slime needs a 'real' attack
+    - Fix/clean up all particles.
+    - Player (fists melee guard) damages itself somehow.
+    - Player (undead) attack can't attack multiple times.
+    
+
+    - Die animations? 
+        ... (Mage and Archer don't have one)
+
+
+
+
+
+~~~~~  LEVEL BUILDING  ~~~~~
+[Wall background?]
+Game won.
+Level lost.
+
+
+
+
+~~~~~  LEVEL REPLICATION  ~~~~~
+~ Scene transitions
+
+
+~~~~~  AUDIO  ~~~~~
+
+- General audio effects
+
+
+
+
+
+
+~~~~~  ON COMPLETION  ~~~~~
+
+    ~~ Project ~~ 
+        ~ Refactor/extract scripts
+        ~ Rename project/scenes as needed
+        ~ Extra, safe commits/pushes
+        ~ Delete unnecessary assets
+        ~ Asset credits
+
+    ~~ Setup itch.io game page ~~    
+    ~ explain controls 
+    ~ description
+
+
+
+
+~~~~~  MAY OR MAY NOT ADD  ~~~~~
+
+[Animations]
+    - Tweak/alter animations
+        ... clean up
+
+[If enemy types change per level]
+    - Enemies for each level
+        - ... that use 'weaker' abilities
+    - Acquire particles for each level    
+    - Sequences for each level        
+
+- When currentKey needs held, should letting go before its holdDuration is reached fails the sequence?
+~ Should player be able to select a target if their attack is non-AoE?
+~ Should players have their Renderers flicker quickly upon taking damage?
+~ (UI, C) Show damage taken for all characters?   
+
+
+
+
+
+....................................................................................................
+
+possible hero/enemy abilities:
+78
+83
+137
+109
+104
+
+36
+44 (healing?)
+98 (healing?)
+81 (protection)
+
+
+possible *player* abilities:
+
+~~ FIRE ~
+08: flame eruption
+10: meteor strike
+19: flame bust
+.21: ground scatter.
+26: huge explosion
+26: hell of fire
+
+                            30: magma strike
+                            30: magma field
+                            45: blast flame
+.51: flame tsunami.
+
+~~ SHOOT ~~
+03: charge fire
+.20: rapid fire.
+22: precise shot
+26: multiple shell
+40: air attack
+40: aerial bombing
+41: arrow strike
+45: multiple laser cannon
+
+~~ MELEE ~~
+02: fastest fist
+02: one hand smash
+29: muscle arts
+    30: talon scratch
+30: sword force
+36: madness slash  
+43: dark draw
+31: spear attack
+
+~~ MISC ~~
+03: orbital annihilation
+21: inner core release
+27: genesis origin
+33: eye of hell
+39: annihilation beam
+
