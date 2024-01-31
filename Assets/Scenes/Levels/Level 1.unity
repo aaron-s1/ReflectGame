@@ -62502,6 +62502,14 @@ PrefabInstance:
       propertyPath: damage
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 5992315986924107423, guid: 952b70cbfd013b0488a863eaeeda3bbe, type: 3}
+      propertyPath: EmissionModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5992315986943864831, guid: 952b70cbfd013b0488a863eaeeda3bbe, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8349886315033032194, guid: 952b70cbfd013b0488a863eaeeda3bbe, type: 3}
       propertyPath: m_Name
       value: Player (Slime)
