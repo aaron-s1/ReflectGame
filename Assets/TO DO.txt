@@ -12,8 +12,7 @@
 [Player Attacking]    
     - Clean up Slime's animation
     - Slime needs a 'real' attack
-    - Fix/clean up all particles.
-    - Player (fists melee guard) damages itself somehow.
+    - Fix/clean up all particles.    
     - Player (undead) attack can't attack multiple times.
     
 
