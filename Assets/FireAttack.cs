@@ -107,8 +107,8 @@ public class FireAttack : MonoBehaviour, IEnemyFire, IGetHealthSystem
         if (countdownToAttackObject.activeInHierarchy)
             countdownToAttackTimer = Mathf.Max(countdownToAttackTimer - Time.deltaTime, 0f);
         else
-
             countdownToAttackTimer = timeBeforeAttack;
+            
         countdownToAttackTMPro.text = countdownToAttackTimer.ToString("F1");
     }
 
@@ -117,7 +117,6 @@ public class FireAttack : MonoBehaviour, IEnemyFire, IGetHealthSystem
     // Clean up & extract later.    
     public IEnumerator BeginAttackSequence()
     {
-        // won't trigger
         if (IsDead())
         {
             Debug.Log($"{gameObject} is dead and failed to fire attack. Moved to next attacker.");
@@ -161,6 +160,7 @@ public class FireAttack : MonoBehaviour, IEnemyFire, IGetHealthSystem
 
         
         StartCoroutine(EnterDamageStep());
+
     }
 
 

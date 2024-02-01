@@ -1,17 +1,12 @@
-\\ FIX GIT PUSHING //
-//                 \\
 
 
 ~~~~~  VALUE TWEAKING  ~~~~~
-
 
 [Enemy Attacking]
     [[Particle Cleanup]]
         - Archer/Mage need better attack animations?
 
 [Player Attacking]    
-    - Clean up Slime's animation
-    - Slime needs a 'real' attack
     - Fix/clean up all particles.    
     - Player (undead) attack can't attack multiple times.
     
@@ -24,7 +19,6 @@
 
 
 ~~~~~  LEVEL BUILDING  ~~~~~
-[Wall background?]
 Game won.
 Level lost.
 
@@ -61,6 +55,8 @@ Level lost.
 
 
 ~~~~~  MAY OR MAY NOT ADD  ~~~~~
+
+[Improve Wall background?]
 
 [Animations]
     - Tweak/alter animations
