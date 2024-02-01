@@ -18859,6 +18859,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1756605212}
     m_Modifications:
+    - target: {fileID: 247459672, guid: 7aed946b5664405459098c6b3528627a, type: 3}
+      propertyPath: x_ReflectOffset
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 1601947692949862, guid: 7aed946b5664405459098c6b3528627a, type: 3}
       propertyPath: m_Name
       value: Archer
@@ -18906,6 +18910,14 @@ PrefabInstance:
     - target: {fileID: 4463561712627088, guid: 7aed946b5664405459098c6b3528627a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6330133319764727250, guid: 7aed946b5664405459098c6b3528627a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 6330133319764727251, guid: 7aed946b5664405459098c6b3528627a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7aed946b5664405459098c6b3528627a, type: 3}

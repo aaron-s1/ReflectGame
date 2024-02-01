@@ -1,3 +1,4 @@
+using System.Linq;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -36,6 +37,10 @@ public class FireAttack : MonoBehaviour, IEnemyFire, IGetHealthSystem
     [Tooltip("If not AoE, attack frontmost hero target.")]
     [SerializeField] bool attackIsAoE;
 
+    [SerializeField] bool playerIsMage;
+
+    [SerializeField] float x_ReflectOffset;
+
     PlayerController player;
     HealthSystem healthSystem;
     Animator anim;
@@ -62,6 +67,8 @@ public class FireAttack : MonoBehaviour, IEnemyFire, IGetHealthSystem
 
     Vector3 originalAttackParticlePosition;
     Vector3 originalRotationOfAttackParticle;
+
+
 
     void Awake() 
     {
@@ -98,15 +105,11 @@ public class FireAttack : MonoBehaviour, IEnemyFire, IGetHealthSystem
             return;
 
         if (countdownToAttackObject.activeInHierarchy)
-        {
             countdownToAttackTimer = Mathf.Max(countdownToAttackTimer - Time.deltaTime, 0f);
-            countdownToAttackTMPro.text = countdownToAttackTimer.ToString("F1");
-        }
         else
-        {
+
             countdownToAttackTimer = timeBeforeAttack;
-            countdownToAttackTMPro.text = countdownToAttackTimer.ToString("F1");
-        }
+        countdownToAttackTMPro.text = countdownToAttackTimer.ToString("F1");
     }
 
 
@@ -176,8 +179,9 @@ public class FireAttack : MonoBehaviour, IEnemyFire, IGetHealthSystem
 
             if (attackIsAoE)
                 yield return StartCoroutine(DealDamageTo(damage, null));
+
             else
-                yield return StartCoroutine(DealDamageTo(damage, gameManager.lastHeroToAttack));
+                yield return StartCoroutine(DealDamageTo(damage, GetHeroToDamage()));
         }
 
         else if (!IsPlayer())
@@ -216,6 +220,21 @@ public class FireAttack : MonoBehaviour, IEnemyFire, IGetHealthSystem
         }
 
         yield break;
+    }
+
+
+    // Always target hero that's in front. Except with Mage, whom targets furthest hero.
+    FireAttack GetHeroToDamage()
+    {
+        if (playerIsMage)
+        {
+            if (gameManager.heroList.Count > 1)
+                return gameManager.heroList[1];
+            else
+                return gameManager.heroList[0];            
+        }
+        else
+            return gameManager.heroList[0];        
     }
 
 
@@ -345,6 +364,17 @@ Vector3 reflectedPosition;
     // Currently does not account for direction, or non-AoE attacks.
     void FindNewAttackParticlePositionAndRotation(bool playerReflected)
     {
+        if (playerIsMage)
+        {
+            // Adjust static particle effect to land on only remaining hero.
+            if (gameManager.heroList.Count == 1)
+            {
+                var adjustedHeroPos = originalAttackParticlePosition - gameManager.heroList[0].transform.position;
+                // diffBetweenOriginalAndRemainingHero
+                originalAttackParticlePosition = new Vector3(adjustedHeroPos.x, adjustedHeroPos.y, adjustedHeroPos.z);
+            }
+        }
+
         attackParticle.gameObject.transform.position = originalAttackParticlePosition;
 
         if (playerReflected)
@@ -357,7 +387,7 @@ Vector3 reflectedPosition;
             var positionDiffBetweenMiddleHeroAndPlayer =  middleHeroPosition - newPlayerSpritePositionOffset;
 
             reflectedPosition = new Vector3(
-                                attackParticle.transform.position.x + positionDiffBetweenMiddleHeroAndPlayer.x,
+                                attackParticle.transform.position.x + positionDiffBetweenMiddleHeroAndPlayer.x + x_ReflectOffset,
                                 originalAttackParticlePosition.y,
                                 originalAttackParticlePosition.z);                        
 
