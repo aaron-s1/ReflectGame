@@ -369,13 +369,15 @@ Vector3 reflectedPosition;
             // Adjust static particle effect to land on only remaining hero.
             if (gameManager.heroList.Count == 1)
             {
-                var adjustedHeroPos = originalAttackParticlePosition - gameManager.heroList[0].transform.position;
-                // diffBetweenOriginalAndRemainingHero
-                originalAttackParticlePosition = new Vector3(adjustedHeroPos.x, adjustedHeroPos.y, adjustedHeroPos.z);
+                attackParticle.gameObject.transform.position = new Vector3(
+                                                                gameManager.heroList[0].transform.position.x,
+                                                                originalAttackParticlePosition.y, 
+                                                                originalAttackParticlePosition.z);
             }
         }
+        else
+            attackParticle.gameObject.transform.position = originalAttackParticlePosition;
 
-        attackParticle.gameObject.transform.position = originalAttackParticlePosition;
 
         if (playerReflected)
         {
