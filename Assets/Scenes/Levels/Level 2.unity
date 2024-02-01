@@ -62498,30 +62498,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1722574001}
     m_Modifications:
-    - target: {fileID: 3562001046825294603, guid: f209b7ca1fa2a774e9fe0d257d99c3eb, type: 3}
-      propertyPath: m_Name
-      value: Health Bar
-      objectReference: {fileID: 0}
-    - target: {fileID: 3656162557768517093, guid: f209b7ca1fa2a774e9fe0d257d99c3eb, type: 3}
-      propertyPath: damage
-      value: 80
-      objectReference: {fileID: 0}
-    - target: {fileID: 3656162557768517093, guid: f209b7ca1fa2a774e9fe0d257d99c3eb, type: 3}
-      propertyPath: firstDamageStepAttackPercent
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4169897057875784851, guid: f209b7ca1fa2a774e9fe0d257d99c3eb, type: 3}
-      propertyPath: lengthInSec
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4586967970323227014, guid: f209b7ca1fa2a774e9fe0d257d99c3eb, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7255076043814268988, guid: f209b7ca1fa2a774e9fe0d257d99c3eb, type: 3}
-      propertyPath: m_Name
-      value: Countdown To Attack
-      objectReference: {fileID: 0}
     - target: {fileID: 7954868712719675506, guid: f209b7ca1fa2a774e9fe0d257d99c3eb, type: 3}
       propertyPath: m_RootOrder
       value: 0

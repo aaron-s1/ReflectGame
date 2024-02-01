@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2673245402886911385, guid: db597a214a8fc4f4fa9949941d13a561, type: 3}
+      propertyPath: m_Name
+      value: Powering Up Attack Aura
+      objectReference: {fileID: 0}
     - target: {fileID: 2946937339466278006, guid: db597a214a8fc4f4fa9949941d13a561, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -110,6 +114,14 @@ PrefabInstance:
     - target: {fileID: 8641849147834093323, guid: db597a214a8fc4f4fa9949941d13a561, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 3.33
+      objectReference: {fileID: 0}
+    - target: {fileID: 8641849147834093327, guid: db597a214a8fc4f4fa9949941d13a561, type: 3}
+      propertyPath: m_Name
+      value: Health Bar
+      objectReference: {fileID: 0}
+    - target: {fileID: 8738069537440361816, guid: db597a214a8fc4f4fa9949941d13a561, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db597a214a8fc4f4fa9949941d13a561, type: 3}

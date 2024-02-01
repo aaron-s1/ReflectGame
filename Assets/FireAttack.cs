@@ -44,7 +44,7 @@ public class FireAttack : MonoBehaviour, IEnemyFire, IGetHealthSystem
     PlayerController player;
     HealthSystem healthSystem;
     Animator anim;
-    new Renderer renderer;
+    new SpriteRenderer renderer;
     Vector3 newPlayerSpritePositionOffset;
 
     bool countingDownToAttack;
@@ -76,7 +76,7 @@ public class FireAttack : MonoBehaviour, IEnemyFire, IGetHealthSystem
         // healthSystem.SetHealth(health);
         attackParticleLifetime = attackParticle.main.duration;
         anim = GetComponent<Animator>();    
-        renderer = GetComponent<Renderer>();    
+        renderer = GetComponent<SpriteRenderer>();    
     }
     
     void Start() {
@@ -114,13 +114,11 @@ public class FireAttack : MonoBehaviour, IEnemyFire, IGetHealthSystem
 
 
 
-    // Clean up & extract later.    
     public IEnumerator BeginAttackSequence()
     {
         if (IsDead())
         {
             Debug.Log($"{gameObject} is dead and failed to fire attack. Moved to next attacker.");
-            Debug.Log("BeginAttackSequence");
             StartCoroutine(gameManager.FindNextAttacker());
             yield break;
         }
@@ -300,11 +298,12 @@ public class FireAttack : MonoBehaviour, IEnemyFire, IGetHealthSystem
 
                 yield return new WaitUntil(() => !attackParticle.isPlaying);
                 
-                StartCoroutine(KillTarget(target));
+                yield return StartCoroutine(target.FadeOutSpriteOnDeath(5f));
                 
-                // add effects later. just disable for now.
+
                 if (target != this)
-                    target.gameObject.SetActive(false);
+                    StartCoroutine(KillTarget(target));
+                    // target.gameObject.SetActive(false);
             }
         }
         
@@ -337,6 +336,33 @@ public class FireAttack : MonoBehaviour, IEnemyFire, IGetHealthSystem
 
         // yield return null;
     }
+
+    IEnumerator FadeOutSpriteOnDeath(float timeToFade)
+        {
+            anim.enabled = false;
+
+            // May not need to hide health, as fill amount should be 0 if is dead.
+            // GameObject healthBar = GetComponentInChildren<HealthBarUI>().transform.parent.gameObject;
+            // healthBar.SetActive(false);
+
+            float targetAlpha = 0;
+            Color startColor = renderer.color;
+            Color targetColor = new Color(startColor.r, startColor.g, startColor.b, targetAlpha);
+
+            float elapsedTime = 0f;
+
+            while (elapsedTime < timeToFade)
+            {
+                renderer.color = Color.Lerp(startColor, targetColor, elapsedTime / timeToFade);
+                yield return null;
+                elapsedTime += Time.deltaTime;
+            }
+
+            renderer.color = targetColor;        
+
+            yield break;
+        }
+
 
 
 

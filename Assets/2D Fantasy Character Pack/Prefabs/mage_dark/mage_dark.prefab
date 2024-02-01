@@ -39204,7 +39204,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1986583803}
   m_Layer: 0
-  m_Name: Countdown To Attack (1)
+  m_Name: Countdown To Attack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -39497,6 +39497,8 @@ MonoBehaviour:
   auraParticle: {fileID: 1158924281}
   countdownToAttackObject: {fileID: 1986583802}
   attackIsAoE: 1
+  playerIsMage: 0
+  x_ReflectOffset: 0
 --- !u!198 &3702823361107468620
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -44405,7 +44407,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6848739074368699834, guid: f1419c2a3f5ecf44e824039f908fea60, type: 3}
       propertyPath: m_Name
-      value: pfHealthBarUIWorldCanvas (1)
+      value: Health Bar
       objectReference: {fileID: 0}
     - target: {fileID: 6848739074368699834, guid: f1419c2a3f5ecf44e824039f908fea60, type: 3}
       propertyPath: m_IsActive
@@ -44597,7 +44599,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1007919433217068806, guid: 2d54d468aab80df4a92849c48661c081, type: 3}
       propertyPath: m_Name
-      value: Effect_38_SupercyanAura
+      value: Powering Up Attack Aura
       objectReference: {fileID: 0}
     - target: {fileID: 1007919433217068806, guid: 2d54d468aab80df4a92849c48661c081, type: 3}
       propertyPath: m_IsActive

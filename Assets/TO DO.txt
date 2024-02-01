@@ -2,18 +2,15 @@
 
 ~~~~~  VALUE TWEAKING  ~~~~~
 
-[Enemy Attacking]
-    [[Particle Cleanup]]
-        - Archer/Mage need better attack animations?
+[Enemies Attacking]
+     
+
 
 [Player Attacking]    
+    - Fully attune Health amounts
+    - Fully attune Damage amounts
     - Fix/clean up all particles.    
-    - Player (undead) attack can't attack multiple times.
     
-
-    - Die animations? 
-        ... (Mage and Archer don't have one)
-
 
 
 
@@ -24,14 +21,11 @@ Level lost.
 
 
 
-
 ~~~~~  LEVEL REPLICATION  ~~~~~
 ~ Scene transitions
 
 
-~~~~~  AUDIO  ~~~~~
 
-- General audio effects
 
 
 
@@ -43,7 +37,7 @@ Level lost.
     ~~ Project ~~ 
         ~ Refactor/extract scripts
         ~ Rename project/scenes as needed
-        ~ Extra, safe commits/pushes
+        ~ Extract, safe commits/pushes
         ~ Delete unnecessary assets
         ~ Asset credits
 
@@ -55,6 +49,13 @@ Level lost.
 
 
 ~~~~~  MAY OR MAY NOT ADD  ~~~~~
+
+- Die animations? (Mage and Archer don't have one)
+
+~~~~~  AUDIO  ~~~~~
+    - General audio effects
+
+- Archer/Mage need better attack animations?
 
 [Improve Wall background?]
 
