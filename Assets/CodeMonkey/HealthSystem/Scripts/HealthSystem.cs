@@ -81,7 +81,7 @@ namespace CodeMonkey.HealthSystemCM {
         /// Kill this HealthSystem
         /// </summary>
         public void Die() {
-            Debug.Log(this + " died.");
+            // Debug.Log(this + " died.");
             OnDead?.Invoke(this, EventArgs.Empty);
         }
 

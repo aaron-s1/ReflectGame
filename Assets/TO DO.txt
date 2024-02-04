@@ -2,14 +2,20 @@
 
 ~~~~~  VALUE TWEAKING  ~~~~~
 
+
+If enemies die (all simultaneously?), Player will attack once again.
+    - If they died by reflect, Player never stops attacking.
+
+
 [Enemies Attacking]
+
      
 
 
-[Player Attacking]    
+[Player Attacking]
     - Fully attune Health amounts
     - Fully attune Damage amounts
-    - Fix/clean up all particles.    
+    - Fix/clean up all particles.
     
 
 
@@ -23,11 +29,6 @@ Level lost.
 
 ~~~~~  LEVEL REPLICATION  ~~~~~
 ~ Scene transitions
-
-
-
-
-
 
 
 

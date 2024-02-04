@@ -245,7 +245,6 @@ public class FireAttack : MonoBehaviour, IEnemyFire, IGetHealthSystem
         {
             foreach (var hero in gameManager.heroList)
             {
-                Debug.Log("loop object = " + hero);
                 // Damage other heroes first, in case attacker would die mid-loop.
                 if (hero != this)
                     StartCoroutine(ApplyDamage(damageValue, hero));
@@ -262,8 +261,6 @@ public class FireAttack : MonoBehaviour, IEnemyFire, IGetHealthSystem
         SetActivityOfParticle(attackParticle, false);        
 
         // Attack is now finally fully completed.
-        // gameManager.LogCurrentMethod(3);
-        // Debug.Log("BeginAttackSequence " + gameObject);
         StartCoroutine(gameManager.FindNextAttacker());
         yield break;
     }
@@ -272,9 +269,8 @@ public class FireAttack : MonoBehaviour, IEnemyFire, IGetHealthSystem
     // Multi-hit example: Attack lasts 1 seconds, with a firstDamageStepAttackPercent of 25% and 10 hits.
     // First hit occurs 25% into 1.0f, at 0.25f. Remaining 9 attacks occur over 0.75 seconds, 
     // with each occuring every 0.083e seconds, starting at 0.33333.
-    IEnumerator ApplyDamage(float damageValue, FireAttack target = null)
+    IEnumerator ApplyDamage(float damageValue, FireAttack target)
     {
-            Debug.Log($"{gameObject} took damage");
         if (!target.healthSystem.IsDead() && target != null)
         {
             if (numberOfDamageHits > 1)
@@ -298,77 +294,54 @@ public class FireAttack : MonoBehaviour, IEnemyFire, IGetHealthSystem
 
                 yield return new WaitUntil(() => !attackParticle.isPlaying);
                 
-                yield return StartCoroutine(target.FadeOutSpriteOnDeath(5f));
-                
 
-                if (target != this)
-                    StartCoroutine(KillTarget(target));
-                    // target.gameObject.SetActive(false);
+                // if (target != this)
+                // {
+                    // yield return StartCoroutine(target.FadeOutSpriteOnDeath(1f));
+                    yield return StartCoroutine(target.KillTarget(target));
+                // }
             }
         }
-        
-        // \/ THIS IS THE ISSUE.
-        // StartCoroutine(gameManager.FindNextAttacker());
-
-        // If attack were AoE, prevents attacker from disabling itself before it has killed other enemies.
-        if (target.healthSystem.IsDead() && target == this)
-            target.gameObject.SetActive(false);
     }
-
-
-    // void DamageAllHeroes(int damage)
-    // {
-    //     // var heroList = gameManager.heroList;
-    //     StartCoroutine(DealDamageTo(damage, null));
-    // }
 
 
     public IEnumerator KillTarget(FireAttack target) 
     {
-        // target.gameObject.SetActive(false);
-        Debug.Log($"{target} was killed.");
         yield return StartCoroutine(gameManager.RemoveHeroFromAttackerLists(target));
-
-        // if (target.IsPlayer())
-            // StartCoroutine(LevelLoader.Instance.ReloadCurrentScene());            
-        // else
-            // fade out hero model, disable health bar UI, etc??
-
-        // yield return null;
+        target.gameObject.SetActive(false);
     }
 
+
     IEnumerator FadeOutSpriteOnDeath(float timeToFade)
+    {
+        anim.enabled = false;
+
+        GameObject healthBar = GetComponentInChildren<HealthBarUI>().transform.parent.gameObject;
+        healthBar.SetActive(false);
+
+        float targetAlpha = 0;
+        Color startColor = renderer.color;
+        Color targetColor = new Color(startColor.r, startColor.g, startColor.b, targetAlpha);
+
+        float elapsedTime = 0f;
+
+        while (elapsedTime < timeToFade)
         {
-            anim.enabled = false;
-
-            // May not need to hide health, as fill amount should be 0 if is dead.
-            // GameObject healthBar = GetComponentInChildren<HealthBarUI>().transform.parent.gameObject;
-            // healthBar.SetActive(false);
-
-            float targetAlpha = 0;
-            Color startColor = renderer.color;
-            Color targetColor = new Color(startColor.r, startColor.g, startColor.b, targetAlpha);
-
-            float elapsedTime = 0f;
-
-            while (elapsedTime < timeToFade)
-            {
-                renderer.color = Color.Lerp(startColor, targetColor, elapsedTime / timeToFade);
-                yield return null;
-                elapsedTime += Time.deltaTime;
-            }
-
-            renderer.color = targetColor;        
-
-            yield break;
+            renderer.color = Color.Lerp(startColor, targetColor, elapsedTime / timeToFade);
+            yield return null;
+            elapsedTime += Time.deltaTime;
         }
+
+        renderer.color = targetColor;        
+
+        yield break;
+    }
 
 
 
 
     public void SetActivityOfParticle(ParticleSystem parentParticle, bool activity)
     {
-        // Debug.Log("particle = " + parentParticle.gameObject);
         if (parentParticle.gameObject.activeSelf == activity)
             return;
 

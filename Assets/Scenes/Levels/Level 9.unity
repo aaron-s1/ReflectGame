@@ -7294,6 +7294,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1756605212}
     m_Modifications:
+    - target: {fileID: 1907433739, guid: 588d570a52e35c5458973a7d067a2875, type: 3}
+      propertyPath: damage
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 1726022557058710, guid: 588d570a52e35c5458973a7d067a2875, type: 3}
       propertyPath: m_Name
       value: Knight
@@ -7519,6 +7523,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1722574001}
     m_Modifications:
+    - target: {fileID: 1404418255183885822, guid: 3bd81bb7a5dea17448d266d0d6f6ebbf, type: 3}
+      propertyPath: damage
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 5739112585893576807, guid: 3bd81bb7a5dea17448d266d0d6f6ebbf, type: 3}
       propertyPath: m_Name
       value: Player (Fire Lord)
@@ -18859,6 +18867,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1756605212}
     m_Modifications:
+    - target: {fileID: 247459672, guid: 7aed946b5664405459098c6b3528627a, type: 3}
+      propertyPath: damage
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 247459672, guid: 7aed946b5664405459098c6b3528627a, type: 3}
       propertyPath: x_ReflectOffset
       value: 0.5
@@ -62306,6 +62318,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1756605212}
     m_Modifications:
+    - target: {fileID: 2059698519, guid: bedfc2489e233ae479eff548012e1c92, type: 3}
+      propertyPath: damage
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 1589123261345258, guid: bedfc2489e233ae479eff548012e1c92, type: 3}
       propertyPath: m_Name
       value: Dark Mage

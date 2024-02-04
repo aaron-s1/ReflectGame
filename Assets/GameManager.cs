@@ -73,7 +73,6 @@ public class GameManager : MonoBehaviour
 
         // Delay for one frame to insure other scripts' Instances are updated.
         yield return null;
-        Debug.Log("PopulateAttackerLists");
         StartCoroutine(FindNextAttacker());
     }
 
@@ -84,6 +83,7 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator FindNextAttacker()
     {
+        Debug.Log($"FindNextAttacker called. heroList count = {heroList.Count}");
         // Player died...
         if (player.gameObject.GetComponent<FireAttack>().IsDead())
         {
@@ -103,6 +103,8 @@ public class GameManager : MonoBehaviour
                 // yield break;
             }
         }
+        Debug.Log($"hero list count = {heroList.Count}");
+        Debug.Log("reached middle of FindNextAttacker()");
 
 
         if (levelHasEnded)
@@ -145,7 +147,6 @@ public class GameManager : MonoBehaviour
             else
             {
                 Debug.Log("RotateToNextAttacker");
-                // Debug.Log("???????????????????");
                 StartCoroutine(FindNextAttacker());
             }
         }
@@ -173,7 +174,7 @@ public class GameManager : MonoBehaviour
     public IEnumerator RemoveHeroFromAttackerLists(FireAttack character)    
     {
         // LogCurrentMethod(1);
-        character.gameObject.SetActive(false);
+        // character.gameObject.SetActive(false);
         heroList.Remove(character);
         attackerList.Remove(character);
 
