@@ -3,10 +3,8 @@
 ~~~~~  VALUE TWEAKING  ~~~~~
 
 
-
 [Enemies Attacking]
 
-     
 
 
 [Player Attacking]
@@ -14,8 +12,6 @@
     - Fully attune Damage amounts
     - Fix/clean up all particles.
     
-
-
 
 
 ~~~~~  LEVEL BUILDING  ~~~~~

@@ -97,7 +97,7 @@ public class GameManager : MonoBehaviour
         {
             if (attackerList[0] == player.gameObject.GetComponent<FireAttack>())
             {
-                levelHasEnded = true;                
+                levelHasEnded = true;
                 yield return StartCoroutine(LevelLoader.Instance.LoadNextScene());
                 yield break;
                 // yield break;

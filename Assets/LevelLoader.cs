@@ -13,10 +13,12 @@ public class LevelLoader : MonoBehaviour
 
     [SerializeField] ParticleSystem transitionParticle;
     [SerializeField] Vector3 transitionParticlePosition;
-    [SerializeField] Animator transition;
+    [SerializeField] Animator fadeTransition;
     [SerializeField] float newLevelTransitionTime = 2f;
 
     int activeSceneIndex;
+    int sceneCount;
+
 
 
     void Awake() 
@@ -25,6 +27,7 @@ public class LevelLoader : MonoBehaviour
             instance = this;
 
         activeSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        sceneCount = SceneManager.sceneCountInBuildSettings;
         transitionParticlePosition = new Vector3 (0,0,0); // just for now, for testing
     }
 
@@ -34,49 +37,41 @@ public class LevelLoader : MonoBehaviour
     public IEnumerator LoadNextScene() 
     {
         GameManager.Instance.LogCurrentMethod(2, "about to load next scene");
-        yield return LoadScene(true);
 
+        var newTransitionParticle = Instantiate(transitionParticle, transitionParticlePosition, Quaternion.identity);
+        newTransitionParticle.Play();
+        yield return new WaitForSeconds(3f);
+
+        fadeTransition.SetTrigger("Start");
+
+
+        if (activeSceneIndex + 1 < sceneCount)
+            SceneManager.LoadScene(activeSceneIndex + 1);
+        else
+            GameOver();
+
+        
+        yield return new WaitForSeconds(newLevelTransitionTime);
+
+        fadeTransition.ResetTrigger("Start");
+        transitionParticle.Stop();
+        GameManager.Instance.LogCurrentMethod(2, "particles / animation stopped");
     }
 
 
     public IEnumerator ReloadCurrentScene()
     {
         GameManager.Instance.LogCurrentMethod(2, "about to reload current scene");
-        yield return LoadScene(false);
-    }
-
-
-    IEnumerator LoadScene(bool advanceToNextScene = false)
-    {
-        var newParticle = Instantiate(transitionParticle, transitionParticlePosition, Quaternion.identity);
-        newParticle.Play();
-        yield return new WaitForSeconds(3f);
-
-        transition.SetTrigger("Start");
-
-        if (advanceToNextScene)
-        {
-            int sceneCount = SceneManager.sceneCountInBuildSettings;
-
-            if (activeSceneIndex + 1 < sceneCount)
-                SceneManager.LoadScene(activeSceneIndex + 1);
-            else
-                GameOver();
-        }
-
-        else
-            SceneManager.LoadScene(activeSceneIndex);
+        fadeTransition.SetTrigger("Start");
+        yield return new WaitForSeconds(fadeTransition.GetCurrentAnimatorClipInfo(0)[0].clip.length);
         
-        yield return new WaitForSeconds(newLevelTransitionTime);
-
-        transition.ResetTrigger("Start");
-        transitionParticle.Stop();
-        GameManager.Instance.LogCurrentMethod(2, "particles / animation stopped");
+        SceneManager.LoadScene(activeSceneIndex);
+        yield break;
     }
+
 
     void GameOver()
     {
         Debug.Log("Level Loader tried to advance, but found no next scene.");
-        // GameManager.Instance.LogCurrentMethod(1);
     }
 }
