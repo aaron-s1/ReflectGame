@@ -3,9 +3,6 @@
 ~~~~~  VALUE TWEAKING  ~~~~~
 
 
-If enemies die (all simultaneously?), Player will attack once again.
-    - If they died by reflect, Player never stops attacking.
-
 
 [Enemies Attacking]
 
