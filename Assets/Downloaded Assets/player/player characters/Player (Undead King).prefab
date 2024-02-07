@@ -14674,6 +14674,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1007919433590332598}
     - target: {fileID: 2946937339466278007, guid: db597a214a8fc4f4fa9949941d13a561, type: 3}
+      propertyPath: reflectParticleObj
+      value: 
+      objectReference: {fileID: 1007919433590332598}
+    - target: {fileID: 2946937339466278007, guid: db597a214a8fc4f4fa9949941d13a561, type: 3}
       propertyPath: reflectSequence.Array.size
       value: 4
       objectReference: {fileID: 0}
@@ -14711,7 +14715,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8376006388758794721, guid: db597a214a8fc4f4fa9949941d13a561, type: 3}
       propertyPath: health
-      value: 210
+      value: 175
       objectReference: {fileID: 0}
     - target: {fileID: 8376006388758794721, guid: db597a214a8fc4f4fa9949941d13a561, type: 3}
       propertyPath: attackIsAoE
@@ -14733,6 +14737,10 @@ PrefabInstance:
       propertyPath: countdownToAttackObject
       value: 
       objectReference: {fileID: 6305258152330343964}
+    - target: {fileID: 8376006388758794721, guid: db597a214a8fc4f4fa9949941d13a561, type: 3}
+      propertyPath: firstDamageStepAttackPercent
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8641849147834093323, guid: db597a214a8fc4f4fa9949941d13a561, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.08

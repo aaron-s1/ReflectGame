@@ -62371,14 +62371,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1722574001}
     m_Modifications:
-    - target: {fileID: 113363646026318789, guid: a2dba57173b404141aba11e458c3268d, type: 3}
-      propertyPath: firstDamageStepAttackPercent
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6722061379918208620, guid: a2dba57173b404141aba11e458c3268d, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6722375788021266002, guid: a2dba57173b404141aba11e458c3268d, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -62423,28 +62415,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6722375788021266003, guid: a2dba57173b404141aba11e458c3268d, type: 3}
-      propertyPath: reflectParticleObj
-      value: 
-      objectReference: {fileID: 681014116703108764}
     - target: {fileID: 6722375788021266012, guid: a2dba57173b404141aba11e458c3268d, type: 3}
       propertyPath: m_Name
       value: Player (Undead King)
-      objectReference: {fileID: 0}
-    - target: {fileID: 6722375788021266012, guid: a2dba57173b404141aba11e458c3268d, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a2dba57173b404141aba11e458c3268d, type: 3}
 --- !u!4 &681014116703108763 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6722375788021266002, guid: a2dba57173b404141aba11e458c3268d, type: 3}
-  m_PrefabInstance: {fileID: 681014116703108762}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &681014116703108764 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1007919433590332598, guid: a2dba57173b404141aba11e458c3268d, type: 3}
   m_PrefabInstance: {fileID: 681014116703108762}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &807410957812016205

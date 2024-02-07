@@ -1,21 +1,20 @@
 
 
 - Fists Melee Guard scaling changes after attacking multiple times?
-- Fix transition particle position for all levels
+
 
 
 ~~~~~  VALUE TWEAKING  ~~~~~
 
 
 [Enemies Attacking]
-    - Fix reflect positions
+    - Particle positioning
 
 
 
 [Player Attacking]
     - Clean damage window timings
-    - Fully attune Health amounts
-    - Fully attune Damage amounts
+    - Fully attune Damage/Health amounts
 
 
 

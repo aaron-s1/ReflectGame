@@ -62376,18 +62376,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1722574001}
     m_Modifications:
-    - target: {fileID: 1611372162229531278, guid: ee5dd46408837c6429e8a743942620c9, type: 3}
-      propertyPath: damage
-      value: 75
-      objectReference: {fileID: 0}
-    - target: {fileID: 1611372162229531278, guid: ee5dd46408837c6429e8a743942620c9, type: 3}
-      propertyPath: health
-      value: 1750
-      objectReference: {fileID: 0}
-    - target: {fileID: 1611372162229531278, guid: ee5dd46408837c6429e8a743942620c9, type: 3}
-      propertyPath: playerIsMage
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5369606847668078359, guid: ee5dd46408837c6429e8a743942620c9, type: 3}
       propertyPath: m_Name
       value: Player (Arcane Mage)
@@ -62436,16 +62424,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7733295194438330778, guid: ee5dd46408837c6429e8a743942620c9, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7733295194438330779, guid: ee5dd46408837c6429e8a743942620c9, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 7733295194438330778, guid: ee5dd46408837c6429e8a743942620c9, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ee5dd46408837c6429e8a743942620c9, type: 3}
 --- !u!4 &416568193926474687 stripped
 Transform:

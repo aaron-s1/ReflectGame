@@ -14680,6 +14680,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3572343935836350654}
     - target: {fileID: 2946937339466278007, guid: db597a214a8fc4f4fa9949941d13a561, type: 3}
+      propertyPath: reflectParticleObj
+      value: 
+      objectReference: {fileID: 3572343935836350654}
+    - target: {fileID: 2946937339466278007, guid: db597a214a8fc4f4fa9949941d13a561, type: 3}
       propertyPath: reflectSequence.Array.size
       value: 5
       objectReference: {fileID: 0}
@@ -14717,11 +14721,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8376006388758794721, guid: db597a214a8fc4f4fa9949941d13a561, type: 3}
       propertyPath: damage
-      value: 10
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8376006388758794721, guid: db597a214a8fc4f4fa9949941d13a561, type: 3}
       propertyPath: health
-      value: 300
+      value: 250
       objectReference: {fileID: 0}
     - target: {fileID: 8376006388758794721, guid: db597a214a8fc4f4fa9949941d13a561, type: 3}
       propertyPath: attackParticle

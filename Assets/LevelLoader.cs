@@ -12,7 +12,7 @@ public class LevelLoader : MonoBehaviour
     static LevelLoader instance;
 
     [SerializeField] ParticleSystem transitionParticle;
-    [SerializeField] Vector3 transitionParticlePosition;
+    // [SerializeField] Vector3 transitionParticlePosition;
     [SerializeField] Animator fadeTransition;
     [SerializeField] float newLevelTransitionTime = 2f;
 
@@ -28,7 +28,7 @@ public class LevelLoader : MonoBehaviour
 
         activeSceneIndex = SceneManager.GetActiveScene().buildIndex;
         sceneCount = SceneManager.sceneCountInBuildSettings;
-        transitionParticlePosition = new Vector3 (0,0,0); // just for now, for testing
+        // transitionParticlePosition = new Vector3 (0,0,0); // just for now, for testing
     }
 
     // void Start() => StartCoroutine(LoadScene(true));
@@ -38,7 +38,7 @@ public class LevelLoader : MonoBehaviour
     {
         GameManager.Instance.LogCurrentMethod(2, "about to load next scene");
 
-        var newTransitionParticle = Instantiate(transitionParticle, transitionParticlePosition, Quaternion.identity);
+        var newTransitionParticle = Instantiate(transitionParticle, transitionParticle.transform.position, Quaternion.identity);
         newTransitionParticle.Play();
         yield return new WaitForSeconds(3f);
 
