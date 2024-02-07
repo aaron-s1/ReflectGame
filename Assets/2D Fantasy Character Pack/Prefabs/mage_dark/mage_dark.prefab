@@ -39490,7 +39490,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
-  damage: 20
+  damage: 10
   numberOfDamageHits: 1
   timeBeforeAttack: 2
   firstDamageStepAttackPercent: 5
@@ -39500,7 +39500,7 @@ MonoBehaviour:
   countdownToAttackObject: {fileID: 1986583802}
   attackIsAoE: 1
   playerIsMage: 0
-  x_ReflectOffset: 0
+  x_ReflectOffset: -0.3
 --- !u!198 &3702823361107468620
 ParticleSystem:
   m_ObjectHideFlags: 0

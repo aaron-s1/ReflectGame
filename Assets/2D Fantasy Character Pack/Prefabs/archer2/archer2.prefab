@@ -397,7 +397,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
-  damage: 20
+  damage: 10
   numberOfDamageHits: 10
   timeBeforeAttack: 2
   firstDamageStepAttackPercent: 40
@@ -407,7 +407,7 @@ MonoBehaviour:
   countdownToAttackObject: {fileID: 1039715520}
   attackIsAoE: 1
   playerIsMage: 0
-  x_ReflectOffset: 0.5
+  x_ReflectOffset: -0.5
 --- !u!198 &4189009609249305814
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -5396,7 +5396,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6330133320380864001, guid: 37225baa539a1114aad9ce6c4640c584, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.75
+      value: 4.75
       objectReference: {fileID: 0}
     - target: {fileID: 6330133320380864001, guid: 37225baa539a1114aad9ce6c4640c584, type: 3}
       propertyPath: m_LocalPosition.y

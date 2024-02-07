@@ -250,7 +250,8 @@ public class FireAttack : MonoBehaviour, IEnemyFire, IGetHealthSystem
                     StartCoroutine(ApplyDamage(damageValue, hero));
             }
             
-            StartCoroutine(ApplyDamage(damageValue, this));
+            if (!IsPlayer())
+                StartCoroutine(ApplyDamage(damageValue, this));
         }
 
         if (anim)
