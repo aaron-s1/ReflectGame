@@ -6771,6 +6771,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &290505823 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 7608620322813741326, guid: 9ec951c26c7cb2f4baaff18613ba8c19, type: 3}
+  m_PrefabInstance: {fileID: 7608620324599865627}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &296392703
 GameObject:
   m_ObjectHideFlags: 0
@@ -62628,5 +62633,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Level Loader
       objectReference: {fileID: 0}
+    - target: {fileID: 9194167581597160724, guid: 9ec951c26c7cb2f4baaff18613ba8c19, type: 3}
+      propertyPath: fadeTransition
+      value: 
+      objectReference: {fileID: 290505823}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9ec951c26c7cb2f4baaff18613ba8c19, type: 3}

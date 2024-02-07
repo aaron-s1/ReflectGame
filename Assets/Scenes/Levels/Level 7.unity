@@ -62371,6 +62371,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1722574001}
     m_Modifications:
+    - target: {fileID: 113363646026318789, guid: a2dba57173b404141aba11e458c3268d, type: 3}
+      propertyPath: firstDamageStepAttackPercent
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6722061379918208620, guid: a2dba57173b404141aba11e458c3268d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6722375788021266002, guid: a2dba57173b404141aba11e458c3268d, type: 3}
       propertyPath: m_RootOrder
       value: 0

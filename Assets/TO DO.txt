@@ -1,17 +1,44 @@
 
 
+- Fix transition particle position for all levels
+
 ~~~~~  VALUE TWEAKING  ~~~~~
 
 
 [Enemies Attacking]
+    - Fix reflect positions
 
 
 
 [Player Attacking]
+    - Clean damage window timing
     - Fully attune Health amounts
     - Fully attune Damage amounts
     - Fix/clean up all particles.
-    
+
+PARTICLE POSITIONS:
+    ~ REGULAR:
+        - Level 9, a bit too far to the left
+        - Level 8, clean.
+        - Level 7, 
+        - Level 6, 
+        - Level 5, 
+        - Level 4, 
+        - Level 3, 
+        - Level 2, 
+        - Level 1, 
+
+    ~ REFLECTED:
+        - Level 9, a bit too far to the left
+        - Level 8, clean.
+        - Level 7, 
+        - Level 6, 
+        - Level 5, 
+        - Level 4, 
+        - Level 3, 
+        - Level 2, 
+        - Level 1, 
+
 
 
 ~~~~~  LEVEL BUILDING  ~~~~~
@@ -23,6 +50,9 @@ Level lost.
 ~~~~~  LEVEL REPLICATION  ~~~~~
 ~ Scene transitions
 
+
+
+- Fix Sprite fadeouts when characters die
 
 
 
