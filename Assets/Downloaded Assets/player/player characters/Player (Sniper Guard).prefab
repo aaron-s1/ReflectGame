@@ -14748,6 +14748,18 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6164945247884337414, guid: 6c9c8031fc52e5f4fa2315a0895f3983, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6164945247884337414, guid: 6c9c8031fc52e5f4fa2315a0895f3983, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6164945247884337414, guid: 6c9c8031fc52e5f4fa2315a0895f3983, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6164945247884337414, guid: 6c9c8031fc52e5f4fa2315a0895f3983, type: 3}
       propertyPath: m_LocalPosition.x
       value: -57.8
       objectReference: {fileID: 0}
@@ -14773,7 +14785,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6556282694652964021, guid: 6c9c8031fc52e5f4fa2315a0895f3983, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 6556282694652964021, guid: 6c9c8031fc52e5f4fa2315a0895f3983, type: 3}
       propertyPath: m_LocalPosition.y
@@ -15034,6 +15046,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5625584578845195779}
     - target: {fileID: 2946937339466278007, guid: db597a214a8fc4f4fa9949941d13a561, type: 3}
+      propertyPath: reflectParticleObj
+      value: 
+      objectReference: {fileID: 5625584578845195779}
+    - target: {fileID: 2946937339466278007, guid: db597a214a8fc4f4fa9949941d13a561, type: 3}
       propertyPath: reflectSequence.Array.size
       value: 5
       objectReference: {fileID: 0}
@@ -15110,9 +15126,17 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8376006388758794721, guid: db597a214a8fc4f4fa9949941d13a561, type: 3}
+      propertyPath: numberOfDamageHits
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8376006388758794721, guid: db597a214a8fc4f4fa9949941d13a561, type: 3}
       propertyPath: countdownToAttackObject
       value: 
       objectReference: {fileID: 5580418955592978994}
+    - target: {fileID: 8376006388758794721, guid: db597a214a8fc4f4fa9949941d13a561, type: 3}
+      propertyPath: firstDamageStepAttackPercent
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8641849147834093323, guid: db597a214a8fc4f4fa9949941d13a561, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.06
