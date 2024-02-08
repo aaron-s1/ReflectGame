@@ -14739,7 +14739,7 @@ PrefabInstance:
       objectReference: {fileID: 6305258152330343964}
     - target: {fileID: 8376006388758794721, guid: db597a214a8fc4f4fa9949941d13a561, type: 3}
       propertyPath: firstDamageStepAttackPercent
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8641849147834093323, guid: db597a214a8fc4f4fa9949941d13a561, type: 3}
       propertyPath: m_LocalScale.x

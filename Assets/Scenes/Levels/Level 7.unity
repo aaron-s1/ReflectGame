@@ -62371,10 +62371,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1722574001}
     m_Modifications:
-    - target: {fileID: 113363646026318789, guid: a2dba57173b404141aba11e458c3268d, type: 3}
-      propertyPath: firstDamageStepAttackPercent
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 6722375788021266002, guid: a2dba57173b404141aba11e458c3268d, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -62559,10 +62555,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 7608620322813741315, guid: 9ec951c26c7cb2f4baaff18613ba8c19, type: 3}
-      propertyPath: m_AdditionalShaderChannelsFlag
-      value: 25
-      objectReference: {fileID: 0}
     - target: {fileID: 7608620323876332133, guid: 9ec951c26c7cb2f4baaff18613ba8c19, type: 3}
       propertyPath: m_RootOrder
       value: 3

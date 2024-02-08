@@ -58,7 +58,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -168,7 +168,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transitionParticle: {fileID: 2767026541584575837, guid: 6fa369ab598e7e740a928267615b64b5, type: 3}
-  transition: {fileID: 7608620322813741326}
+  fadeTransition: {fileID: 7608620322813741326}
   newLevelTransitionTime: 2
 --- !u!1 &7608620324148116718
 GameObject:
