@@ -56300,7 +56300,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6716432875205993821, guid: 5832ccfd9a67d4047b8d5c302f8e1b1c, type: 3}
       propertyPath: health
-      value: 150
+      value: 1500
       objectReference: {fileID: 0}
     - target: {fileID: 6716432875205993821, guid: 5832ccfd9a67d4047b8d5c302f8e1b1c, type: 3}
       propertyPath: numberOfDamageHits
@@ -56310,6 +56310,106 @@ PrefabInstance:
       propertyPath: firstDamageStepAttackPercent
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6978215403742857763, guid: 5832ccfd9a67d4047b8d5c302f8e1b1c, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.3333333
+      objectReference: {fileID: 0}
+    - target: {fileID: 6978215404092041293, guid: 5832ccfd9a67d4047b8d5c302f8e1b1c, type: 3}
+      propertyPath: m_makeCount
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6978215404092041293, guid: 5832ccfd9a67d4047b8d5c302f8e1b1c, type: 3}
+      propertyPath: m_randomRot.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6978215404092041293, guid: 5832ccfd9a67d4047b8d5c302f8e1b1c, type: 3}
+      propertyPath: m_randomRot.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6978215404092041293, guid: 5832ccfd9a67d4047b8d5c302f8e1b1c, type: 3}
+      propertyPath: m_randomRot.z
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6978215404092041293, guid: 5832ccfd9a67d4047b8d5c302f8e1b1c, type: 3}
+      propertyPath: m_makeObjs.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6978215404092041293, guid: 5832ccfd9a67d4047b8d5c302f8e1b1c, type: 3}
+      propertyPath: m_makeObjs.Array.data[1]
+      value: 
+      objectReference: {fileID: 988343341427266968, guid: 6c6e8b5bc2908c649867ff1de0945449, type: 3}
+    - target: {fileID: 6978215405004184653, guid: 5832ccfd9a67d4047b8d5c302f8e1b1c, type: 3}
+      propertyPath: m_makeCount
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6978215405004184653, guid: 5832ccfd9a67d4047b8d5c302f8e1b1c, type: 3}
+      propertyPath: m_randomRot.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6978215405004184653, guid: 5832ccfd9a67d4047b8d5c302f8e1b1c, type: 3}
+      propertyPath: m_randomRot.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6978215405004184653, guid: 5832ccfd9a67d4047b8d5c302f8e1b1c, type: 3}
+      propertyPath: m_randomRot.z
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6978215405004184653, guid: 5832ccfd9a67d4047b8d5c302f8e1b1c, type: 3}
+      propertyPath: m_makeObjs.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6978215405004184653, guid: 5832ccfd9a67d4047b8d5c302f8e1b1c, type: 3}
+      propertyPath: m_makeObjs.Array.data[1]
+      value: 
+      objectReference: {fileID: 988343341427266968, guid: 6c6e8b5bc2908c649867ff1de0945449, type: 3}
+    - target: {fileID: 6978215405254380052, guid: 5832ccfd9a67d4047b8d5c302f8e1b1c, type: 3}
+      propertyPath: m_makeCount
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6978215405254380052, guid: 5832ccfd9a67d4047b8d5c302f8e1b1c, type: 3}
+      propertyPath: m_randomRot.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6978215405254380052, guid: 5832ccfd9a67d4047b8d5c302f8e1b1c, type: 3}
+      propertyPath: m_randomRot.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6978215405254380052, guid: 5832ccfd9a67d4047b8d5c302f8e1b1c, type: 3}
+      propertyPath: m_randomRot.z
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6978215405254380052, guid: 5832ccfd9a67d4047b8d5c302f8e1b1c, type: 3}
+      propertyPath: m_makeObjs.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6978215405254380052, guid: 5832ccfd9a67d4047b8d5c302f8e1b1c, type: 3}
+      propertyPath: m_makeObjs.Array.data[1]
+      value: 
+      objectReference: {fileID: 988343341427266968, guid: 6c6e8b5bc2908c649867ff1de0945449, type: 3}
+    - target: {fileID: 6978215405751629781, guid: 5832ccfd9a67d4047b8d5c302f8e1b1c, type: 3}
+      propertyPath: m_makeCount
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6978215405751629781, guid: 5832ccfd9a67d4047b8d5c302f8e1b1c, type: 3}
+      propertyPath: m_randomRot.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6978215405751629781, guid: 5832ccfd9a67d4047b8d5c302f8e1b1c, type: 3}
+      propertyPath: m_randomRot.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6978215405751629781, guid: 5832ccfd9a67d4047b8d5c302f8e1b1c, type: 3}
+      propertyPath: m_randomRot.z
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6978215405751629781, guid: 5832ccfd9a67d4047b8d5c302f8e1b1c, type: 3}
+      propertyPath: m_makeObjs.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6978215405751629781, guid: 5832ccfd9a67d4047b8d5c302f8e1b1c, type: 3}
+      propertyPath: m_makeObjs.Array.data[1]
+      value: 
+      objectReference: {fileID: 988343341427266968, guid: 6c6e8b5bc2908c649867ff1de0945449, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5832ccfd9a67d4047b8d5c302f8e1b1c, type: 3}
 --- !u!4 &1905691158 stripped

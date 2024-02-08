@@ -89,7 +89,8 @@ public class FindPointDirection : MonoBehaviour
             GameObject newDividerRight = Instantiate(dividerBetweenHeldKeys, canvasParent);
             GameObject newDividerLeft = Instantiate(dividerBetweenHeldKeys, canvasParent);
 
-            float divider_Y_Offset = distanceBetweenTiles * 0.5f;
+            // Added extra (0.1f) offset, because perfectly exact positioned dividers sometimes weren't visible?
+            float divider_Y_Offset = (distanceBetweenTiles * 0.5f) + 0.1f;
 
 
             newDividerLeft.transform.localPosition = new Vector3(
