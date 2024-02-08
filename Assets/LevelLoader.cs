@@ -16,8 +16,14 @@ public class LevelLoader : MonoBehaviour
     [SerializeField] Animator fadeTransition;
     [SerializeField] float newLevelTransitionTime = 2f;
 
+    [Space(10)]    
+    [SerializeField] [Tooltip("Only used on Level 1 (final level.)")] GameObject reflectSequenceUIs;
+    [SerializeField] [Tooltip("Only used on Level 1 (final level.)")] GameObject gameWonVictoryParticleObj;
+
     int activeSceneIndex;
     int sceneCount;
+
+    float fadeTransitionTime;
 
 
 
@@ -28,54 +34,66 @@ public class LevelLoader : MonoBehaviour
 
         activeSceneIndex = SceneManager.GetActiveScene().buildIndex;
         sceneCount = SceneManager.sceneCountInBuildSettings;
-        // transitionParticlePosition = new Vector3 (0,0,0); // just for now, for testing
     }
 
-    // void Start() => StartCoroutine(LoadScene(true));
+
+
+
 
 
     public IEnumerator LoadNextScene() 
     {
-        GameManager.Instance.LogCurrentMethod(2, "about to load next scene");
-
-        var newTransitionParticle = Instantiate(transitionParticle, transitionParticle.transform.position, Quaternion.identity);
-        newTransitionParticle.Play();
-        yield return new WaitForSeconds(3f);
-
-        fadeTransition.SetTrigger("Start");
+        Debug.Log("Level Loader is attempting to load next scene.");
 
 
         if (activeSceneIndex + 1 < sceneCount)
+        {
+            Instantiate(transitionParticle, transitionParticle.transform.position, Quaternion.identity);
+            
+            yield return new WaitForSeconds(newLevelTransitionTime);
+
             SceneManager.LoadScene(activeSceneIndex + 1);
-        else
-            GameOver();
 
+            fadeTransition.ResetTrigger("Start");
+            transitionParticle.Stop();
+        }
         
-        yield return new WaitForSeconds(newLevelTransitionTime);
-
-        fadeTransition.ResetTrigger("Start");
-        transitionParticle.Stop();
-        GameManager.Instance.LogCurrentMethod(2, "particles / animation stopped");
+        else
+        {
+            GameOver();
+        }
     }
 
 
     public IEnumerator ReloadCurrentScene()
     {
-        GameManager.Instance.LogCurrentMethod(2, "about to reload current scene");
-        fadeTransition.SetTrigger("Start");
-        yield return new WaitForSeconds(fadeTransition.GetCurrentAnimatorClipInfo(0)[0].clip.length);
+        Debug.Log("Level Loader is attempting to REload next scene.");
+        yield return StartCoroutine(HandleFadeAnimation());
         
         SceneManager.LoadScene(activeSceneIndex);
         yield break;
     }
 
-    [Space(10)]
-    [SerializeField] GameObject reflectSequenceUIs;
+
+    // End transition occurs automatically on new scene load.
+    IEnumerator HandleFadeAnimation()
+    {
+        fadeTransition.SetTrigger("Start");
+        fadeTransitionTime = fadeTransition.GetCurrentAnimatorClipInfo(0)[0].clip.length;
+        yield return new WaitForSeconds(fadeTransitionTime);
+    }
+
+
 
     void GameOver()
     {
         if (reflectSequenceUIs != null)
             reflectSequenceUIs.SetActive(false);
+
+        if (gameWonVictoryParticleObj)
+            Instantiate(gameWonVictoryParticleObj, PlayerController.Instance.transform.position, Quaternion.identity);
+        
+
 
         Debug.Log("Level Loader tried to advance, but found no next scene.");
     }

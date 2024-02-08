@@ -65082,6 +65082,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1693441932}
     m_Modifications:
+    - target: {fileID: 1235841243521557150, guid: 2e661e0f00a4f8749b715cbaf3a83c2f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1235841244859032284, guid: 2e661e0f00a4f8749b715cbaf3a83c2f, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -65686,6 +65690,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1722574001}
     m_Modifications:
+    - target: {fileID: 985981063698281249, guid: 952b70cbfd013b0488a863eaeeda3bbe, type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 3402702434992538523, guid: 952b70cbfd013b0488a863eaeeda3bbe, type: 3}
       propertyPath: damage
       value: 7
@@ -65754,6 +65762,10 @@ PrefabInstance:
       propertyPath: reflectParticleObj
       value: 
       objectReference: {fileID: 558284378}
+    - target: {fileID: 8730978391836653122, guid: 952b70cbfd013b0488a863eaeeda3bbe, type: 3}
+      propertyPath: m_Name
+      value: Countdown To Attack unused
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 952b70cbfd013b0488a863eaeeda3bbe, type: 3}
 --- !u!4 &5992315986783181968 stripped
@@ -65824,5 +65836,9 @@ PrefabInstance:
       propertyPath: reflectSequenceUIs
       value: 
       objectReference: {fileID: 129100646}
+    - target: {fileID: 9194167581597160724, guid: 9ec951c26c7cb2f4baaff18613ba8c19, type: 3}
+      propertyPath: gameWonVictoryParticleObj
+      value: 
+      objectReference: {fileID: 1500378020736912, guid: 2547a66872ebe45408ace228820a79e1, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9ec951c26c7cb2f4baaff18613ba8c19, type: 3}

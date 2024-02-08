@@ -1,7 +1,8 @@
 
 
 - Fists Melee Guard scaling changes after attacking multiple times?
-
+- Fix gate in entryway. Currently remains visible after opening.
+- Async scene loads so there isn't tons of lag when loading a new level.
 
 
 
@@ -40,7 +41,7 @@ Game won.
 
 ~~~~~  MAY OR MAY NOT ADD  ~~~~~
 
-- Die animations? (Mage and Archer don't have one)
+- Die animations exist for Mage/Archer, but they pose weird on death.
 
 
 ~~~~~  AUDIO  ~~~~~
