@@ -7410,6 +7410,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1722574001}
     m_Modifications:
+    - target: {fileID: 1404418255183885822, guid: 3bd81bb7a5dea17448d266d0d6f6ebbf, type: 3}
+      propertyPath: firstDamageStepAttackPercent
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 5739112585893576807, guid: 3bd81bb7a5dea17448d266d0d6f6ebbf, type: 3}
       propertyPath: m_Name
       value: Player (Fire Lord)

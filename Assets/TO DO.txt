@@ -13,8 +13,8 @@
 
 
 [Player Attacking]
-    - Clean damage window timings
-    - Fully attune Damage/Health amounts
+    
+    
 
 
 
@@ -30,6 +30,7 @@ Level lost.
 
 
 - Fix Sprite fadeouts when characters die
+
 
 
 
@@ -50,6 +51,8 @@ Level lost.
 
 
 ~~~~~  MAY OR MAY NOT ADD  ~~~~~
+
+- Fully attune Damage/Health amounts (more)
 
 - Die animations? (Mage and Archer don't have one)
 
