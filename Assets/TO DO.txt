@@ -5,27 +5,15 @@
 
 
 
-
-~~~~~  VALUE TWEAKING  ~~~~~
-
-
 [Enemies Attacking]
     - Particle positioning
 
 
 
-[Player Attacking]
-    
-
 
 ~~~~~  LEVEL BUILDING  ~~~~~
 Game won.
-Level lost.
 
-
-
-~~~~~  LEVEL REPLICATION  ~~~~~
-~ Scene transitions
 
 
 
@@ -52,9 +40,8 @@ Level lost.
 
 ~~~~~  MAY OR MAY NOT ADD  ~~~~~
 
-- Fully attune Damage/Health amounts (more)
-
 - Die animations? (Mage and Archer don't have one)
+
 
 ~~~~~  AUDIO  ~~~~~
     - General audio effects

@@ -69,9 +69,14 @@ public class LevelLoader : MonoBehaviour
         yield break;
     }
 
+    [Space(10)]
+    [SerializeField] GameObject reflectSequenceUIs;
 
     void GameOver()
     {
+        if (reflectSequenceUIs != null)
+            reflectSequenceUIs.SetActive(false);
+
         Debug.Log("Level Loader tried to advance, but found no next scene.");
     }
 }
