@@ -45,7 +45,7 @@ public class FireAttack : MonoBehaviour, IEnemyFire, IGetHealthSystem
     HealthSystem healthSystem;
     Animator anim;
     new SpriteRenderer renderer;
-    Vector3 newPlayerSpritePositionOffset;
+    Vector3 newPlayerSpritePosition;
 
     bool countingDownToAttack;
     // FireAttack playerFire;
@@ -80,18 +80,44 @@ public class FireAttack : MonoBehaviour, IEnemyFire, IGetHealthSystem
     }
     
     void Start() {
-        player =  PlayerController.Instance;
-        gameManager = GameManager.Instance;        
-        
+        player = PlayerController.Instance;
+        gameManager = GameManager.Instance;
+
         if (countdownToAttackObject != null)
             countdownToAttackTMPro = countdownToAttackObject.GetComponentInChildren<TextMeshProUGUI>();
 
-        // FindNewAttackParticlePosition(false);
         originalRotationOfAttackParticle = attackParticle.gameObject.transform.eulerAngles;
         originalAttackParticlePosition = attackParticle.gameObject.transform.position;
 
-        // Find diff between original spawned attack pos and current scene's player pos.
-        newPlayerSpritePositionOffset = player.gameObject.transform.position - originalAttackParticlePosition;        
+        if (!IsPlayer())
+        {
+            float xPosDifference = player.gameObject.transform.position.x - originalAttackParticlePosition.x;
+            originalAttackParticlePosition.x += xPosDifference;
+        }
+
+        // player =  PlayerController.Instance;
+        // gameManager = GameManager.Instance;        
+        
+        // if (countdownToAttackObject != null)
+        //     countdownToAttackTMPro = countdownToAttackObject.GetComponentInChildren<TextMeshProUGUI>();
+
+        // // FindNewAttackParticlePosition(false);
+        // originalRotationOfAttackParticle = attackParticle.gameObject.transform.eulerAngles;
+        // originalAttackParticlePosition = attackParticle.gameObject.transform.position;
+        // Debug.Log($"POSITIONS FOR {attackParticle.gameObject.name}:");
+        // Debug.Log("Player pos = " + player.gameObject.transform.position);
+        // Debug.Log($"originalAttackParticlePosition is {originalAttackParticlePosition}");
+
+        // // Find diff between original spawned attack pos and current scene's player pos.
+        // newPlayerSpritePosition = new Vector3(
+        //                             originalAttackParticlePosition.x + player.gameObject.transform.position.x,
+        //                             originalAttackParticlePosition.y, 
+        //                             originalAttackParticlePosition.z);
+
+        
+        // Debug.Log($"newPlayerSpritePosition is {newPlayerSpritePosition}");
+        // originalAttackParticlePosition = new Vector3(newPlayerSpritePosition.x, newPlayerSpritePosition.y, newPlayerSpritePosition.z);
+        // Debug.Log($"originalAttackParticlePosition changed to {originalAttackParticlePosition}");
     }
 
 
@@ -381,21 +407,25 @@ Vector3 reflectedPosition;
 
         if (playerReflected)
         {
-            // Offset aiming towards middle hero.
-            var middleHeroPosition = gameManager.heroList[1].gameObject.transform.position;
-            if (middleHeroPosition == null)
-                middleHeroPosition = gameManager.heroList[0].gameObject.transform.position;
+            if (!IsPlayer())
+            {
+                // Vector3 playerPos = pla
+                // Offset aiming towards middle hero.
+                var middleHeroPosition = gameManager.heroList[1].gameObject.transform.position;
+                if (middleHeroPosition == null)
+                    middleHeroPosition = gameManager.heroList[0].gameObject.transform.position;
 
-            var positionDiffBetweenMiddleHeroAndPlayer =  middleHeroPosition - newPlayerSpritePositionOffset;
+                var positionDiffBetweenMiddleHeroAndPlayer =  middleHeroPosition - newPlayerSpritePosition;
 
-            reflectedPosition = new Vector3(
-                                attackParticle.transform.position.x + positionDiffBetweenMiddleHeroAndPlayer.x + x_ReflectOffset,
-                                originalAttackParticlePosition.y,
-                                originalAttackParticlePosition.z);                        
+                reflectedPosition = new Vector3(
+                                    attackParticle.transform.position.x + positionDiffBetweenMiddleHeroAndPlayer.x + x_ReflectOffset,
+                                    originalAttackParticlePosition.y,
+                                    originalAttackParticlePosition.z);                        
 
 
-            attackParticle.gameObject.transform.position = reflectedPosition;
-            attackParticle.transform.eulerAngles = Vector3.zero;
+                attackParticle.gameObject.transform.position = reflectedPosition;
+                attackParticle.transform.eulerAngles = Vector3.zero;
+            }
         }
 
         else

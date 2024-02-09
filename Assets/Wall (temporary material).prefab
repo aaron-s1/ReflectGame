@@ -850,7 +850,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1235841244859032284}
   m_Layer: 0
-  m_Name: Wall (temporary material_)
+  m_Name: Wall (temporary material)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

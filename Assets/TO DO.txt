@@ -1,20 +1,18 @@
 
 
 - Fists Melee Guard scaling changes after attacking multiple times?
-- Fix gate in entryway. Currently remains visible after opening.
+- Fix gate in entryway. Currently remains visible after opening. Improve lighting.
 - Async scene loads so there isn't tons of lag when loading a new level.
 
 
 
-[Enemies Attacking]
-    - Particle positioning
+Particle positioning: Alter positioning
 
 
 
-
-~~~~~  LEVEL BUILDING  ~~~~~
-    ~ Game won
-        - 
+~~ Game Won ~~
+    - Slime plays some animation
+    - "Game Won" text
 
 
 
@@ -34,27 +32,25 @@
         ~ Asset credits
 
     ~~ Setup itch.io game page ~~    
-    ~ explain controls 
-    ~ description
+        ~ explain controls 
+        ~ description
 
 
 
 
 ~~~~~  MAY OR MAY NOT ADD  ~~~~~
 
-- Die animations exist for Mage/Archer, but they pose weird on death.
+- Die animations exist for Mage/Archer, but they pose too weirdly on death.
+- Archer/Mage need better attack animations?
 
 
 ~~~~~  AUDIO  ~~~~~
     - General audio effects
 
-- Archer/Mage need better attack animations?
 
 [Improve Wall background?]
 
-[Animations]
-    - Tweak/alter animations
-        ... clean up
+
 
 [If enemy types change per level]
     - Enemies for each level
@@ -65,7 +61,7 @@
 - When currentKey needs held, should letting go before its holdDuration is reached fails the sequence?
 ~ Should player be able to select a target if their attack is non-AoE?
 ~ Should players have their Renderers flicker quickly upon taking damage?
-~ (UI, C) Show damage taken for all characters?   
+~ Show damage (as text) taken for all characters?   
 
 
 
