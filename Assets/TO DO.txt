@@ -6,9 +6,6 @@
 
 
 
-Particle positioning: Alter positioning
-
-
 
 ~~ Game Won ~~
     - Slime plays some animation
@@ -18,6 +15,13 @@ Particle positioning: Alter positioning
 
 
 - Fix Sprite fadeouts when characters die
+
+
+
+
+
+
+
 
 
 
