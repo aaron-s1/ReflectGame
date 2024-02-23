@@ -16,9 +16,7 @@ public class LevelLoader : MonoBehaviour
     [SerializeField] Animator fadeTransition;
     [SerializeField] float newLevelTransitionTime = 2f;
 
-    [Space(10)]    
-    [SerializeField] [Tooltip("Only used on Level 1 (final level.)")] GameObject reflectSequenceUIs;
-    [SerializeField] [Tooltip("Only used on Level 1 (final level.)")] GameObject gameWonVictoryParticleObj;
+
 
     int activeSceneIndex;
     int sceneCount;
@@ -35,8 +33,6 @@ public class LevelLoader : MonoBehaviour
         activeSceneIndex = SceneManager.GetActiveScene().buildIndex;
         sceneCount = SceneManager.sceneCountInBuildSettings;
     }
-
-
 
 
 
@@ -59,9 +55,7 @@ public class LevelLoader : MonoBehaviour
         }
         
         else
-        {
-            GameOver();
-        }
+            StartCoroutine(EndGame.Instance.GameOver());
     }
 
 
@@ -77,24 +71,9 @@ public class LevelLoader : MonoBehaviour
 
     // End transition occurs automatically on new scene load.
     IEnumerator HandleFadeAnimation()
-    {
+    {        
         fadeTransition.SetTrigger("Start");
         fadeTransitionTime = fadeTransition.GetCurrentAnimatorClipInfo(0)[0].clip.length;
         yield return new WaitForSeconds(fadeTransitionTime);
-    }
-
-
-
-    void GameOver()
-    {
-        if (reflectSequenceUIs != null)
-            reflectSequenceUIs.SetActive(false);
-
-        if (gameWonVictoryParticleObj)
-            Instantiate(gameWonVictoryParticleObj, PlayerController.Instance.transform.position, Quaternion.identity);
-        
-
-
-        Debug.Log("Level Loader tried to advance, but found no next scene.");
     }
 }

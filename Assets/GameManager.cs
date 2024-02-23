@@ -1,3 +1,4 @@
+using System.Net;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -233,8 +234,13 @@ public class GameManager : MonoBehaviour
 
 
 
-    // void EndGame() =>
-    //     LogCurrentMethod(1);
+    // public void ShowHeroes() 
+    // {
+    //     foreach (Transform hero in enemyHeroes.transform)
+    //     {
+    //         hero.gameObject.SetActive(true);            
+    //     }        
+    // }
 
 
 

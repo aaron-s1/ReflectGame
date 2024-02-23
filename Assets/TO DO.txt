@@ -8,7 +8,13 @@
 
 
 ~~ Game Won ~~
-    - Slime plays some animation
+    - figure out how to handle.
+    - stop attacks if necessary
+    - fade heroes in
+    - move camera around
+    - open gate to entryway
+    - slime's health bar disappears
+    - slime plays some animation
     - "Game Won" text
 
 
@@ -17,7 +23,7 @@
 - Fix Sprite fadeouts when characters die
 
 
-
+- Clear Instances between levels
 
 
 
