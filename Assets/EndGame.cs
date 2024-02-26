@@ -66,27 +66,16 @@ public class EndGame : MonoBehaviour
 
         Debug.Log("Level Loader tried to advance, but found no next scene.");
 
-        Debug.Break();
-        DeleteReflectUI();
+        Time.timeScale = 1f;
 
-        Debug.Break();
+        DeleteReflectUI();
         DeleteHealthBars();
 
 
-
-        Debug.Break();
         yield return StartCoroutine(FadeEnemiesBackIn());
-
-        Debug.Break();
         yield return StartCoroutine(PanCameraToGate());
-
-        Debug.Break();
         yield return StartCoroutine(OpenGate());
-
-        Debug.Break();
         yield return StartCoroutine(EnemiesWalkToGate());
-
-        Debug.Break();
         yield return StartCoroutine(PanCameraToPlayer());
 
                 
@@ -115,7 +104,10 @@ public class EndGame : MonoBehaviour
     IEnumerator FadeEnemiesBackIn()
     {
         foreach (Transform enemy in enemyHeroes.transform)
+        {
+            enemy.position = enemy.GetComponent<FireAttack>().originalPosition;
             enemy.gameObject.SetActive(true);
+        }
 
         yield break;
         // GameObject healthBar = GetComponentInChildren<HealthBarUI>().transform.parent.gameObject;
@@ -143,12 +135,7 @@ public class EndGame : MonoBehaviour
     {
         cameraAnim.SetTrigger("PanCameraToGate");
         yield return null;
-        yield return new WaitForSeconds(1f);
-        // yield return new WaitUntil(() => !cameraAnim.IsInTransition(0));
-        Debug.Log(cameraAnim.GetCurrentAnimatorClipInfo(0).Length);
-        yield return new WaitForSeconds(cameraAnim.GetCurrentAnimatorClipInfo(0).Length);
-        // WaitUntil(() => !cameraAnim.GetCurrentAnimatorClipInfo(0).Length;
-        // Debug.Log("pan camera to gate  no longer in transition");
+        yield return new WaitForSeconds(cameraAnim.GetCurrentAnimatorClipInfo(0)[0].clip.length);
         cameraAnim.ResetTrigger("PanCameraToGate");
     }
 
@@ -156,13 +143,7 @@ public class EndGame : MonoBehaviour
     {
         entryWayGateAnim.SetTrigger("OpenGate");
         yield return null;
-        yield return new WaitForSeconds(1f);
-        // Debug.Log(entryWayGateAnim.GetCurrentAnimatorClipInfo(0).Length);
-        Debug.Log(cameraAnim.GetCurrentAnimatorClipInfo(0).Length);
-        yield return new WaitForSeconds(entryWayGateAnim.GetCurrentAnimatorClipInfo(0).Length);
-        // yield return new WaitUntil(() => !entryWayGateAnim.IsInTransition(0));
-        // yield return new WaitUntil(() => !entryWayGateAnim.GetCurrentAnimatorStateInfo(0).IsName("Open Gate"));
-        Debug.Log("gate no longer in transition");
+        yield return new WaitForSeconds(entryWayGateAnim.GetCurrentAnimatorClipInfo(0)[0].clip.length);
         entryWayGateAnim.ResetTrigger("OpenGate");
     }
 
@@ -174,23 +155,21 @@ public class EndGame : MonoBehaviour
         {
             Debug.Log($"{hero.gameObject} began walking");
 
-            hero.GetComponent<Animator>().SetTrigger("walk");
+            Animator heroAnim = hero.GetComponent<Animator>();
+            heroAnim.ResetTrigger("idle");
+            heroAnim.SetTrigger("walk");
+
             hero.GetComponent<MoveToExitOnGameOver>().MoveToGate(killPoint, heroWalkSpeedToGate);
         }
 
         yield return new WaitUntil(() => heroesLeftToDestroy == 0);
-        Debug.Log("EndGame.cs destroyed all heroes");
-
-        yield break;
     }
 
     IEnumerator PanCameraToPlayer()
     {
         cameraAnim.SetTrigger("PanAndZoomToPlayer");
         yield return null;
-        yield return new WaitForSeconds(1f);
-        yield return new WaitForSeconds(cameraAnim.GetCurrentAnimatorClipInfo(0).Length);
-        // yield return new WaitForSeconds(cameraAnim.GetCurrentAnimatorClipInfo(0).Length);
+        yield return new WaitForSeconds(cameraAnim.GetCurrentAnimatorClipInfo(0)[0].clip.length);
         cameraAnim.ResetTrigger("PanAndZoomToPlayer");
     }
 }

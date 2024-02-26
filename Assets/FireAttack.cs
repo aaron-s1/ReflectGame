@@ -68,15 +68,19 @@ public class FireAttack : MonoBehaviour, IEnemyFire, IGetHealthSystem
     Vector3 originalAttackParticlePosition;
     Vector3 originalRotationOfAttackParticle;
 
+    [HideInInspector] public Vector3 originalPosition;
+
 
 
     void Awake() 
     {
-        healthSystem = new HealthSystem(health);
-        // healthSystem.SetHealth(health);
-        attackParticleLifetime = attackParticle.main.duration;
         anim = GetComponent<Animator>();    
-        renderer = GetComponent<SpriteRenderer>();    
+        renderer = GetComponent<SpriteRenderer>();
+
+        healthSystem = new HealthSystem(health);
+        attackParticleLifetime = attackParticle.main.duration;
+
+        originalPosition = transform.position;
     }
     
     void Start() {

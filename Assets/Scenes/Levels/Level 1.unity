@@ -14167,7 +14167,7 @@ MonoBehaviour:
   gameWonVictoryParticleObj: {fileID: 19800000, guid: 416b2492ca9d1b140874c7ba41cb3214, type: 3}
   entryWayGateAnim: {fileID: 446533291}
   killPoint: {fileID: 1244958409}
-  heroWalkSpeedToGate: 5
+  heroWalkSpeedToGate: 1
   heroesLeftToDestroy: 3
 --- !u!1 &335399429
 GameObject:
