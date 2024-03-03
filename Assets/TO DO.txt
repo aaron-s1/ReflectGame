@@ -5,25 +5,12 @@
 - Async scene loads so there isn't tons of lag when loading a new level.
 
 
-
-
-~~ Game Won ~~
-    - figure out how to handle.
-    - stop attacks if necessary
-    - fade heroes in
-    - move camera around
-    - open gate to entryway
-    - slime's health bar disappears
-    - slime plays some animation
-    - "Game Won" text
+- Fix whatever's going on with EndGame ambiguity issues (including renaming, deleting old files)
 
 
 
 
-- Fix Sprite fadeouts when characters die
-
-
-- Clear Instances between levels
+- Clear certain Instances between levels?
 
 
 

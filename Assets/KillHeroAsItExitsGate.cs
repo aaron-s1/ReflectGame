@@ -9,7 +9,7 @@ public class KillHeroAsItExitsGate : MonoBehaviour
     {
         if (other.gameObject.tag == "Enemy")
         {
-            EndGame.Instance.heroesLeftToDestroy--;
+            EndGameTest.Instance.heroesLeftToDestroy--;
             Destroy(other.gameObject);
         }
     }

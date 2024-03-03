@@ -44,7 +44,7 @@ public class FireAttack : MonoBehaviour, IEnemyFire, IGetHealthSystem
     PlayerController player;
     HealthSystem healthSystem;
     Animator anim;
-    new SpriteRenderer renderer;
+    public new SpriteRenderer renderer;
     Vector3 newPlayerSpritePosition;
 
     bool countingDownToAttack;
@@ -339,18 +339,37 @@ public class FireAttack : MonoBehaviour, IEnemyFire, IGetHealthSystem
     public IEnumerator KillTarget(FireAttack target) 
     {
         yield return StartCoroutine(gameManager.RemoveHeroFromAttackerLists(target));
+        Destroy(target.GetComponentInChildren<HealthBarUI>().gameObject); //.transform.parent.gameObject);
+
+
+        // Color targetColor = target.renderer.color;
+        // target.renderer.color = new Color (targetColor.r, targetColor.g, targetColor.b, 0);
+
+        yield return StartCoroutine(target.FadeSpriteOnDeath(5f, true));
         target.gameObject.SetActive(false);
     }
 
 
-    IEnumerator FadeOutSpriteOnDeath(float timeToFade)
+    public IEnumerator FadeSpriteOnDeath(float timeToFade, bool fadeOut)
     {
+        float targetAlpha;        
+        if (fadeOut)
+            targetAlpha = 0;
+        else
+            targetAlpha = 1;
+
+
         anim.enabled = false;
 
-        GameObject healthBar = GetComponentInChildren<HealthBarUI>().transform.parent.gameObject;
-        healthBar.SetActive(false);
+        
+        // if (GetComponentInChildren<HealthBarUI>().gameObject.activeInHierarchy)
+        // {
+            // GetComponentInChildren<HealthBarUI>().transform.parent.gameObject.SetActive(false);
+        // }
+        // GameObject healthBar = GetComponentInChildren<HealthBarUI>().transform.parent.gameObject;
+        // if (healthBar != null)
+            // healthBar.SetActive(false);
 
-        float targetAlpha = 0;
         Color startColor = renderer.color;
         Color targetColor = new Color(startColor.r, startColor.g, startColor.b, targetAlpha);
 

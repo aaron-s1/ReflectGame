@@ -5,10 +5,10 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 
-public class EndGame2 : MonoBehaviour
+public class EndGameTest : MonoBehaviour
 {
-    [HideInInspector] public static EndGame2 Instance { get { return instance; } }
-    static EndGame2 instance;
+    static EndGameTest instance;
+    [HideInInspector] public static EndGameTest Instance { get { return instance; } }
 
     [Space(10)]    
     [SerializeField] GameObject enemyHeroes;
@@ -139,11 +139,12 @@ public class EndGame2 : MonoBehaviour
             StartCoroutine(enemy.gameObject.GetComponent<FireAttack>().FadeSpriteOnDeath(5f, false));
         }
 
-        // quick testing.
-        yield return new WaitUntil(() => enemyHeroes.transform.GetChild(1).GetComponent<Color>().a == 1);
-        yield return new WaitUntil(() => enemyHeroes.transform.GetChild(2).GetComponent<Color>().a == 1);
+        // quick testing.        
+        yield return new WaitUntil(() => enemyHeroes.transform.GetChild(0).GetComponent<FireAttack>().renderer.color.a == 1);
+        yield return new WaitUntil(() => enemyHeroes.transform.GetChild(1).GetComponent<FireAttack>().renderer.color.a == 1);
+        yield return new WaitUntil(() => enemyHeroes.transform.GetChild(2).GetComponent<FireAttack>().renderer.color.a == 1);
 
-        Debug.Log("FadeEnemiesBackIn in EndGame.cs faded all heroes in.");
+        Debug.Log("FadeEnemiesBackIn in EndGame.cs waited until  all heroes faded in.");
         yield break;
 
         // float targetAlpha = 0;
