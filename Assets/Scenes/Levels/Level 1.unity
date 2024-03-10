@@ -21125,6 +21125,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SF_Rainbow
       objectReference: {fileID: 0}
+    - target: {fileID: 7750853977139984564, guid: 6a7b26737f4a19a40b5f385c66dc96a9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a7b26737f4a19a40b5f385c66dc96a9, type: 3}
 --- !u!1 &618162657
@@ -107391,7 +107395,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8349886315033032204, guid: 952b70cbfd013b0488a863eaeeda3bbe, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.76
+      value: -0.752
       objectReference: {fileID: 0}
     - target: {fileID: 8349886315033032204, guid: 952b70cbfd013b0488a863eaeeda3bbe, type: 3}
       propertyPath: m_LocalPosition.z

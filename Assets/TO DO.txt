@@ -3,11 +3,11 @@
 - Fists Melee Guard scaling changes after attacking multiple times?
 - Fix gate in entryway. Currently remains visible after opening. Improve lighting.
 - Async scene loads so there isn't tons of lag when loading a new level.
+- On game end, enemies passing through gate in reverse looks a bit weird.
 
 
 - Fix whatever's going on with EndGame ambiguity issues (including renaming, deleting old files)
 
-.
 
 
 - Clear certain Instances between levels?

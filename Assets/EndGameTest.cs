@@ -91,7 +91,7 @@ public class EndGameTest : MonoBehaviour
         Debug.Break();
         yield return StartCoroutine(PanCameraToPlayer());
 
-                
+
         Instantiate(gameWonVictoryParticleObj, PlayerController.Instance.transform.position + victoryParticlePosOffset, Quaternion.identity);
 
         // add some animation? rainbow text? just something.
