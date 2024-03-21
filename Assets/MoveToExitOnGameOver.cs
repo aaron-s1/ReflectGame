@@ -4,23 +4,24 @@ using UnityEngine;
 
 public class MoveToExitOnGameOver : MonoBehaviour
 {
-    Vector3 goal;
+    Vector3 target_X_Pos;
     bool canMove;
 
     float moveSpeed;
-    
 
+    // Vector3 originalPos;
 
-    public void MoveToGate(Transform goalTransform, float moveSpeed)
-    {        
-        goal = goalTransform.position;
+    public void MoveToGate(Transform entrywayGate, float moveSpeed)
+    {
+        // originalPos = transform.position;
+        target_X_Pos = new Vector3(entrywayGate.position.x, transform.position.y, transform.position.z);
         this.moveSpeed = moveSpeed;
-        canMove = true;
+        canMove = true; 
     }
 
     void FixedUpdate() 
     {
         if (canMove)
-            transform.position = Vector3.MoveTowards(transform.position, goal, this.moveSpeed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, target_X_Pos, this.moveSpeed * Time.deltaTime);
     }
 }

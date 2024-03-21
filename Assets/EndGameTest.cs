@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using CodeMonkey.HealthSystemCM;
@@ -5,20 +6,30 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 
+
 public class EndGameTest : MonoBehaviour
 {
+//////////  
+// RENAME LATER.
+//////////  
+
     static EndGameTest instance;
     [HideInInspector] public static EndGameTest Instance { get { return instance; } }
 
     [Space(10)]    
     [SerializeField] GameObject enemyHeroes;
-    [SerializeField] GameObject youWinVictoryText;
     [SerializeField] GameObject reflectSequenceUIs;
+
+    [SerializeField] GameObject youWinVictoryText;
+    [SerializeField] GameObject thanksForPlayingText;    
     [SerializeField] ParticleSystem gameWonVictoryParticleObj;
+    [Space(10)]
     [SerializeField] Animator entryWayGateAnim;
 
     [SerializeField] Transform entryGateHeroKillPoint;
     [SerializeField] float heroWalkSpeedToGate;
+    [Space(10)]
+    [SerializeField] float slimeSpriteSwapSpeed;
 
     [HideInInspector] public int heroesLeftToDestroy = 3;
 
@@ -28,9 +39,13 @@ public class EndGameTest : MonoBehaviour
 
     int currentSceneIndex = -1;
 
+    [SerializeField] Sprite[] slimeColorSprites;
+
+
     void Start()
     {
         currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+
 
         if (currentSceneIndex + 1 >= SceneManager.sceneCountInBuildSettings)
         {
@@ -40,31 +55,13 @@ public class EndGameTest : MonoBehaviour
             cameraAnim = Camera.main.GetComponent<Animator>();
         }
 
+        // temp for testing.
+        StartCoroutine(SwapSlimeSpritesOverTime());
     }
 
 
-/*
 
-    order:
-            fade out / remove health bars
-    fade in enemies
-    pan camera
-    lift gate
-    activate enemy walk anim
-    move enemies through gate
-    they disappear as they go through
-    pan back to player
-
-    activate 'you win' text, play particle, play some slime anim
-
-
-    Make FadeEnemiesBackIn() actually fade.
-    Hide gate's layer as it opens.
-    Add some effect (rainbow?) to 'game won' text.
-    Add 'thanks for playing' text.
-    Other stuff as necessary.
- */
-    public IEnumerator GameOver()
+    public IEnumerator BeginEndingGame()
     {
         if (instance == null)
         {
@@ -87,17 +84,20 @@ public class EndGameTest : MonoBehaviour
         Debug.Break();
         yield return StartCoroutine(OpenGate());
         Debug.Break();
-        yield return StartCoroutine(EnemiesWalkToGate());
+        yield return StartCoroutine(EnemiesMoonwalkToGate());
         Debug.Break();
         yield return StartCoroutine(PanCameraToPlayer());
 
 
         Instantiate(gameWonVictoryParticleObj, PlayerController.Instance.transform.position + victoryParticlePosOffset, Quaternion.identity);
 
-        // add some animation? rainbow text? just something.
+        yield return new WaitForSeconds(0.5f);
         youWinVictoryText.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+        thanksForPlayingText.SetActive(true);   
 
-        // play slime victory animation
+        yield return new WaitForSeconds(0.5f);
+        StartCoroutine(SwapSlimeSpritesOverTime());
     }
 
     void DeleteHealthBars()
@@ -114,23 +114,9 @@ public class EndGameTest : MonoBehaviour
             reflectSequenceUIs.SetActive(false);
     }
 
-    
-    // Enemies need to all fade in simultaneously!
+
     IEnumerator FadeEnemiesBackIn()
     {
-        
-        // for (int i = 0; i < enemyHeroes.transform.childCount; i++)
-        // {
-        //     Debug.Log("FadeEnemiesBackIn loop found: " + enemyHeroes.transform.GetChild(i));
-
-        //     Transform enemy = enemyHeroes.transform.GetChild(0);
-        //     enemy.position = enemy.GetComponent<FireAttack>().originalPosition;
-        //     enemy.gameObject.SetActive(true);
-
-        //     StartCoroutine(enemy.GetComponent<FireAttack>().FadeSpriteOnDeath(5f, false));
-        // }
-
-
         foreach (Transform enemy in enemyHeroes.transform)
         {
             enemy.position = enemy.gameObject.GetComponent<FireAttack>().originalPosition;            
@@ -139,30 +125,15 @@ public class EndGameTest : MonoBehaviour
             StartCoroutine(enemy.gameObject.GetComponent<FireAttack>().FadeSpriteOnDeath(5f, false));
         }
 
-        // quick testing.        
-        yield return new WaitUntil(() => enemyHeroes.transform.GetChild(0).GetComponent<FireAttack>().renderer.color.a == 1);
-        yield return new WaitUntil(() => enemyHeroes.transform.GetChild(1).GetComponent<FireAttack>().renderer.color.a == 1);
-        yield return new WaitUntil(() => enemyHeroes.transform.GetChild(2).GetComponent<FireAttack>().renderer.color.a == 1);
+        
+        for (int i = 0; i < enemyHeroes.transform.childCount; i++)
+            yield return new WaitUntil(() => enemyHeroes.transform.GetChild(i).GetComponent<FireAttack>().renderer.color.a == 1);
 
-        Debug.Log("FadeEnemiesBackIn in EndGame.cs waited until  all heroes faded in.");
+        // yield return new WaitUntil(() => enemyHeroes.transform.GetChild(0).GetComponent<FireAttack>().renderer.color.a == 1);
+        // yield return new WaitUntil(() => enemyHeroes.transform.GetChild(1).GetComponent<FireAttack>().renderer.color.a == 1);
+        // yield return new WaitUntil(() => enemyHeroes.transform.GetChild(2).GetComponent<FireAttack>().renderer.color.a == 1);
+
         yield break;
-
-        // float targetAlpha = 0;
-        // Color startColor = GetComponent<Renderer>().color;
-        // Color targetColor = new Color(startColor.r, startColor.g, startColor.b, targetAlpha);
-
-        // float elapsedTime = 0f;
-
-        // while (elapsedTime < timeToFade)
-        // {
-        //     GetComponent<Renderer>().color = Color.Lerp(startColor, targetColor, elapsedTime / timeToFade);
-        //     yield return null;
-        //     elapsedTime += Time.deltaTime;
-        // }
-
-        // GetComponent<Renderer>().color = targetColor;
-
-        // yield break;
     }
 
     IEnumerator PanCameraToGate()
@@ -183,7 +154,7 @@ public class EndGameTest : MonoBehaviour
 
     
 
-    IEnumerator EnemiesWalkToGate()
+    IEnumerator EnemiesMoonwalkToGate()
     {
         foreach (Transform hero in enemyHeroes.transform)
         {
@@ -206,4 +177,20 @@ public class EndGameTest : MonoBehaviour
         yield return new WaitForSeconds(cameraAnim.GetCurrentAnimatorClipInfo(0)[0].clip.length);
         cameraAnim.ResetTrigger("PanAndZoomToPlayer");
     }
+
+    IEnumerator SwapSlimeSpritesOverTime()
+    {
+        PlayerController.Instance.GetComponent<Animator>().enabled = false;
+        SpriteRenderer playerSpriteRenderer = PlayerController.Instance.GetComponent<SpriteRenderer>();
+
+        int currentIndex = 0;
+        int slimeSpritesLength = slimeColorSprites.Length;
+
+        while (true)
+        {
+            yield return new WaitForSeconds(slimeSpriteSwapSpeed);
+            playerSpriteRenderer.sprite = slimeColorSprites[currentIndex];
+            currentIndex = (currentIndex + 1) % slimeSpritesLength;
+        }
+    }    
 }

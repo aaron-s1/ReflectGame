@@ -6,7 +6,8 @@
 - On game end, enemies passing through gate in reverse looks a bit weird.
 
 
-- Fix whatever's going on with EndGame ambiguity issues (including renaming, deleting old files)
+
+- Fix whatever's going on with EndGame ambiguity issues (including renaming, deleting old script(s))
 
 
 
