@@ -1,6 +1,6 @@
 
 
-- Fists Melee Guard scaling changes after attacking multiple times?
+
 - Async scene loads so there isn't tons of lag when loading a new level.
 
 - Fix all weird timings that were used for debugging
