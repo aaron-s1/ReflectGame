@@ -2,7 +2,8 @@
 
 - Fists Melee Guard scaling changes after attacking multiple times?
 - Async scene loads so there isn't tons of lag when loading a new level.
-- On game end, enemies passing through gate in reverse looks a bit weird.
+
+- Fix all weird timings that were used for debugging
 
 
 
