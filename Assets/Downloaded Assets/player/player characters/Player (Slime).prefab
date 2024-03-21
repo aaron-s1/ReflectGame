@@ -14768,8 +14768,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1867773587}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 12.6, y: 14.83, z: 0}
-  m_LocalScale: {x: 11.428572, y: 11.428572, z: 11.428572}
+  m_LocalPosition: {x: -1.5, y: 0.5, z: 0}
+  m_LocalScale: {x: 9, y: 9, z: 9}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 829041450}
@@ -14789,7 +14789,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: ab1112643ee572748b01dede71158272, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ab1112643ee572748b01dede71158272, type: 3}
       propertyPath: m_RootOrder
@@ -14843,6 +14843,10 @@ PrefabInstance:
       propertyPath: prewarm
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: ab1112643ee572748b01dede71158272, type: 3}
+      propertyPath: EmissionModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 19900000, guid: ab1112643ee572748b01dede71158272, type: 3}
       propertyPath: m_SortingOrder
       value: -2
@@ -14864,6 +14868,10 @@ PrefabInstance:
     - target: {fileID: 647046007122320063, guid: db597a214a8fc4f4fa9949941d13a561, type: 3}
       propertyPath: m_fontStyle
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2463455999990719544, guid: db597a214a8fc4f4fa9949941d13a561, type: 3}
+      propertyPath: m_Name
+      value: Countdown To Attack unused
       objectReference: {fileID: 0}
     - target: {fileID: 2463455999990719544, guid: db597a214a8fc4f4fa9949941d13a561, type: 3}
       propertyPath: m_IsActive
@@ -14907,7 +14915,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2946937339466278006, guid: db597a214a8fc4f4fa9949941d13a561, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.76
+      value: -0.752
       objectReference: {fileID: 0}
     - target: {fileID: 2946937339466278006, guid: db597a214a8fc4f4fa9949941d13a561, type: 3}
       propertyPath: m_LocalPosition.z
@@ -14943,6 +14951,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2946937339466278007, guid: db597a214a8fc4f4fa9949941d13a561, type: 3}
       propertyPath: reflectParticle
+      value: 
+      objectReference: {fileID: 16573807}
+    - target: {fileID: 2946937339466278007, guid: db597a214a8fc4f4fa9949941d13a561, type: 3}
+      propertyPath: reflectParticleObj
       value: 
       objectReference: {fileID: 16573807}
     - target: {fileID: 2946937339466278007, guid: db597a214a8fc4f4fa9949941d13a561, type: 3}
@@ -15003,7 +15015,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: efaadfa9f7877b7438893d7b9bacf452, type: 3}
     - target: {fileID: 8376006388758794721, guid: db597a214a8fc4f4fa9949941d13a561, type: 3}
       propertyPath: damage
-      value: 5
+      value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 8376006388758794721, guid: db597a214a8fc4f4fa9949941d13a561, type: 3}
       propertyPath: health

@@ -3,12 +3,11 @@
 
 - Async scene loads so there isn't tons of lag when loading a new level.
 
+- Resolve any new bugs that magically pop up.
+
 - Fix all weird timings that were used for debugging
 - Remove debug logs, time scale changes
 
-
-
-- Fix whatever's going on with EndGame ambiguity issues (including renaming, deleting old script(s))
 
 
 

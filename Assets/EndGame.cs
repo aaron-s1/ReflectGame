@@ -9,10 +9,6 @@ using UnityEngine.SceneManagement;
 
 public class EndGame : MonoBehaviour
 {
-//////////  
-// RENAME LATER.
-//////////  
-
     static EndGame instance;
     [HideInInspector] public static EndGame Instance { get { return instance; } }
 
@@ -73,19 +69,14 @@ public class EndGame : MonoBehaviour
 
         Time.timeScale = 1f;
 
-        DeleteReflectUI();
-        DeleteHealthBars();
+        
+        DeleteAllUIs();
 
 
-        Debug.Break();
         yield return StartCoroutine(FadeEnemiesBackIn());
-        Debug.Break();
         yield return StartCoroutine(PanCameraToGate());
-        Debug.Break();
         yield return StartCoroutine(OpenGate());
-        Debug.Break();
         yield return StartCoroutine(EnemiesMoonwalkToGate());
-        Debug.Break();
         yield return StartCoroutine(PanCameraToPlayer());
 
 
@@ -100,16 +91,12 @@ public class EndGame : MonoBehaviour
         StartCoroutine(SwapSlimeSpritesOverTime());
     }
 
-    void DeleteHealthBars()
-    {
-        // foreach (Transform enemyHealth in enemyHeroes.transform)
-            // enemyHealth.gameObject.GetComponentInChildren<HealthBarUI>().gameObject.SetActive(false);
 
+    // Player health UIs will be active, but hidden already, as their health is obviously 0.
+    void DeleteAllUIs()
+    {
         PlayerController.Instance.GetComponentInChildren<HealthBarUI>().gameObject.SetActive(false);
-    }
 
-    void DeleteReflectUI()
-    {
         if (reflectSequenceUIs != null)
             reflectSequenceUIs.SetActive(false);
     }
@@ -128,10 +115,6 @@ public class EndGame : MonoBehaviour
         
         for (int i = 0; i < enemyHeroes.transform.childCount; i++)
             yield return new WaitUntil(() => enemyHeroes.transform.GetChild(i).GetComponent<FireAttack>().renderer.color.a == 1);
-
-        // yield return new WaitUntil(() => enemyHeroes.transform.GetChild(0).GetComponent<FireAttack>().renderer.color.a == 1);
-        // yield return new WaitUntil(() => enemyHeroes.transform.GetChild(1).GetComponent<FireAttack>().renderer.color.a == 1);
-        // yield return new WaitUntil(() => enemyHeroes.transform.GetChild(2).GetComponent<FireAttack>().renderer.color.a == 1);
 
         yield break;
     }
