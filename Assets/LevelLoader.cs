@@ -55,7 +55,7 @@ public class LevelLoader : MonoBehaviour
         }
         
         else
-            StartCoroutine(EndGameTest.Instance.BeginEndingGame());
+            StartCoroutine(EndGame.Instance.BeginEndingGame());
     }
 
 
