@@ -1,13 +1,17 @@
 
 
+- Async scene loads so there isn't massive lag when loading a new level.
 
-- Async scene loads so there isn't tons of lag when loading a new level.
+- If an enemy dies to its own reflected AOE attack, Player does not wait for it to fade before attacking.
 
-- Resolve any new bugs that magically pop up.
+- Fix up reflected attack positioning.
 
-- Fix all weird timings that were used for debugging
-- Remove debug logs, time scale changes
 
+
+- Smooth out level transition sand effect, give it a proper name, change hierarchy position
+- Effect also isn't always playing.
+
+- Fix up visibility for countdown to attack timers for certain player characters
 
 
 
@@ -26,8 +30,8 @@
         ~ Refactor/extract scripts
         ~ Rename project/scenes as needed
         ~ Extract, safe commits/pushes
-        ~ Delete unnecessary assets
-        ~ Asset credits
+            ~ Delete unnecessary assets
+            ~ Fill out Asset Credits
 
     ~~ Setup itch.io game page ~~    
         ~ explain controls 

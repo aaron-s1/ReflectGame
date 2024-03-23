@@ -1,0 +1,41 @@
+~~ CHARACTERS ~~  
+
+"Legend of Slim" by 史莱姆忒Slimit. 
+https://assetstore.unity.com/packages/2d/characters/the-legend-of-slim-245855 
+
+"Aekashics Librarium - Megapack III" by Aekashics Librarium. 
+https://assetstore.unity.com/packages/2d/characters/aekashics-librarium-megapack-iii-130410 
+
+"2D Fantasy Character Pack Demo" by Fabricio Corrreia Batista. 
+https://assetstore.unity.com/packages/2d/characters/2d-fantasy-character-pack-demo-101030 
+
+----------  
+
+~~ PARTICLES ~~ 
+
+"Simple Firework" by Namu {NamuFX}. 
+https://assetstore.unity.com/packages/vfx/particles/simple-firework-217956 
+
+
+"Simple FX - Cartoon Particles" by Synty Studios. 
+https://assetstore.unity.com/packages/vfx/particles/simple-fx-cartoon-particles-67834 
+
+"Fire & Spell Effects" by Digital Ruby (Jeff Johnson). 
+https://assetstore.unity.com/packages/vfx/particles/fire-explosions/fire-spell-effects-36825 
+
+----------  
+
+~~ MISC ~~ 
+
+"Interactive Physical Door Pack" by Art Notes. 
+https://assetstore.unity.com/packages/tools/physics/interactive-physical-door-pack-163249 
+
+
+----------  
+
+~~ BACKGROUNDS ~~ 
+
+"Tileable Bricks Wall" by Game-Ready Studios. 
+https://assetstore.unity.com/packages/2d/textures-materials/brick/tileable-bricks-wall-24530 
+
+

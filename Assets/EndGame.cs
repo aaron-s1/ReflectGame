@@ -52,7 +52,7 @@ public class EndGame : MonoBehaviour
         }
 
         // temp for testing.
-        StartCoroutine(SwapSlimeSpritesOverTime());
+        StartCoroutine(SwapSlimeSprite());
     }
 
 
@@ -88,7 +88,7 @@ public class EndGame : MonoBehaviour
         thanksForPlayingText.SetActive(true);   
 
         yield return new WaitForSeconds(0.5f);
-        StartCoroutine(SwapSlimeSpritesOverTime());
+        StartCoroutine(SwapSlimeSprite());
     }
 
 
@@ -109,7 +109,7 @@ public class EndGame : MonoBehaviour
             enemy.position = enemy.gameObject.GetComponent<FireAttack>().originalPosition;            
             enemy.gameObject.SetActive(true);
             
-            StartCoroutine(enemy.gameObject.GetComponent<FireAttack>().FadeSpriteOnDeath(5f, false));
+            StartCoroutine(enemy.gameObject.GetComponent<FireAttack>().FadeSpriteOnDeath(1f, false));
         }
 
         
@@ -150,6 +150,7 @@ public class EndGame : MonoBehaviour
             hero.GetComponent<MoveToExitOnGameOver>().MoveToGate(entryGateHeroKillPoint, heroWalkSpeedToGate);
         }
 
+        // Heroes call this via KillHeroAsItExitsGate.cs
         yield return new WaitUntil(() => heroesLeftToDestroy == 0);
     }
 
@@ -161,7 +162,10 @@ public class EndGame : MonoBehaviour
         cameraAnim.ResetTrigger("PanAndZoomToPlayer");
     }
 
-    IEnumerator SwapSlimeSpritesOverTime()
+
+    // Swap color over time to create a [rainbow] effect.
+    // Currently just have slimeColorSprites set to a length of 1, which swaps in a fabulous-looking Slime.
+    IEnumerator SwapSlimeSprite()
     {
         PlayerController.Instance.GetComponent<Animator>().enabled = false;
         SpriteRenderer playerSpriteRenderer = PlayerController.Instance.GetComponent<SpriteRenderer>();

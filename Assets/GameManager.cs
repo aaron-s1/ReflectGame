@@ -174,16 +174,11 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator RemoveHeroFromAttackerLists(FireAttack character)    
     {
-        // LogCurrentMethod(1);
-        // character.gameObject.SetActive(false);
         heroList.Remove(character);
         attackerList.Remove(character);
 
         attackerIndex--;
 
-        // StartCoroutine(FindNextAttacker());
-
-        // LogCurrentMethod(3);
         yield break;
     }
 

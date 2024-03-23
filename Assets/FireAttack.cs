@@ -271,6 +271,7 @@ public class FireAttack : MonoBehaviour, IEnemyFire, IGetHealthSystem
         if (target != null)
             yield return StartCoroutine(ApplyDamage(damageValue, target));
 
+        // No target directly assigned means attack is AoE.
         else if (attackIsAoE)
         {
             foreach (var hero in gameManager.heroList)
@@ -281,7 +282,9 @@ public class FireAttack : MonoBehaviour, IEnemyFire, IGetHealthSystem
             }
             
             if (!IsPlayer())
+            {
                 StartCoroutine(ApplyDamage(damageValue, this));
+            }
         }
 
         if (anim)
@@ -292,6 +295,8 @@ public class FireAttack : MonoBehaviour, IEnemyFire, IGetHealthSystem
         SetActivityOfParticle(attackParticle, false);        
 
         // Attack is now finally fully completed.
+        
+        yield return new WaitUntil(() => this.renderer.color.a == 0);
         StartCoroutine(gameManager.FindNextAttacker());
         yield break;
     }
@@ -324,6 +329,8 @@ public class FireAttack : MonoBehaviour, IEnemyFire, IGetHealthSystem
                 var targetAnim = target.gameObject.GetComponent<Animator>();
 
                 yield return new WaitUntil(() => !attackParticle.isPlaying);
+
+                ////
                 
 
                 // if (target != this)
@@ -338,15 +345,17 @@ public class FireAttack : MonoBehaviour, IEnemyFire, IGetHealthSystem
 
     public IEnumerator KillTarget(FireAttack target) 
     {
+        // moved here from end of method.
+
         yield return StartCoroutine(gameManager.RemoveHeroFromAttackerLists(target));
-        Destroy(target.GetComponentInChildren<HealthBarUI>().gameObject); //.transform.parent.gameObject);
+        Destroy(target.GetComponentInChildren<HealthBarUI>().gameObject);
 
-
-        // Color targetColor = target.renderer.color;
-        // target.renderer.color = new Color (targetColor.r, targetColor.g, targetColor.b, 0);
-
-        yield return StartCoroutine(target.FadeSpriteOnDeath(5f, true));
         target.gameObject.SetActive(false);
+        yield return StartCoroutine(target.FadeSpriteOnDeath(1f, true));
+
+        // AoE damage doesn't pause subsequent Coroutine stacks. This adds an artificial pause in case
+        // a Hero dies to its own reflected AoE Attack, so it now must fade before the next attacker rotation.
+        // yield return new WaitUntil(() => renderer.color.a == 0);
     }
 
 
@@ -360,15 +369,6 @@ public class FireAttack : MonoBehaviour, IEnemyFire, IGetHealthSystem
 
 
         anim.enabled = false;
-
-        
-        // if (GetComponentInChildren<HealthBarUI>().gameObject.activeInHierarchy)
-        // {
-            // GetComponentInChildren<HealthBarUI>().transform.parent.gameObject.SetActive(false);
-        // }
-        // GameObject healthBar = GetComponentInChildren<HealthBarUI>().transform.parent.gameObject;
-        // if (healthBar != null)
-            // healthBar.SetActive(false);
 
         Color startColor = renderer.color;
         Color targetColor = new Color(startColor.r, startColor.g, startColor.b, targetAlpha);
@@ -481,5 +481,6 @@ Vector3 reflectedPosition;
     public HealthSystem GetHealthSystem() => healthSystem;
     public bool IsFiring() => isFiring;
     public bool IsDead() => healthSystem.IsDead();
+
     // public bool IsTargetable() => isTargetable;
 }
