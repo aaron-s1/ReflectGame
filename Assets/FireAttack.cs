@@ -1,3 +1,4 @@
+using System.ComponentModel.Design;
 using System.Linq;
 using System;
 using System.Collections;
@@ -12,6 +13,8 @@ public class FireAttack : MonoBehaviour, IEnemyFire, IGetHealthSystem
     [SerializeField] int damage;
     [SerializeField] float numberOfDamageHits = 1;
     [SerializeField] float timeBeforeAttack;
+    const float deathFadeTime = 1f;
+    
     [Space(5)]
 
     [Tooltip("Character enters its damage step at this percentage into its attack particle's duration.")]
@@ -277,15 +280,16 @@ public class FireAttack : MonoBehaviour, IEnemyFire, IGetHealthSystem
             foreach (var hero in gameManager.heroList)
             {
                 // Damage other heroes first, in case attacker would die mid-loop.
-                if (hero != this)
+                if (hero != this)                
                     StartCoroutine(ApplyDamage(damageValue, hero));
             }
             
             if (!IsPlayer())
-            {
                 StartCoroutine(ApplyDamage(damageValue, this));
-            }
         }
+
+        yield return StartCoroutine(KillDeadHeroes());
+        
 
         if (anim)
             yield return new WaitUntil(() => !anim.IsInTransition(0));
@@ -296,7 +300,6 @@ public class FireAttack : MonoBehaviour, IEnemyFire, IGetHealthSystem
 
         // Attack is now finally fully completed.
         
-        yield return new WaitUntil(() => this.renderer.color.a == 0);
         StartCoroutine(gameManager.FindNextAttacker());
         yield break;
     }
@@ -325,37 +328,34 @@ public class FireAttack : MonoBehaviour, IEnemyFire, IGetHealthSystem
 
 
             if (target.healthSystem.IsDead())
-            {
-                var targetAnim = target.gameObject.GetComponent<Animator>();
-
                 yield return new WaitUntil(() => !attackParticle.isPlaying);
-
-                ////
-                
-
-                // if (target != this)
-                // {
-                    // yield return StartCoroutine(target.FadeOutSpriteOnDeath(1f));
-                    yield return StartCoroutine(target.KillTarget(target));
-                // }
-            }
         }
     }
 
 
-    public IEnumerator KillTarget(FireAttack target) 
+    public IEnumerator KillDeadHeroes() 
     {
-        // moved here from end of method.
+        List<FireAttack> heroesThatDied = new List<FireAttack>();
+        
+        foreach (var hero in gameManager.heroList)
+        {
+            if (hero.healthSystem.IsDead())
+            {
+                Destroy(hero.GetComponentInChildren<HealthBarUI>().gameObject);
+                heroesThatDied.Add(hero);
+            }
+        }
 
-        yield return StartCoroutine(gameManager.RemoveHeroFromAttackerLists(target));
-        Destroy(target.GetComponentInChildren<HealthBarUI>().gameObject);
+        // Fade out dead heroes, then remove them from heroList. Don't yield.
+        foreach (var hero in heroesThatDied)
+        {
+            StartCoroutine(hero.FadeSpriteOnDeath(deathFadeTime, true));
+            StartCoroutine(gameManager.RemoveHeroFromAttackerLists(hero));
+        }
 
-        target.gameObject.SetActive(false);
-        yield return StartCoroutine(target.FadeSpriteOnDeath(1f, true));
-
-        // AoE damage doesn't pause subsequent Coroutine stacks. This adds an artificial pause in case
-        // a Hero dies to its own reflected AoE Attack, so it now must fade before the next attacker rotation.
-        // yield return new WaitUntil(() => renderer.color.a == 0);
+        // Yields only once, so all heroes that died from this attack fade simultaneously.
+        if (heroesThatDied.Count >= 1)
+            yield return new WaitForSeconds(deathFadeTime);
     }
 
 
