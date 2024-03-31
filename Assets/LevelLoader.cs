@@ -34,6 +34,26 @@ public class LevelLoader : MonoBehaviour
         sceneCount = SceneManager.sceneCountInBuildSettings;
     }
 
+    void Start() 
+    {
+        if (activeSceneIndex == 0)
+            StartCoroutine(AsyncLoadAllScenesOnGameStart());        
+    }
+    
+    
+    IEnumerator AsyncLoadAllScenesOnGameStart()
+    {
+        for (int i = 0; i < sceneCount; i++)
+        {
+            if (i == 0)
+                continue;
+            
+            AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(SceneManager.GetSceneAt(i).ToString());
+
+            while (!asyncLoad.isDone)
+                yield return null;
+        }
+    }
 
 
 
@@ -69,7 +89,7 @@ public class LevelLoader : MonoBehaviour
     }
 
 
-    // End transition occurs automatically on new scene load.
+    // The end transition occurs automatically on new scene load.
     IEnumerator HandleFadeAnimation()
     {        
         fadeTransition.SetTrigger("Start");

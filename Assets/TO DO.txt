@@ -1,8 +1,5 @@
 
 
-- Async scene loads so there isn't massive lag when loading a new level.
-
-- If an enemy dies to its own reflected AOE attack, Player does not wait for it to fade before attacking.
 
 - Fix up reflected attack positioning.
 
