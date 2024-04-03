@@ -38,10 +38,10 @@ public class FireAttack : MonoBehaviour, IEnemyFire, IGetHealthSystem
 
 
     [Space(5)]
-    [Tooltip("If not AoE, attack frontmost hero target.")]
+    [Tooltip("If not AoE, attack frontmost hero target, if player != mage")]
     [SerializeField] bool attackIsAoE;
 
-    [SerializeField] bool heroIsMage;
+    [SerializeField] bool playerIsMage;
 
     [SerializeField] float x_PosReflectOffset;
 
@@ -256,12 +256,12 @@ public class FireAttack : MonoBehaviour, IEnemyFire, IGetHealthSystem
     // Always target hero that's in front. Except with Mage, whom targets furthest hero.
     FireAttack GetHeroToDamage()
     {
-        if (heroIsMage)
-        {
-            if (gameManager.heroList.Count > 1)
-                return gameManager.heroList[1];
+        if (playerIsMage)
+        {            
+            if (gameManager.heroList.Count % 2 == 0)
+                return gameManager.heroList[gameManager.heroList.Count - 1];
             else
-                return gameManager.heroList[0];            
+                return gameManager.heroList[gameManager.heroList.Count / 2];
         }
         else
             return gameManager.heroList[0];        
@@ -411,9 +411,13 @@ public class FireAttack : MonoBehaviour, IEnemyFire, IGetHealthSystem
 Vector3 positionDiffBetweenPlayerAndEnemy;
 Vector3 reflectedPosition;
     
-    // Currently does not account for non-AoE attacks.
+    
     void FindNewAttackParticlePositionAndRotation(bool playerReflected)
     {
+        // Player's attacks never move.
+        if (!IsPlayer())
+            return;
+
         if (!playerReflected)
         {
             Debug.Log("Set new particle pos + rotation.");
@@ -449,6 +453,9 @@ Vector3 reflectedPosition;
 
             }
         }
+
+
+
 
         // if (heroIsMage)
         // {
