@@ -52,7 +52,7 @@ public class EndGame : MonoBehaviour
         }
 
         // temp for testing.
-        StartCoroutine(SwapSlimeSprite());
+        // StartCoroutine(SwapSlimeSprite());
     }
 
 

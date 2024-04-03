@@ -39499,8 +39499,10 @@ MonoBehaviour:
   auraParticle: {fileID: 1158924281}
   countdownToAttackObject: {fileID: 1986583802}
   attackIsAoE: 1
-  playerIsMage: 0
+  playerIsMage: 1
   x_ReflectOffset: -0.3
+  renderer: {fileID: 0}
+  originalPosition: {x: 0, y: 0, z: 0}
 --- !u!198 &3702823361107468620
 ParticleSystem:
   m_ObjectHideFlags: 0

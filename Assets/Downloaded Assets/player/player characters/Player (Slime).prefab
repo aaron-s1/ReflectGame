@@ -14785,7 +14785,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100000, guid: ab1112643ee572748b01dede71158272, type: 3}
       propertyPath: m_Name
-      value: FX_Smoke (Slime's temp  attack)
+      value: FX_Smoke (Slime's temp attack)
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: ab1112643ee572748b01dede71158272, type: 3}
       propertyPath: m_IsActive

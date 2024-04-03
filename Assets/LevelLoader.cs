@@ -47,7 +47,6 @@ public class LevelLoader : MonoBehaviour
         {
             if (i == 0)
                 continue;
-            
             AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(SceneManager.GetSceneAt(i).ToString());
 
             while (!asyncLoad.isDone)
