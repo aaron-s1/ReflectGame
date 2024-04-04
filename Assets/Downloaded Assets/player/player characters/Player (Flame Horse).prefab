@@ -68310,7 +68310,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2673245402886911386, guid: db597a214a8fc4f4fa9949941d13a561, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.22
+      value: 0.21
       objectReference: {fileID: 0}
     - target: {fileID: 2673245402886911386, guid: db597a214a8fc4f4fa9949941d13a561, type: 3}
       propertyPath: m_LocalScale.y
@@ -68318,7 +68318,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2673245402886911386, guid: db597a214a8fc4f4fa9949941d13a561, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.22
+      value: 0.21
       objectReference: {fileID: 0}
     - target: {fileID: 2673245402886911386, guid: db597a214a8fc4f4fa9949941d13a561, type: 3}
       propertyPath: m_LocalPosition.x
@@ -68440,6 +68440,10 @@ PrefabInstance:
       propertyPath: countdownToAttackObject
       value: 
       objectReference: {fileID: 6179509645278858199}
+    - target: {fileID: 8376006388758794721, guid: db597a214a8fc4f4fa9949941d13a561, type: 3}
+      propertyPath: firstDamageStepAttackPercent
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8641849146940335624, guid: db597a214a8fc4f4fa9949941d13a561, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -68470,7 +68474,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8738069537440361816, guid: db597a214a8fc4f4fa9949941d13a561, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.19
+      value: 2.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db597a214a8fc4f4fa9949941d13a561, type: 3}

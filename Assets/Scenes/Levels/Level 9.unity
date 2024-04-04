@@ -7074,10 +7074,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1722574001}
     m_Modifications:
-    - target: {fileID: 1404418255183885822, guid: 3bd81bb7a5dea17448d266d0d6f6ebbf, type: 3}
-      propertyPath: firstDamageStepAttackPercent
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 5739112585893576807, guid: 3bd81bb7a5dea17448d266d0d6f6ebbf, type: 3}
       propertyPath: m_Name
       value: Player (Fire Lord)
@@ -60923,7 +60919,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: -4.408455, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0

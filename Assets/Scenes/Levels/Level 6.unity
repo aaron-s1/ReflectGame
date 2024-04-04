@@ -61312,10 +61312,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1722574001}
     m_Modifications:
-    - target: {fileID: 1611372162229531278, guid: ee5dd46408837c6429e8a743942620c9, type: 3}
-      propertyPath: firstDamageStepAttackPercent
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 5369606847668078359, guid: ee5dd46408837c6429e8a743942620c9, type: 3}
       propertyPath: m_Name
       value: Player (Arcane Mage)

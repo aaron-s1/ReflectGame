@@ -7,8 +7,6 @@
 - Smooth out level transition sand effect, give it a proper name, change hierarchy position
 - Effect also isn't always playing.
 
-- Fix up visibility for countdown to attack timers for certain player characters
-
 
 
 - Clear certain Instances between levels?

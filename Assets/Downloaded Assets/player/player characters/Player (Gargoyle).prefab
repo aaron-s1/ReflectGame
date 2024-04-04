@@ -14621,6 +14621,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Powering Up Attack Aura
       objectReference: {fileID: 0}
+    - target: {fileID: 2673245402886911386, guid: db597a214a8fc4f4fa9949941d13a561, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2673245402886911386, guid: db597a214a8fc4f4fa9949941d13a561, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.21
+      objectReference: {fileID: 0}
+    - target: {fileID: 2673245402886911386, guid: db597a214a8fc4f4fa9949941d13a561, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2673245402886911386, guid: db597a214a8fc4f4fa9949941d13a561, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2673245402886911386, guid: db597a214a8fc4f4fa9949941d13a561, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -5.2
+      objectReference: {fileID: 0}
     - target: {fileID: 2946937339466278006, guid: db597a214a8fc4f4fa9949941d13a561, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -14791,7 +14811,7 @@ PrefabInstance:
       objectReference: {fileID: 2299527524537518055}
     - target: {fileID: 8376006388758794721, guid: db597a214a8fc4f4fa9949941d13a561, type: 3}
       propertyPath: firstDamageStepAttackPercent
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8641849147834093323, guid: db597a214a8fc4f4fa9949941d13a561, type: 3}
       propertyPath: m_LocalScale.y

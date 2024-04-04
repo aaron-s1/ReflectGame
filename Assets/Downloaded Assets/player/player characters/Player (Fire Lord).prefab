@@ -14600,8 +14600,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 647046007122320063, guid: db597a214a8fc4f4fa9949941d13a561, type: 3}
+      propertyPath: m_Maskable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 647046007122320063, guid: db597a214a8fc4f4fa9949941d13a561, type: 3}
       propertyPath: m_fontStyle
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 647046007122320063, guid: db597a214a8fc4f4fa9949941d13a561, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2463455999990719544, guid: db597a214a8fc4f4fa9949941d13a561, type: 3}
       propertyPath: m_IsActive
@@ -14611,21 +14619,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: Powering Up Attack Aura
       objectReference: {fileID: 0}
+    - target: {fileID: 2673245402886911385, guid: db597a214a8fc4f4fa9949941d13a561, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2673245402886911386, guid: db597a214a8fc4f4fa9949941d13a561, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.27
+      value: 0.23
       objectReference: {fileID: 0}
     - target: {fileID: 2673245402886911386, guid: db597a214a8fc4f4fa9949941d13a561, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.3
+      value: 0.22
       objectReference: {fileID: 0}
     - target: {fileID: 2673245402886911386, guid: db597a214a8fc4f4fa9949941d13a561, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.27
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 2673245402886911386, guid: db597a214a8fc4f4fa9949941d13a561, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.17
+      value: -0.75
       objectReference: {fileID: 0}
     - target: {fileID: 2673245402886911386, guid: db597a214a8fc4f4fa9949941d13a561, type: 3}
       propertyPath: m_LocalPosition.y
@@ -14743,6 +14755,10 @@ PrefabInstance:
       propertyPath: countdownToAttackObject
       value: 
       objectReference: {fileID: 5003226193480220711}
+    - target: {fileID: 8376006388758794721, guid: db597a214a8fc4f4fa9949941d13a561, type: 3}
+      propertyPath: firstDamageStepAttackPercent
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8497065695522656183, guid: db597a214a8fc4f4fa9949941d13a561, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -14773,11 +14789,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8738069537440361816, guid: db597a214a8fc4f4fa9949941d13a561, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.16
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 8738069537440361816, guid: db597a214a8fc4f4fa9949941d13a561, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.62
+      value: 2.2866666
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db597a214a8fc4f4fa9949941d13a561, type: 3}
