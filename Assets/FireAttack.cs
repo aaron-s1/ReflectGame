@@ -7,7 +7,6 @@ using UnityEngine;
 using CodeMonkey.HealthSystemCM;
 using TMPro;
 
-
 public class FireAttack : MonoBehaviour, IEnemyFire, IGetHealthSystem
 {
     [SerializeField] int health;
@@ -101,6 +100,7 @@ public class FireAttack : MonoBehaviour, IEnemyFire, IGetHealthSystem
         currentPlayer = PlayerController.Instance;
 
         // For first level.
+        // if (SceneManager.GetActiveScene() == SceneManager.GetSceneAt(2))
         if (currentPlayer.transform.position == positionOfVeryFirstPlayerSprite)
         {
             originalAttackParticlePosition = attackParticle.gameObject.transform.position;
@@ -415,14 +415,14 @@ Vector3 reflectedPosition;
     void FindNewAttackParticlePositionAndRotation(bool playerReflected)
     {
         // Player's attacks never move.
-        if (!IsPlayer())
+        if (IsPlayer())
             return;
 
         if (!playerReflected)
         {
             Debug.Log("Set new particle pos + rotation.");
-            attackParticle.gameObject.transform.position = originalAttackParticlePosition;
             attackParticle.gameObject.transform.eulerAngles = originalAttackParticleRotation;
+            attackParticle.gameObject.transform.position = originalAttackParticlePosition;
         }
 
         else
@@ -444,10 +444,8 @@ Vector3 reflectedPosition;
             }
             else
             {
-                Vector3 diffBetweenParticleAndHero = transform.position - attackParticle.gameObject.transform.position;
-
                 attackParticle.transform.eulerAngles = Vector3.zero;
-                attackParticle.gameObject.transform.position = new Vector3(currentPlayer.transform.position.x + x_PosReflectOffset, //currentPlayer.transform.position.x, //originalAttackParticlePosition.x - posDiffBetweenFirstAndCurrentPlayer.x,
+                attackParticle.gameObject.transform.position = new Vector3(originalAttackParticlePosition.x + x_PosReflectOffset, // currentPlayer.transform.position.x + x_PosReflectOffset, //currentPlayer.transform.position.x, //originalAttackParticlePosition.x - posDiffBetweenFirstAndCurrentPlayer.x,
                                                                            originalAttackParticlePosition.y,
                                                                            originalAttackParticlePosition.z);
 

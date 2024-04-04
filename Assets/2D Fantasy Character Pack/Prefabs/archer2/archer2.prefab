@@ -406,8 +406,8 @@ MonoBehaviour:
   auraParticle: {fileID: 911217991}
   countdownToAttackObject: {fileID: 1039715520}
   attackIsAoE: 1
-  heroIsMage: 0
-  x_PosReflectOffset: -2
+  playerIsMage: 0
+  x_PosReflectOffset: -1
   renderer: {fileID: 0}
   originalPosition: {x: 0, y: 0, z: 0}
   heroIsArcher: 1
@@ -5399,7 +5399,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6330133320380864001, guid: 37225baa539a1114aad9ce6c4640c584, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.75
+      value: 4.25
       objectReference: {fileID: 0}
     - target: {fileID: 6330133320380864001, guid: 37225baa539a1114aad9ce6c4640c584, type: 3}
       propertyPath: m_LocalPosition.y
