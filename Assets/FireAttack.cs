@@ -410,15 +410,35 @@ public class FireAttack : MonoBehaviour, IEnemyFire, IGetHealthSystem
 
 Vector3 positionDiffBetweenPlayerAndEnemy;
 Vector3 reflectedPosition;
+Vector3 attackPosOffsetToOnlyRemainingHero;
     
     
     void FindNewAttackParticlePositionAndRotation(bool playerReflected)
     {
         // Player's attacks never move.
         if (IsPlayer())
-            return;
+        {
+            if (!playerIsMage)
+                return;
+            else
+            {
+                originalAttackParticlePosition = attackParticle.transform.position;
 
-        if (!playerReflected)
+                if (gameManager.heroList.Count == 1)
+                {
+                    attackPosOffsetToOnlyRemainingHero = gameManager.heroList[0].transform.position - attackParticle.gameObject.transform.position;
+                    Time.timeScale = 1;
+                    Debug.Break();
+                    attackParticle.transform.position = new Vector3(
+                                                originalAttackParticlePosition.x + attackPosOffsetToOnlyRemainingHero.x,
+                                                attackParticle.transform.position.y,
+                                                attackParticle.transform.position.z);
+
+                }
+            }
+        }
+
+        if (!playerReflected && !IsPlayer())
         {
             Debug.Log("Set new particle pos + rotation.");
             attackParticle.gameObject.transform.eulerAngles = originalAttackParticleRotation;

@@ -25,7 +25,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100004, guid: cdd71635203c8ed47a18dcefce87463e, type: 3}
       propertyPath: m_Name
-      value: test level particle transition effect
+      value: test level particle transition effect Variant
       objectReference: {fileID: 0}
     - target: {fileID: 100004, guid: cdd71635203c8ed47a18dcefce87463e, type: 3}
       propertyPath: m_Layer
@@ -137,11 +137,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 19800004, guid: cdd71635203c8ed47a18dcefce87463e, type: 3}
       propertyPath: VelocityModule.x.scalar
-      value: -1.5
+      value: -3
       objectReference: {fileID: 0}
     - target: {fileID: 19800004, guid: cdd71635203c8ed47a18dcefce87463e, type: 3}
       propertyPath: VelocityModule.y.scalar
-      value: -1
+      value: -1.5
       objectReference: {fileID: 0}
     - target: {fileID: 19800004, guid: cdd71635203c8ed47a18dcefce87463e, type: 3}
       propertyPath: VelocityModule.z.scalar
@@ -157,7 +157,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 19800004, guid: cdd71635203c8ed47a18dcefce87463e, type: 3}
       propertyPath: VelocityModule.x.minScalar
-      value: -2
+      value: -4
       objectReference: {fileID: 0}
     - target: {fileID: 19800004, guid: cdd71635203c8ed47a18dcefce87463e, type: 3}
       propertyPath: VelocityModule.y.minScalar

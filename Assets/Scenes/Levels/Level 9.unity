@@ -6845,10 +6845,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1756605212}
     m_Modifications:
-    - target: {fileID: 1907433739, guid: 588d570a52e35c5458973a7d067a2875, type: 3}
-      propertyPath: damage
-      value: 20
-      objectReference: {fileID: 0}
     - target: {fileID: 1726022557058710, guid: 588d570a52e35c5458973a7d067a2875, type: 3}
       propertyPath: m_Name
       value: Knight
@@ -60576,10 +60572,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1756605212}
     m_Modifications:
-    - target: {fileID: 1016449588, guid: bedfc2489e233ae479eff548012e1c92, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1589123261345258, guid: bedfc2489e233ae479eff548012e1c92, type: 3}
       propertyPath: m_Name
       value: Dark Mage

@@ -1,12 +1,13 @@
 
 
 
+After done testing:
+    - Revert health on heroes
+    - Revert damage on certain player characters
 
 
 
-- Smooth out level transition sand effect, give it a proper name, change hierarchy position
-- Effect also isn't always playing.
-
+- Arcane Mage's level seems to not play end-level sand particle effect
 
 
 - Clear certain Instances between levels?

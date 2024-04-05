@@ -169,7 +169,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   transitionParticle: {fileID: 2767026541584575837, guid: 6fa369ab598e7e740a928267615b64b5, type: 3}
   fadeTransition: {fileID: 7608620322813741326}
-  newLevelTransitionTime: 2
+  newLevelTransitionTime: 3
 --- !u!1 &7608620324148116718
 GameObject:
   m_ObjectHideFlags: 0
