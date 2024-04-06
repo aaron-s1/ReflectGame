@@ -6,12 +6,9 @@ After done testing:
     - Revert damage on certain player characters
 
 
-
-- Arcane Mage's level seems to not play end-level sand particle effect
-
-
 - Clear certain Instances between levels?
 
+- add some extra wait time on new scene load to let sand particle play for a bit
 
 
 

@@ -7,6 +7,7 @@ TagManager:
   - TargetingArrow
   - FxTemporaire
   - Enemy
+  - TransitionParticle
   layers:
   - Default
   - TransparentFX

@@ -25,11 +25,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100004, guid: cdd71635203c8ed47a18dcefce87463e, type: 3}
       propertyPath: m_Name
-      value: test level particle transition effect Variant
+      value: Level Transition Particle
       objectReference: {fileID: 0}
     - target: {fileID: 100004, guid: cdd71635203c8ed47a18dcefce87463e, type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: cdd71635203c8ed47a18dcefce87463e, type: 3}
+      propertyPath: m_TagString
+      value: TransitionParticle
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: cdd71635203c8ed47a18dcefce87463e, type: 3}
       propertyPath: m_RootOrder
@@ -97,6 +101,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 19800004, guid: cdd71635203c8ed47a18dcefce87463e, type: 3}
       propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800004, guid: cdd71635203c8ed47a18dcefce87463e, type: 3}
+      propertyPath: ringBufferMode
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 19800004, guid: cdd71635203c8ed47a18dcefce87463e, type: 3}
@@ -181,7 +189,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 19800004, guid: cdd71635203c8ed47a18dcefce87463e, type: 3}
       propertyPath: InitialModule.maxNumParticles
-      value: 400
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 19800004, guid: cdd71635203c8ed47a18dcefce87463e, type: 3}
       propertyPath: NoiseModule.sizeAmount.scalar
@@ -445,3 +453,32 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cdd71635203c8ed47a18dcefce87463e, type: 3}
+--- !u!1 &2767026541565473853 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100004, guid: cdd71635203c8ed47a18dcefce87463e, type: 3}
+  m_PrefabInstance: {fileID: 2767026541565571737}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4733327239435349627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2767026541565473853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0061716134cd3c64ead37c575a1b636c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2796098477625675048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2767026541565473853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea2350c2d3af0e14a8afeda31331368f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

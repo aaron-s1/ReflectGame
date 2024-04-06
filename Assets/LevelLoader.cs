@@ -11,10 +11,13 @@ public class LevelLoader : MonoBehaviour
     [HideInInspector] public static LevelLoader levelLoader;
     static LevelLoader instance;
 
-    [SerializeField] ParticleSystem transitionParticle;
+    [SerializeField] ParticleSystem levelTransitionParticle;
     // [SerializeField] Vector3 transitionParticlePosition;
     [SerializeField] Animator fadeTransition;
-    [SerializeField] float newLevelTransitionTime = 2f;
+    [Tooltip("How long transition particle plays for before next scene loads.")]
+    [SerializeField] float preSceneLoadParticlePersistenceLength = 2f;
+    [Tooltip("How long into new scene the transition particle keeps making new particles.")]
+    [SerializeField] float postSceneLoadParticlePersistenceLength = 0.5f;
 
 
 
@@ -58,19 +61,24 @@ public class LevelLoader : MonoBehaviour
 
     public IEnumerator LoadNextScene() 
     {
-        Debug.Log("Level Loader is attempting to load next scene.");
-
-
         if (activeSceneIndex + 1 < sceneCount)
         {
-            Instantiate(transitionParticle, transitionParticle.transform.position, Quaternion.identity);
+            var newTransitionParticle = Instantiate(levelTransitionParticle, levelTransitionParticle.transform.position, Quaternion.identity);
             
-            yield return new WaitForSeconds(newLevelTransitionTime);
+            yield return new WaitForSeconds(preSceneLoadParticlePersistenceLength);
+            newTransitionParticle.GetComponent<PlayStartingOnSceneEnd>().PlayIntoNextScene(postSceneLoadParticlePersistenceLength);
+
+            // Debug.Log($"Waited for {newLevelTransitionTime} for transition particle");
 
             SceneManager.LoadScene(activeSceneIndex + 1);
 
-            fadeTransition.ResetTrigger("Start");
-            transitionParticle.Stop();
+            // fadeTransition.ResetTrigger("Start");
+            // if (levelTransitionParticle == null)
+                // levelTransitionParticle = GameObject.FindGameObjectWithTag("TransitionParticle");
+                
+                // var particleMain = newTransitionParticle.main;
+                // particleMain.loop = false;            
+            // levelTransitionParticle.Stop(true, ParticleSystemStopBehavior.StopEmitting);
         }
         
         else
@@ -88,7 +96,7 @@ public class LevelLoader : MonoBehaviour
     }
 
 
-    // The end transition occurs automatically on new scene load.
+    // The end transition already occurs automatically on new scene load.
     IEnumerator HandleFadeAnimation()
     {        
         fadeTransition.SetTrigger("Start");

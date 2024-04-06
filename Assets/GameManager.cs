@@ -84,7 +84,7 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator FindNextAttacker()
     {
-        Debug.Log($"FindNextAttacker called. heroList count = {heroList.Count}");
+        // Debug.Log($"FindNextAttacker called. heroList count = {heroList.Count}");
         // Player died...
         if (player.gameObject.GetComponent<FireAttack>().IsDead())
         {
@@ -104,8 +104,8 @@ public class GameManager : MonoBehaviour
                 // yield break;
             }
         }
-        Debug.Log($"hero list count = {heroList.Count}");
-        Debug.Log("reached middle of FindNextAttacker()");
+        // Debug.Log($"hero list count = {heroList.Count}");
+        // Debug.Log("reached middle of FindNextAttacker()");
 
 
         if (levelHasEnded)
