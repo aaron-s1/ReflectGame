@@ -167,9 +167,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 309fbd977c0d1874f9341f1e1615f960, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transitionParticle: {fileID: 2767026541584575837, guid: 6fa369ab598e7e740a928267615b64b5, type: 3}
+  levelTransitionParticle: {fileID: 2767026541584575837, guid: 6fa369ab598e7e740a928267615b64b5, type: 3}
   fadeTransition: {fileID: 7608620322813741326}
-  newLevelTransitionTime: 3
+  preSceneLoadParticlePersistenceLength: 2
 --- !u!1 &7608620324148116718
 GameObject:
   m_ObjectHideFlags: 0

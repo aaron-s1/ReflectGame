@@ -12,13 +12,12 @@ public class LevelLoader : MonoBehaviour
     static LevelLoader instance;
 
     [SerializeField] ParticleSystem levelTransitionParticle;
-    // [SerializeField] Vector3 transitionParticlePosition;
     [SerializeField] Animator fadeTransition;
+
     [Tooltip("How long transition particle plays for before next scene loads.")]
     [SerializeField] float preSceneLoadParticlePersistenceLength = 2f;
-    [Tooltip("How long into new scene the transition particle keeps making new particles.")]
-    [SerializeField] float postSceneLoadParticlePersistenceLength = 0.5f;
-
+    // [Tooltip("How long into new scene the transition particle keeps making new particles.")]
+    // [SerializeField] float postSceneLoadParticlePersistenceLength = 0.5f;
 
 
     int activeSceneIndex;
@@ -37,10 +36,13 @@ public class LevelLoader : MonoBehaviour
         sceneCount = SceneManager.sceneCountInBuildSettings;
     }
 
+
     void Start() 
     {
         if (activeSceneIndex == 0)
-            StartCoroutine(AsyncLoadAllScenesOnGameStart());        
+            StartCoroutine(AsyncLoadAllScenesOnGameStart());            
+            
+        StartCoroutine(GameManager.Instance.DelayHeroAttacksOnSceneLoad());
     }
     
     
@@ -66,19 +68,7 @@ public class LevelLoader : MonoBehaviour
             var newTransitionParticle = Instantiate(levelTransitionParticle, levelTransitionParticle.transform.position, Quaternion.identity);
             
             yield return new WaitForSeconds(preSceneLoadParticlePersistenceLength);
-            newTransitionParticle.GetComponent<PlayStartingOnSceneEnd>().PlayIntoNextScene(postSceneLoadParticlePersistenceLength);
-
-            // Debug.Log($"Waited for {newLevelTransitionTime} for transition particle");
-
-            SceneManager.LoadScene(activeSceneIndex + 1);
-
-            // fadeTransition.ResetTrigger("Start");
-            // if (levelTransitionParticle == null)
-                // levelTransitionParticle = GameObject.FindGameObjectWithTag("TransitionParticle");
-                
-                // var particleMain = newTransitionParticle.main;
-                // particleMain.loop = false;            
-            // levelTransitionParticle.Stop(true, ParticleSystemStopBehavior.StopEmitting);
+            SceneManager.LoadScene(activeSceneIndex + 1);    
         }
         
         else
@@ -89,15 +79,16 @@ public class LevelLoader : MonoBehaviour
     public IEnumerator ReloadCurrentScene()
     {
         Debug.Log("Level Loader is attempting to REload next scene.");
-        yield return StartCoroutine(HandleFadeAnimation());
+        yield return StartCoroutine(HandleCameraFadeAnimation());
         
         SceneManager.LoadScene(activeSceneIndex);
         yield break;
     }
 
 
+
     // The end transition already occurs automatically on new scene load.
-    IEnumerator HandleFadeAnimation()
+    IEnumerator HandleCameraFadeAnimation()
     {        
         fadeTransition.SetTrigger("Start");
         fadeTransitionTime = fadeTransition.GetCurrentAnimatorClipInfo(0)[0].clip.length;

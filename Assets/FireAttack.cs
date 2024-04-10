@@ -439,7 +439,7 @@ Vector3 attackPosOffsetToOnlyRemainingHero;
 
         if (!playerReflected)
         {
-            Debug.Log("Set new particle pos + rotation.");
+            // Debug.Log("Set new particle pos + rotation.");
             attackParticle.gameObject.transform.eulerAngles = originalAttackParticleRotation;
             attackParticle.gameObject.transform.position = originalAttackParticlePosition;
         }

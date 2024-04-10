@@ -1,9 +1,9 @@
-using System.Net;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using System.Runtime.CompilerServices;
+// using System.Net;
+// using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,29 +12,27 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public static GameManager playerInstance;
     static GameManager instance;
 
-    // [HideInInspector]
     public List<FireAttack> attackerList;
-    [HideInInspector] public List<FireAttack> heroList;
 
     [SerializeField] GameObject enemyHeroes;
     [SerializeField] float delayBeforeNewAttackerFires;
 
-    PlayerController player;
+    [HideInInspector] public FireAttack lastHeroToAttack;
+    [HideInInspector] public List<FireAttack> heroList;
+    [HideInInspector] public bool heroesCanAttack;
 
+    [SerializeField] float attackDelayOnNewScene;
+
+
+    PlayerController player;
     FireAttack currentAttacker;
 
-    [HideInInspector] public FireAttack lastHeroToAttack;
+    List<Vector3> originalHeroPositions;
+    // Vector3 originalPositions;
 
-    Vector3 originalPositions;
 
     int attackerIndex = -1;
-    // int finalSceneIndex;
-    
-    // int currentSceneIndex;
 
-    List<Vector3> originalHeroPositions;
-
-    // bool gameJustStarted = true;
 
 
     void Awake()
@@ -43,15 +41,13 @@ public class GameManager : MonoBehaviour
             instance = this;
 
         attackerList = new List<FireAttack>();
-        originalHeroPositions = new List<Vector3>();
+        originalHeroPositions = new List<Vector3>();        
     }
 
 
-    void Start()
-    {
+    void Start() =>
         StartCoroutine(PopulateAttackerLists());
         // finalSceneIndex = SceneManager.sceneCountInBuildSettings - 1;
-    }
         
 
     IEnumerator PopulateAttackerLists()
@@ -72,11 +68,11 @@ public class GameManager : MonoBehaviour
         player = PlayerController.Instance;
         attackerList.Add(player.gameObject.GetComponent<FireAttack>());
 
-        // Delay for one frame to insure other scripts' Instances are updated.
+        // Delay for a moment to insure other scripts' Instances get updated.
         yield return null;
+
         StartCoroutine(FindNextAttacker());
     }
-
 
 
 
@@ -84,32 +80,23 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator FindNextAttacker()
     {
-        // Debug.Log($"FindNextAttacker called. heroList count = {heroList.Count}");
+        yield return new WaitUntil(() => heroesCanAttack);
+
         // Player died...
         if (player.gameObject.GetComponent<FireAttack>().IsDead())
         {
-            levelHasEnded = true;
             yield return StartCoroutine(LevelLoader.Instance.ReloadCurrentScene());
             yield break;
         }
 
-        // .. or is the only character left.
+        // .. or was the only character left (level is over)
         if (heroList.Count == 0)
         {
             if (attackerList[0] == player.gameObject.GetComponent<FireAttack>())
             {
-                levelHasEnded = true;
                 yield return StartCoroutine(LevelLoader.Instance.LoadNextScene());
                 yield break;
-                // yield break;
             }
-        }
-        // Debug.Log($"hero list count = {heroList.Count}");
-        // Debug.Log("reached middle of FindNextAttacker()");
-
-
-        if (levelHasEnded)
-        {
         }
 
         attackerIndex++;
@@ -126,7 +113,8 @@ public class GameManager : MonoBehaviour
 
     IEnumerator RotateToNextAttacker()
     {
-        // currentAttacker = attackerList[3];
+        yield return new WaitUntil(() => heroesCanAttack);
+
         if (currentAttacker.IsPlayer())
         {            
             yield return new WaitForSeconds(delayBeforeNewAttackerFires);
@@ -147,7 +135,7 @@ public class GameManager : MonoBehaviour
 
             else
             {
-                Debug.Log("RotateToNextAttacker");
+                // Debug.Log("RotateToNextAttacker");
                 StartCoroutine(FindNextAttacker());
             }
         }
@@ -169,7 +157,7 @@ public class GameManager : MonoBehaviour
 
         yield break;
     }
-
+    #endregion
 
 
     public IEnumerator RemoveHeroFromAttackerLists(FireAttack character)    
@@ -182,73 +170,32 @@ public class GameManager : MonoBehaviour
         yield break;
     }
 
-    #endregion
-
-
-
-    // public void DamageAllHeroes(int damage)
-    // {
-    //     foreach (FireAttack hero in heroList)
-    //         StartCoroutine(hero.DealDamageTo(hero, damage));
-    // }
-
-
-    public FireAttack FindRandomAliveHero() =>
-        heroList[UnityEngine.Random.Range(0, heroList.Count)];
-
 
 
     #region LEVEL TRANSITIONS
+    
+    public void OnSceneLoad()
+    {
+        heroesCanAttack = false;
+        StartCoroutine(DelayHeroAttacksOnSceneLoad());        
+    }
 
-    bool levelHasEnded;
+    // First level: Adds buffer time.
+    // Later levels: Buffer time, allows sand transition to smoothly finish.
+    // Remember that "delayBeforeNewAttackerFires" also applies.
+    public IEnumerator DelayHeroAttacksOnSceneLoad()
+    {
+        yield return new WaitForSeconds(attackDelayOnNewScene);
+        heroesCanAttack = true;
+    }
 
-    // public void LevelWon()
-    // {
-    //     levelHasEnded = true;
-
-    //     int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-
-    //     if (currentSceneIndex != finalSceneIndex)
-    //     {
-
-    //         // LoadNextLevel(currentSceneIndex + 1);
-    //         LoadNextLevel();
-    //     }
-
-    //     // won final level.
-    //     else
-    //         EndGame();
-    // }
-
-
-    // void LoadNextLevel() 
-    // {
-    //     // int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-    //     // SceneManager.LoadScene(SceneManager.GetSceneByBuildIndex(currentSceneIndex + 1).ToString());
-    // }
-
-
-
-    // public void ShowHeroes() 
-    // {
-    //     foreach (Transform hero in enemyHeroes.transform)
-    //     {
-    //         hero.gameObject.SetActive(true);            
-    //     }        
-    // }
+    # endregion
 
 
 
 
-    // public void RestartCurrentLevel()
-    // {
-    //     // transition stuff
-    //     levelHasEnded = true;
-    //     // SceneManager.LoadScene(SceneManager.GetActiveScene().ToString());
-    // }
 
-
-    // 1 for start of method. 2 to add some info. 3 to signial end of method.
+    // 1 for start of method. 2 to add some info. 3 to signal end of method.
     public void LogCurrentMethod(int locationInMethod, string addendum = null, [CallerMemberName] string caller = null) 
     {
         if (locationInMethod == 1)
@@ -259,5 +206,6 @@ public class GameManager : MonoBehaviour
             UnityEngine.Debug.Log($"Reached end of {caller}().");
     }
 
-    #endregion
+    public FireAttack FindRandomAliveHero() =>
+        heroList[UnityEngine.Random.Range(0, heroList.Count)];    
 }

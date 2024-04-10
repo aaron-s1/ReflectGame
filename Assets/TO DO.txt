@@ -8,10 +8,8 @@ After done testing:
 
 - Clear certain Instances between levels?
 
-- add some extra wait time on new scene load to let sand particle play for a bit
 
-
-
+- create pause menu
 
 
 
@@ -19,6 +17,7 @@ After done testing:
 ~~~~~  ON COMPLETION  ~~~~~
 
     ~~ Project ~~ 
+        ~ Script clean-up, including variable hierachies {at top of scripts}
         ~ Refactor/extract scripts
         ~ Rename project/scenes as needed
         ~ Extract, safe commits/pushes

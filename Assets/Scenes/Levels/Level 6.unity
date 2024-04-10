@@ -11503,11 +11503,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &290505823 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 7608620322813741326, guid: 9ec951c26c7cb2f4baaff18613ba8c19, type: 3}
-  m_PrefabInstance: {fileID: 7608620324599865627}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &319063699
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -63370,8 +63365,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1421548684}
   - {fileID: 7608620324599865628}
+  - {fileID: 1421548684}
   - {fileID: 889956285}
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -80899,7 +80894,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 807410958937046017, guid: 95974bfbc8f6b2244a99cb1c0915de8a, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 807410958937046017, guid: 95974bfbc8f6b2244a99cb1c0915de8a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -81019,13 +81014,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1659328576}
     m_Modifications:
-    - target: {fileID: 7608620322813741315, guid: 9ec951c26c7cb2f4baaff18613ba8c19, type: 3}
-      propertyPath: m_AdditionalShaderChannelsFlag
-      value: 25
-      objectReference: {fileID: 0}
     - target: {fileID: 7608620323876332133, guid: 9ec951c26c7cb2f4baaff18613ba8c19, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7608620323876332133, guid: 9ec951c26c7cb2f4baaff18613ba8c19, type: 3}
       propertyPath: m_LocalPosition.x
@@ -81071,14 +81062,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Level Loader
       objectReference: {fileID: 0}
-    - target: {fileID: 9194167581597160724, guid: 9ec951c26c7cb2f4baaff18613ba8c19, type: 3}
-      propertyPath: fadeTransition
-      value: 
-      objectReference: {fileID: 290505823}
-    - target: {fileID: 9194167581597160724, guid: 9ec951c26c7cb2f4baaff18613ba8c19, type: 3}
-      propertyPath: levelTransitionParticle
-      value: 
-      objectReference: {fileID: 2767026541584575837, guid: 6fa369ab598e7e740a928267615b64b5, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9ec951c26c7cb2f4baaff18613ba8c19, type: 3}
 --- !u!4 &7608620324599865628 stripped
