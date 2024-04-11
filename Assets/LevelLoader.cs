@@ -48,11 +48,16 @@ public class LevelLoader : MonoBehaviour
     
     IEnumerator AsyncLoadAllScenesOnGameStart()
     {
-        for (int i = 0; i < sceneCount; i++)
+        yield return new WaitForSeconds(2f);
+        for (int i = 1; i < sceneCount; i++)
         {
             if (i == 0)
                 continue;
-            AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(SceneManager.GetSceneAt(i).ToString());
+            // Debug.Log("async loading scene: index: " + SceneManager.LoadSceneAsync(SceneManager.GetSceneAt(i).name));
+            AsyncOperation asyncLoad = SceneManager.LoadSceneAsync($"Level {i}"); //($SceneManager.GetSceneAt(i).ToString());
+            asyncLoad.allowSceneActivation = false;
+
+            // Debug.Log("Loading scene: " + SceneManager.GetSceneAt(i).name);
 
             while (!asyncLoad.isDone)
                 yield return null;

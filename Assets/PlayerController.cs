@@ -183,7 +183,7 @@ public class PlayerController : MonoBehaviour
     {
         if (currentKeyIndex >= reflectSequence.Count)
         {
-            Debug.Log("Reflect input sequence accepted!");
+            // Debug.Log("Reflect input sequence accepted!");
             currentKeyIndex = 0;
                     // currentKeyData.Invoke(-1, false);
             ResetTimeHeldForAllKeys();

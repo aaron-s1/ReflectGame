@@ -6,13 +6,16 @@ After done testing:
     - Revert damage on certain player characters
     - Reset time scales
 
+- Bug: Arcane Mage killed 1 target. Reflected Archer's attack. Was able to continue after killing both remaining targets.
 
 - Fully tweak attack particle positions to fit cleanly with every single player character
 
 - Clear certain Instances between levels?
 
 
+- Lots of testing.
 
+- Bug fixing.
 
 
 ~~~~~  ON COMPLETION  ~~~~~
@@ -28,6 +31,7 @@ After done testing:
     ~~ Setup itch.io game page ~~    
         ~ explain controls 
         ~ description
+
 
 
 
