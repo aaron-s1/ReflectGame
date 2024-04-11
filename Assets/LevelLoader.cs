@@ -78,7 +78,7 @@ public class LevelLoader : MonoBehaviour
 
     public IEnumerator ReloadCurrentScene()
     {
-        Debug.Log("Level Loader is attempting to REload next scene.");
+        // Debug.Log("Level Loader is attempting to REload next scene.");
         yield return StartCoroutine(HandleCameraFadeAnimation());
         
         SceneManager.LoadScene(activeSceneIndex);

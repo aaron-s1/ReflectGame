@@ -4,12 +4,13 @@
 After done testing:
     - Revert health on heroes
     - Revert damage on certain player characters
+    - Reset time scales
 
+
+- Fully tweak attack particle positions to fit cleanly with every single player character
 
 - Clear certain Instances between levels?
 
-
-- create pause menu
 
 
 

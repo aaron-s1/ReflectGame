@@ -96,7 +96,6 @@ public class FireAttack : MonoBehaviour, IEnemyFire, IGetHealthSystem
     // Offsets attack particle positions to sync with the position of a new level's player sprite.
     void AdjustAttackPositionsOnSceneLoad()
     {
-        // Debug.Log("reinitialized variables, positions, instances, etc");
         currentPlayer = PlayerController.Instance;
 
         // For first level.
@@ -426,7 +425,7 @@ Vector3 attackPosOffsetToOnlyRemainingHero;
                 {
                     attackPosOffsetToOnlyRemainingHero = gameManager.heroList[0].transform.position - attackParticle.gameObject.transform.position;
                     Time.timeScale = 1;
-                    Debug.Break();
+                    Debug.Break(); /////////// delete.
                     attackParticle.transform.position = new Vector3(
                                                 originalAttackParticlePosition.x + attackPosOffsetToOnlyRemainingHero.x,
                                                 attackParticle.transform.position.y,
@@ -439,7 +438,6 @@ Vector3 attackPosOffsetToOnlyRemainingHero;
 
         if (!playerReflected)
         {
-            // Debug.Log("Set new particle pos + rotation.");
             attackParticle.gameObject.transform.eulerAngles = originalAttackParticleRotation;
             attackParticle.gameObject.transform.position = originalAttackParticlePosition;
         }

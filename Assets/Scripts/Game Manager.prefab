@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 807410958937046017}
   - component: {fileID: 807410958937046022}
+  - component: {fileID: 1421548686}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -51,3 +52,16 @@ MonoBehaviour:
   heroList: []
   heroesCanAttack: 0
   attackDelayOnNewScene: 1.25
+--- !u!114 &1421548686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 807410958937046023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: daf5cd85f6c34e34287cb1ddbf41e5da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pauseOverlay: {fileID: 0}

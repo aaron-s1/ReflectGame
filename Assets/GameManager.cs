@@ -135,7 +135,7 @@ public class GameManager : MonoBehaviour
 
             else
             {
-                // Debug.Log("RotateToNextAttacker");
+                // Debug.Log("GameManager called RotateToNextAttacker()");
                 StartCoroutine(FindNextAttacker());
             }
         }
