@@ -11,6 +11,7 @@ public class PauseGame : MonoBehaviour
     void Awake() =>
         originalTimeScale = Time.timeScale;
 
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))

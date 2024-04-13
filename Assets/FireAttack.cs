@@ -28,8 +28,8 @@ public class FireAttack : MonoBehaviour, IEnemyFire, IGetHealthSystem
     [SerializeField] ParticleSystem attackParticle;
     [SerializeField] ParticleSystem auraParticle;
     float countdownToAttackTimer;
-    
 
+    
     [Space(10)]
     [Tooltip("Currently, Player should not have one.")]
     [SerializeField] GameObject countdownToAttackObject;
@@ -41,6 +41,7 @@ public class FireAttack : MonoBehaviour, IEnemyFire, IGetHealthSystem
     [SerializeField] bool attackIsAoE;
 
     [SerializeField] bool playerIsMage;
+    [SerializeField] bool heroIsArcher;
 
     [SerializeField] float x_PosReflectOffset;
 
@@ -51,9 +52,9 @@ public class FireAttack : MonoBehaviour, IEnemyFire, IGetHealthSystem
     Vector3 newPlayerSpritePosition;
 
     bool countingDownToAttack;
-    // FireAttack playerFire;
 
     GameManager gameManager;
+
 
     // This is also used for finding damage steps.
     float attackParticleLifetime;
@@ -77,6 +78,8 @@ public class FireAttack : MonoBehaviour, IEnemyFire, IGetHealthSystem
 
 
     Vector3 posDiffBetweenFirstAndCurrentPlayer;
+    Vector3 attackPosOffsetToOnlyRemainingHero;
+
 
     void Awake() 
     {
@@ -122,7 +125,7 @@ public class FireAttack : MonoBehaviour, IEnemyFire, IGetHealthSystem
         if (countdownToAttackObject != null)
             countdownToAttackTMPro = countdownToAttackObject.GetComponentInChildren<TextMeshProUGUI>();
 
-        AdjustAttackPositionsOnSceneLoad();
+        AdjustAttackPositionsOnSceneLoad();        
     }
 
 
@@ -155,9 +158,9 @@ public class FireAttack : MonoBehaviour, IEnemyFire, IGetHealthSystem
         }
 
             
-        // Open up Player's reflect window.
+                // Open up Player's reflect window.
         SetActivityOfParticle(auraParticle, true);
-
+        
 
         if (!IsPlayer())
         {
@@ -407,11 +410,6 @@ public class FireAttack : MonoBehaviour, IEnemyFire, IGetHealthSystem
             parentParticle.Play();
     }
     
-    public bool heroIsArcher = false;
-
-Vector3 positionDiffBetweenPlayerAndEnemy;
-Vector3 reflectedPosition;
-Vector3 attackPosOffsetToOnlyRemainingHero;
     
     
     void FindNewAttackParticlePositionAndRotation(bool playerReflected)
@@ -445,7 +443,6 @@ Vector3 attackPosOffsetToOnlyRemainingHero;
         else
         {
             if (!heroIsArcher)
-            // if (!heroIsMage)
             {
                 float x_Pos_Offset = 0;
 

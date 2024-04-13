@@ -51,20 +51,9 @@ public class PlayerController : MonoBehaviour
         if (instance == null)
             instance = this;
 
-        CanReflect(true);
-
-        // make dynamic later.
-        // locationOfHeroTarget = new Vector3(-0.75f, -0.6f, 0);
-        // StartCoroutine(TestTransition());
+        CanReflect(false);
+        CompletelyResetAllKeys();
     }
-
-    // IEnumerator TestTransition()
-    // {
-    //     StartCoroutine(LevelLoader.Instance.LoadNextScene());
-    //     Debug.Break();
-    //     yield break;
-    // }
-
 
 
     void Update()
@@ -78,14 +67,13 @@ public class PlayerController : MonoBehaviour
         reflectStartTime = Time.time;   
     }
 
-    void CompletelyResetAllKeys()
+    public void CompletelyResetAllKeys()
     {
         currentKeyIndex = 0;
         currentKeyData.Invoke(-1, false);
         ResetTimeHeldForAllKeys();        
     }
 
-    
     
 
     void IncrementKeyOnSuccessfulPressOrHold()
@@ -227,8 +215,7 @@ public class PlayerController : MonoBehaviour
 
     public bool KeyNeedsHeldDown() =>
         holdDurationNeeded > 0;
-
-
+        
     }
 
 
@@ -244,14 +231,8 @@ public class PlayerController : MonoBehaviour
 
     public IEnumerator ReflectedAttack()
     {
-        // heroAttackParticle.gameObject.transform.eulerAngles = Vector3.zero;
-
         yield return new WaitForEndOfFrame();
         GetComponent<FireAttack>().SetActivityOfParticle(reflectParticleObj.GetComponent<ParticleSystem>(), false);
-        // attacker.SetActivityOfParticle(reflectParticleObj.GetComponent<ParticleSystem>(), false);
-        // attacker.SetActivityOfParticle(heroAttackParticle, true);
-
-        // Debug.Break(); //
 
         reflectedSuccessfully = false;
 

@@ -1,4 +1,5 @@
 
+- On new scene load, and game start, Reflect sequence can start when a hero isn't attacking
 
 - Fully tweak attack particle positions to fit cleanly with every single player character
 
