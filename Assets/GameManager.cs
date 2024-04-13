@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     public List<FireAttack> attackerList;
 
     [SerializeField] GameObject enemyHeroes;
-    [SerializeField] float delayBeforeNewAttackerFires;
+    [SerializeField] public float delayBeforeNewAttackerFires;
 
     [HideInInspector] public FireAttack lastHeroToAttack;
     [HideInInspector] public List<FireAttack> heroList;
@@ -135,7 +135,7 @@ public class GameManager : MonoBehaviour
 
             else
             {
-                // Debug.Log("GameManager called RotateToNextAttacker()");
+                // Debug.Log("GameManager called RotateToNextAttacker() ");
                 StartCoroutine(FindNextAttacker());
             }
         }

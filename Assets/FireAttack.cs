@@ -189,7 +189,6 @@ public class FireAttack : MonoBehaviour, IEnemyFire, IGetHealthSystem
 
         
         StartCoroutine(EnterDamageStep());
-
     }
 
 
@@ -286,6 +285,9 @@ public class FireAttack : MonoBehaviour, IEnemyFire, IGetHealthSystem
                 StartCoroutine(ApplyDamage(damageValue, this));
         }
 
+
+        yield return new WaitForSeconds(GameManager.Instance.delayBeforeNewAttackerFires);
+        yield return null;
         yield return StartCoroutine(KillDeadHeroes());
         
 
@@ -301,7 +303,7 @@ public class FireAttack : MonoBehaviour, IEnemyFire, IGetHealthSystem
         StartCoroutine(gameManager.FindNextAttacker());
         yield break;
     }
-
+    
 
     // Multi-hit example: Attack lasts 1 seconds, with a firstDamageStepAttackPercent of 25% and 10 hits.
     // First hit occurs 25% into 1.0f, at 0.25f. Remaining 9 attacks occur over 0.75 seconds, 
@@ -333,6 +335,7 @@ public class FireAttack : MonoBehaviour, IEnemyFire, IGetHealthSystem
 
     public IEnumerator KillDeadHeroes() 
     {
+        // yield return new WaitForSeconds(0.5f);
         List<FireAttack> heroesThatDied = new List<FireAttack>();
         
         foreach (var hero in gameManager.heroList)
@@ -351,7 +354,7 @@ public class FireAttack : MonoBehaviour, IEnemyFire, IGetHealthSystem
             StartCoroutine(gameManager.RemoveHeroFromAttackerLists(hero));
         }
 
-        // Yields only once, so all heroes that died from this attack fade simultaneously.
+        // Yields only once, so all heroes that died from last attack fade simultaneously.
         if (heroesThatDied.Count >= 1)
             yield return new WaitForSeconds(deathFadeTime);
     }
@@ -364,7 +367,6 @@ public class FireAttack : MonoBehaviour, IEnemyFire, IGetHealthSystem
             targetAlpha = 0;
         else
             targetAlpha = 1;
-
 
         anim.enabled = false;
 
@@ -424,8 +426,6 @@ Vector3 attackPosOffsetToOnlyRemainingHero;
                 if (gameManager.heroList.Count == 1)
                 {
                     attackPosOffsetToOnlyRemainingHero = gameManager.heroList[0].transform.position - attackParticle.gameObject.transform.position;
-                    Time.timeScale = 1;
-                    Debug.Break(); /////////// delete.
                     attackParticle.transform.position = new Vector3(
                                                 originalAttackParticlePosition.x + attackPosOffsetToOnlyRemainingHero.x,
                                                 attackParticle.transform.position.y,

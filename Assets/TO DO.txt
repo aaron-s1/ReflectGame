@@ -1,21 +1,17 @@
 
 
+- Fully tweak attack particle positions to fit cleanly with every single player character
+
+- Lots of testing, bug fixing.
+
+
+
+- Clear certain Instances between levels?
 
 After done testing:
     - Revert health on heroes
     - Revert damage on certain player characters
     - Reset time scales
-
-- Bug: Arcane Mage killed 1 target. Reflected Archer's attack. Was able to continue after killing both remaining targets.
-
-- Fully tweak attack particle positions to fit cleanly with every single player character
-
-- Clear certain Instances between levels?
-
-
-- Lots of testing.
-
-- Bug fixing.
 
 
 ~~~~~  ON COMPLETION  ~~~~~
@@ -26,7 +22,7 @@ After done testing:
         ~ Rename project/scenes as needed
         ~ Extract, safe commits/pushes
             ~ Delete unnecessary assets
-            ~ Fill out Asset Credits
+                ~ Commit/push new, shrunken down build
 
     ~~ Setup itch.io game page ~~    
         ~ explain controls 
