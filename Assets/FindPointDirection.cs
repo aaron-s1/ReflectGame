@@ -1,13 +1,9 @@
-using System.Diagnostics;
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 
-// Dynamically creates UI directional keys that point in accordance with the necessary reflect sequence.
-// Rename script later.
 public class FindPointDirection : MonoBehaviour
 {
     [SerializeField] Transform canvasParent;
@@ -31,8 +27,6 @@ public class FindPointDirection : MonoBehaviour
         player = PlayerController.Instance;
         player.currentKeyData.AddListener(HideCurrentKeyUI);
 
-        // var keys = PlayerController.KeySequenceItem.AllowedKeys.Up;
-
         arrowCanvases = new List<Image>();
         
         rotationMappings = new Dictionary<PlayerController.KeySequenceItem.AllowedKeys, Quaternion>
@@ -51,8 +45,6 @@ public class FindPointDirection : MonoBehaviour
         UpdateHoldDurationText();
 
 
-    
-    
     void CreateUITiles(int numberOfImageArrows)
     {
         for (int i = 0; i < numberOfImageArrows; i++)
@@ -135,7 +127,9 @@ public class FindPointDirection : MonoBehaviour
     // Called every frame via Update() in PlayerController.cs
     public void HideCurrentKeyUI(int keyIndex, bool alsoNeedsNextKey)
     {
-        // Pass in -1 to when resetting the keySequence.
+        if (player == null)
+            return;
+        // Pass in -1 to reset the keySequence.
         if (keyIndex == -1)
         {
             ResetFillAmounts();

@@ -97,7 +97,12 @@ public class LevelLoader : MonoBehaviour
     IEnumerator HandleCameraFadeAnimation()
     {        
         fadeTransition.SetTrigger("Start");
-        fadeTransitionTime = fadeTransition.GetCurrentAnimatorClipInfo(0)[0].clip.length;
+
+        var fadeInfoClip = fadeTransition.GetCurrentAnimatorClipInfo(0)[0].clip;
+
+        if (fadeInfoClip != null)
+            fadeTransitionTime = fadeInfoClip.length;
+
         yield return new WaitForSeconds(fadeTransitionTime);
     }
 }

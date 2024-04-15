@@ -52,8 +52,11 @@ public class PlayerController : MonoBehaviour
             instance = this;
 
         CanReflect(false);
-        CompletelyResetAllKeys();
+        // CompletelyResetAllKeys();
     }
+
+    void Start() =>
+        CompletelyResetAllKeys();
 
 
     void Update()
@@ -74,7 +77,7 @@ public class PlayerController : MonoBehaviour
         ResetTimeHeldForAllKeys();        
     }
 
-    
+
 
     void IncrementKeyOnSuccessfulPressOrHold()
     {

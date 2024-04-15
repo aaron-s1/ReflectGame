@@ -396,7 +396,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd1b6a80fbcac394a8b0901c2aed2729, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
+  health: 100
   damage: 20
   numberOfDamageHits: 10
   timeBeforeAttack: 2
@@ -407,10 +407,10 @@ MonoBehaviour:
   countdownToAttackObject: {fileID: 1039715520}
   attackIsAoE: 1
   playerIsMage: 0
+  heroIsArcher: 1
   x_PosReflectOffset: -1
   renderer: {fileID: 0}
   originalPosition: {x: 0, y: 0, z: 0}
-  heroIsArcher: 1
 --- !u!198 &4189009609249305814
 ParticleSystem:
   m_ObjectHideFlags: 0
