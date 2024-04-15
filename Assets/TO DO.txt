@@ -2,7 +2,6 @@
 
 - Lots of testing, bug fixing.
 
-- (layering) hero attacks may appear behind some player characters instead of in front
 
 
 

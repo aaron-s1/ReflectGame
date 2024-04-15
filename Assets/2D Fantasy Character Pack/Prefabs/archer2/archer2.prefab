@@ -396,7 +396,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd1b6a80fbcac394a8b0901c2aed2729, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  health: 10
   damage: 20
   numberOfDamageHits: 10
   timeBeforeAttack: 2
@@ -5365,6 +5365,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 1.66
       objectReference: {fileID: 0}
+    - target: {fileID: 6330133320281973362, guid: 37225baa539a1114aad9ce6c4640c584, type: 3}
+      propertyPath: m_SortingOrder
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6330133320281973363, guid: 37225baa539a1114aad9ce6c4640c584, type: 3}
       propertyPath: startDelay.scalar
       value: 0.75
@@ -5448,6 +5452,10 @@ PrefabInstance:
     - target: {fileID: 6330133320661874036, guid: 37225baa539a1114aad9ce6c4640c584, type: 3}
       propertyPath: m_LocalPosition.z
       value: 1.58
+      objectReference: {fileID: 0}
+    - target: {fileID: 6330133320661874037, guid: 37225baa539a1114aad9ce6c4640c584, type: 3}
+      propertyPath: m_SortingOrder
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6330133320661874038, guid: 37225baa539a1114aad9ce6c4640c584, type: 3}
       propertyPath: startDelay.scalar
@@ -10213,7 +10221,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_RenderMode: 0
   m_MeshDistribution: 0
   m_SortMode: 0
