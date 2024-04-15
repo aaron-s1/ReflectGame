@@ -1,14 +1,4 @@
-~~ Fixed: ~~
-- Level 3:
-    - FindPointDirection.cs : HideCurrentKeyUI() fails to call ResetFillAmounts()
-    - May only work when transitioning to Level 3
-
-~~ ~~
-
-
 - Wait times after attacks are too long
-
-- Test and tweak layers of characters with pause screen
 
 - Fully tweak attack particle positions to fit cleanly with every single player character
 

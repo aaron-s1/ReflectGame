@@ -61629,6 +61629,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pause Game
       objectReference: {fileID: 0}
+    - target: {fileID: 8501687355885644097, guid: eaba12548bdda124e8be0d3ccce5c7f3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8501687355885644098, guid: eaba12548bdda124e8be0d3ccce5c7f3, type: 3}
       propertyPath: m_RootOrder
       value: 1

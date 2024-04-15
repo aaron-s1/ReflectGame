@@ -15101,6 +15101,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 379c50fa63cd6d34e981a49dd0f914ec, type: 3}
+    - target: {fileID: 2946937339466278009, guid: db597a214a8fc4f4fa9949941d13a561, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8376006388758794721, guid: db597a214a8fc4f4fa9949941d13a561, type: 3}
       propertyPath: damage
       value: 15
