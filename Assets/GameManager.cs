@@ -15,11 +15,11 @@ public class GameManager : MonoBehaviour
     public List<FireAttack> attackerList;
 
     [SerializeField] GameObject enemyHeroes;
-    [SerializeField] public float delayBeforeNewAttackerFires;
+    [SerializeField] public float nextAttackerDelay;
 
     [HideInInspector] public FireAttack lastHeroToAttack;
     [HideInInspector] public List<FireAttack> heroList;
-    [HideInInspector] public bool heroesCanAttack;
+    [HideInInspector] public bool delayAttacksOnSceneLoad;
 
     [SerializeField] float attackDelayOnNewScene;
 
@@ -71,6 +71,8 @@ public class GameManager : MonoBehaviour
         // Delay for a moment to insure other scripts' Instances get updated.
         yield return null;
 
+        yield return new WaitForSeconds(nextAttackerDelay);
+
         StartCoroutine(FindNextAttacker());
     }
 
@@ -80,7 +82,7 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator FindNextAttacker()
     {
-        yield return new WaitUntil(() => heroesCanAttack);
+        yield return new WaitUntil(() => delayAttacksOnSceneLoad);
 
         // Player died...
         if (player.gameObject.GetComponent<FireAttack>().IsDead())
@@ -107,17 +109,21 @@ public class GameManager : MonoBehaviour
         currentAttacker = attackerList[attackerIndex];
 
         StartCoroutine(RotateToNextAttacker());
+
+        // yield return new WaitUntil(() => RotateToNextAttacker.);
         yield break;
     }
 
+    // bool initialAttackerDelayOnStartupPassed;
 
     IEnumerator RotateToNextAttacker()
     {
-        yield return new WaitUntil(() => heroesCanAttack);
+        yield return new WaitUntil(() => delayAttacksOnSceneLoad);
 
         if (currentAttacker.IsPlayer())
         {            
-            yield return new WaitForSeconds(delayBeforeNewAttackerFires);
+            // yield return new WaitForSeconds(delayBeforeNewAttackerFires);
+
             StartCoroutine(currentAttacker.BeginAttackSequence());            
         }
 
@@ -127,17 +133,15 @@ public class GameManager : MonoBehaviour
             {
                 yield return StartCoroutine(RotateAllHeroPositions());
                                     
-                yield return new WaitForSeconds(delayBeforeNewAttackerFires);
+                // yield return new WaitForSeconds(delayBeforeNewAttackerFires);
                 
                 lastHeroToAttack = currentAttacker;
                 StartCoroutine(currentAttacker.BeginAttackSequence());
             }
 
             else
-            {
                 // Debug.Log("GameManager called RotateToNextAttacker() ");
                 StartCoroutine(FindNextAttacker());
-            }
         }
     }
 
@@ -176,7 +180,7 @@ public class GameManager : MonoBehaviour
     
     public void OnSceneLoad()
     {
-        heroesCanAttack = false;
+        delayAttacksOnSceneLoad = false;
         StartCoroutine(DelayHeroAttacksOnSceneLoad());        
     }
 
@@ -186,7 +190,7 @@ public class GameManager : MonoBehaviour
     public IEnumerator DelayHeroAttacksOnSceneLoad()
     {
         yield return new WaitForSeconds(attackDelayOnNewScene);
-        heroesCanAttack = true;
+        delayAttacksOnSceneLoad = true;
     }
 
     # endregion

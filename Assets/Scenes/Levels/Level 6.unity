@@ -6958,6 +6958,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1756605212}
     m_Modifications:
+    - target: {fileID: 873133401, guid: 588d570a52e35c5458973a7d067a2875, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1907433739, guid: 588d570a52e35c5458973a7d067a2875, type: 3}
+      propertyPath: health
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 1907433739, guid: 588d570a52e35c5458973a7d067a2875, type: 3}
       propertyPath: testDelayForFade
       value: 1.1
@@ -18285,6 +18293,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1756605212}
     m_Modifications:
+    - target: {fileID: 247459672, guid: 7aed946b5664405459098c6b3528627a, type: 3}
+      propertyPath: health
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 247459672, guid: 7aed946b5664405459098c6b3528627a, type: 3}
       propertyPath: testDelayForFade
       value: 1.1
@@ -60966,6 +60978,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1756605212}
     m_Modifications:
     - target: {fileID: 2059698519, guid: bedfc2489e233ae479eff548012e1c92, type: 3}
+      propertyPath: health
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2059698519, guid: bedfc2489e233ae479eff548012e1c92, type: 3}
       propertyPath: testDelayForFade
       value: 1.1
       objectReference: {fileID: 0}
@@ -61488,6 +61504,10 @@ PrefabInstance:
       propertyPath: enemyHeroes
       value: 
       objectReference: {fileID: 1756605211}
+    - target: {fileID: 807410958937046022, guid: 95974bfbc8f6b2244a99cb1c0915de8a, type: 3}
+      propertyPath: nextAttackerDelay
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 807410958937046023, guid: 95974bfbc8f6b2244a99cb1c0915de8a, type: 3}
       propertyPath: m_Name
       value: Game Manager

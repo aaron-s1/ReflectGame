@@ -157,11 +157,9 @@ public class FireAttack : MonoBehaviour, IEnemyFire, IGetHealthSystem
             yield break;
         }
 
-            
-                // Open up Player's reflect window.
         SetActivityOfParticle(auraParticle, true);
-        
 
+        // Open up Player's reflect window.
         if (!IsPlayer())
         {
             currentPlayer = PlayerController.Instance;
@@ -184,7 +182,7 @@ public class FireAttack : MonoBehaviour, IEnemyFire, IGetHealthSystem
         }
 
 
-        // Fire attack/particle, then complete animation.
+        // Fire attack/particle, close bools, complete animations, etc.
         currentPlayer.CanReflect(false);
         FindNewAttackParticlePositionAndRotation(false);
         SetActivityOfParticle(auraParticle, false);
@@ -289,10 +287,13 @@ public class FireAttack : MonoBehaviour, IEnemyFire, IGetHealthSystem
         }
 
 
-        yield return new WaitForSeconds(GameManager.Instance.delayBeforeNewAttackerFires);
+        // Syncs up with GameManager for weird issues I don't understand.
+        yield return new WaitForSeconds(GameManager.Instance.nextAttackerDelay);
+        // yield return new WaitUntil(() => gameManager.nextAttackerCanAttack);
         yield return null;
         yield return StartCoroutine(KillDeadHeroes());
         
+
 
         if (anim)
             yield return new WaitUntil(() => !anim.IsInTransition(0));

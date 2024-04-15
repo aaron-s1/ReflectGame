@@ -1,8 +1,8 @@
-- Wait times after attacks are too long
-
 - Fully tweak attack particle positions to fit cleanly with every single player character
 
 - Lots of testing, bug fixing.
+
+- (layering) hero attacks may appear behind some player characters instead of in front
 
 
 
