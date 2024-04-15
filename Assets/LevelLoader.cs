@@ -1,3 +1,4 @@
+using System.Xml.Schema;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -39,29 +40,35 @@ public class LevelLoader : MonoBehaviour
 
     void Start() 
     {
-        if (activeSceneIndex == 0)
-            StartCoroutine(AsyncLoadAllScenesOnGameStart());            
+        StartCoroutine(AsyncLoadNextScene());
+        // if (activeSceneIndex == 0)
             
         StartCoroutine(GameManager.Instance.DelayHeroAttacksOnSceneLoad());
     }
     
     
-    IEnumerator AsyncLoadAllScenesOnGameStart()
+    IEnumerator AsyncLoadNextScene()
     {
-        yield return new WaitForSeconds(2f);
-        for (int i = 1; i < sceneCount; i++)
-        {
-            if (i == 0)
-                continue;
+        // for (int i = 1; i < sceneCount; i++)
+        // {
+            // if (i == 0)
+                // continue;
             // Debug.Log("async loading scene: index: " + SceneManager.LoadSceneAsync(SceneManager.GetSceneAt(i).name));
-            AsyncOperation asyncLoad = SceneManager.LoadSceneAsync($"Level {i}"); //($SceneManager.GetSceneAt(i).ToString());
+
+            // level 6, index 3.
+            // 6 - 1. 
+            // 
+            
+            var nextSceneName = SceneUtility.GetScenePathByBuildIndex(activeSceneIndex + 1);
+            Debug.Log(nextSceneName);
+            AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(nextSceneName); //($SceneManager.GetSceneAt(i).ToString());
             asyncLoad.allowSceneActivation = false;
 
             // Debug.Log("Loading scene: " + SceneManager.GetSceneAt(i).name);
 
             while (!asyncLoad.isDone)
                 yield return null;
-        }
+        // }
     }
 
 
