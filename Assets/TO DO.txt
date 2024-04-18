@@ -1,10 +1,5 @@
 
 Bug:
-(isMage, hero is archer.)
-a reflected attack does not then reset to original attack and rotation
-
-
-Bug:
 level 5.
 player kills all heroes at once.
 moves to Knight attacker.

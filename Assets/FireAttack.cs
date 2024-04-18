@@ -132,6 +132,8 @@ public class FireAttack : MonoBehaviour, IEnemyFire, IGetHealthSystem
         Invoke("FindPlayer", 1f);
         // FindNewAttackParticlePositionAndRotation(false);
     }
+
+    
     void FindPlayer()
     {
         currentPlayer = PlayerController.Instance;
@@ -446,6 +448,7 @@ public class FireAttack : MonoBehaviour, IEnemyFire, IGetHealthSystem
             return;
         }
 
+        
         if (!playerReflected)
         {            
             if (!heroIsArcher)
@@ -460,9 +463,11 @@ public class FireAttack : MonoBehaviour, IEnemyFire, IGetHealthSystem
                                                            originalAttackParticlePosition.z);
             }
 
+            // Not player, did not reflect, is archer.
             else 
             {
                 // originalAttackParticlePosition
+                attackParticle.gameObject.transform.eulerAngles = originalAttackParticleRotation;
                 attackParticle.transform.position = new Vector3(originalAttackParticlePosition.x + posDiffBetweenFirstAndCurrentPlayer.x,
                                                     originalAttackParticlePosition.y,
                                                     originalAttackParticlePosition.z);
