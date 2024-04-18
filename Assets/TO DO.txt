@@ -1,4 +1,6 @@
 
+
+
 Bug:
 level 5.
 player kills all heroes at once.
