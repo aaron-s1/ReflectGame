@@ -1,13 +1,41 @@
-- Fully tweak attack particle positions to fit cleanly with every single player character
+
+Bug:
+(isMage, hero is archer.)
+a reflected attack does not then reset to original attack and rotation
+
+
+Bug:
+level 5.
+player kills all heroes at once.
+moves to Knight attacker.
+heroes do not fade.
+player attacks again.
+players then fade.
+normal gameplay resumes.
+
+Bug:
+level 4.
+last divider for key sequence does not show.
+
+
+Issues:
+Archer attack is too far away.
+Knight's attack is a little too far to the right.
+
+
 
 - Lots of testing, bug fixing.
 
+
 - Clear certain Instances between levels?
+
+
 
 After done testing:
     - Revert health on heroes
     - Revert damage on certain player characters
     - Reset time scales
+
 
 
 ~~~~~  ON COMPLETION  ~~~~~
@@ -23,6 +51,8 @@ After done testing:
     ~~ Setup itch.io game page ~~    
         ~ explain controls 
         ~ description
+
+
 
 
 
@@ -114,3 +144,53 @@ possible *player* abilities:
 33: eye of hell
 39: annihilation beam
 
+
+
+
+(this does not account for auto-adjustments between levels)
+hero attack base position adjustments:
+
+Level 9:
+knight...  right a bit, up a lot
+mage... right a bit
+archer... right just a little
+
+Level 8:
+knight... right a bit
+mage... right a bit
+archer... maybe right a bit?
+
+Level 7:
+knight... maybe left a bit?
+mage... perfectly fine
+archer... perfectly fine
+
+Level 6:
+knight... left a bit
+mage... PERFECT
+archer... PERFECT
+
+Level 5:
+knight... a bit to the left
+mage... PERFECT
+archer... PERFECT
+
+Level 4:
+knight... a bit to the left and a lot down
+mage... a bit to the right
+archer... a bit to the right?
+
+Level 3:
+knight... down and left
+mage... left a bit?
+archer... right a little?
+
+Level 2:
+knight... WAY left. WAY down.
+mage... WAY left.
+archer... 
+
+Level 1:
+knight... 
+mage... 
+archer... 

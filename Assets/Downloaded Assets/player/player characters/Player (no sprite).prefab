@@ -331,6 +331,7 @@ MonoBehaviour:
   x_PosReflectOffset: 0
   renderer: {fileID: 0}
   originalPosition: {x: 0, y: 0, z: 0}
+  positionOfVeryFirstPlayerSprite: {x: 1.05, y: -0.142, z: 0}
 --- !u!114 &2946937339466278004
 MonoBehaviour:
   m_ObjectHideFlags: 0

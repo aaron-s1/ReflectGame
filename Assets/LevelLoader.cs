@@ -40,8 +40,8 @@ public class LevelLoader : MonoBehaviour
 
     void Start() 
     {
-        StartCoroutine(AsyncLoadNextScene());
-        // if (activeSceneIndex == 0)
+        if (activeSceneIndex != (sceneCount - 1))
+            StartCoroutine(AsyncLoadNextScene());
             
         StartCoroutine(GameManager.Instance.DelayHeroAttacksOnSceneLoad());
     }
@@ -49,26 +49,12 @@ public class LevelLoader : MonoBehaviour
     
     IEnumerator AsyncLoadNextScene()
     {
-        // for (int i = 1; i < sceneCount; i++)
-        // {
-            // if (i == 0)
-                // continue;
-            // Debug.Log("async loading scene: index: " + SceneManager.LoadSceneAsync(SceneManager.GetSceneAt(i).name));
+        var nextSceneName = SceneUtility.GetScenePathByBuildIndex(activeSceneIndex + 1);
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(nextSceneName);
+        asyncLoad.allowSceneActivation = false;
 
-            // level 6, index 3.
-            // 6 - 1. 
-            // 
-            
-            var nextSceneName = SceneUtility.GetScenePathByBuildIndex(activeSceneIndex + 1);
-            Debug.Log(nextSceneName);
-            AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(nextSceneName); //($SceneManager.GetSceneAt(i).ToString());
-            asyncLoad.allowSceneActivation = false;
-
-            // Debug.Log("Loading scene: " + SceneManager.GetSceneAt(i).name);
-
-            while (!asyncLoad.isDone)
-                yield return null;
-        // }
+        while (!asyncLoad.isDone)
+            yield return null;
     }
 
 
@@ -105,10 +91,8 @@ public class LevelLoader : MonoBehaviour
     {        
         fadeTransition.SetTrigger("Start");
 
-        var fadeInfoClip = fadeTransition.GetCurrentAnimatorClipInfo(0)[0].clip;
-
-        if (fadeInfoClip != null)
-            fadeTransitionTime = fadeInfoClip.length;
+        if (fadeTransition.GetCurrentAnimatorClipInfo(0)[0].clip != null)
+            fadeTransitionTime = fadeTransition.GetCurrentAnimatorClipInfo(0)[0].clip.length;
 
         yield return new WaitForSeconds(fadeTransitionTime);
     }

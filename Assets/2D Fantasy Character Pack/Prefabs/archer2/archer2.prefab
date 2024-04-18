@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1039715521}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Countdown To Attack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 1778563413}
   - component: {fileID: 1778563415}
   - component: {fileID: 1778563414}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -181,7 +181,7 @@ GameObject:
   - component: {fileID: 1933793720}
   - component: {fileID: 1933793719}
   - component: {fileID: 1933793718}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -285,9 +285,12 @@ GameObject:
   - component: {fileID: 4189009609249305814}
   - component: {fileID: 7921822939524665597}
   - component: {fileID: 707591484}
-  m_Layer: 0
+  - component: {fileID: 707591481}
+  - component: {fileID: 707591480}
+  - component: {fileID: 707591479}
+  m_Layer: 7
   m_Name: archer2
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -396,7 +399,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd1b6a80fbcac394a8b0901c2aed2729, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
+  health: 100
   damage: 20
   numberOfDamageHits: 10
   timeBeforeAttack: 2
@@ -411,6 +414,7 @@ MonoBehaviour:
   x_PosReflectOffset: -1
   renderer: {fileID: 0}
   originalPosition: {x: 0, y: 0, z: 0}
+  positionOfVeryFirstPlayerSprite: {x: 1.05, y: -0.142, z: 0}
 --- !u!198 &4189009609249305814
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -5204,6 +5208,65 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthAmountMax: 100
   startingHealthAmount: 100
+--- !u!50 &707591481
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1601947692949862}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!61 &707591480
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1601947692949862}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.10798293, y: -0.033744723}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.28, y: 1.28}
+    newSize: {x: 1.28, y: 1.28}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.47012603, y: 0.5916068}
+  m_EdgeRadius: 0
+--- !u!114 &707591479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1601947692949862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cba5232f292da8a499708e8573024ed8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &532308588
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5214,6 +5277,10 @@ PrefabInstance:
     - target: {fileID: 1590306844097778, guid: 48b754faadd6ec34e9b94acfe06ce5c5, type: 3}
       propertyPath: m_Name
       value: Reflection Targeting Arrow (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1590306844097778, guid: 48b754faadd6ec34e9b94acfe06ce5c5, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1590306844097778, guid: 48b754faadd6ec34e9b94acfe06ce5c5, type: 3}
       propertyPath: m_IsActive
@@ -5310,8 +5377,28 @@ PrefabInstance:
       value: 2.11
       objectReference: {fileID: 0}
     - target: {fileID: 6330133319233186043, guid: 37225baa539a1114aad9ce6c4640c584, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6330133319233186043, guid: 37225baa539a1114aad9ce6c4640c584, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6330133319510465062, guid: 37225baa539a1114aad9ce6c4640c584, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6330133319992123243, guid: 37225baa539a1114aad9ce6c4640c584, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6330133320044408335, guid: 37225baa539a1114aad9ce6c4640c584, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6330133320170217720, guid: 37225baa539a1114aad9ce6c4640c584, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6330133320170217720, guid: 37225baa539a1114aad9ce6c4640c584, type: 3}
       propertyPath: m_IsActive
@@ -5350,6 +5437,10 @@ PrefabInstance:
       value: 1.18
       objectReference: {fileID: 0}
     - target: {fileID: 6330133320281973360, guid: 37225baa539a1114aad9ce6c4640c584, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6330133320281973360, guid: 37225baa539a1114aad9ce6c4640c584, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -5380,6 +5471,10 @@ PrefabInstance:
     - target: {fileID: 6330133320380864000, guid: 37225baa539a1114aad9ce6c4640c584, type: 3}
       propertyPath: m_Name
       value: Archer Arrow Barrage Attack
+      objectReference: {fileID: 0}
+    - target: {fileID: 6330133320380864000, guid: 37225baa539a1114aad9ce6c4640c584, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6330133320380864000, guid: 37225baa539a1114aad9ce6c4640c584, type: 3}
       propertyPath: m_IsActive
@@ -5440,6 +5535,14 @@ PrefabInstance:
     - target: {fileID: 6330133320380864001, guid: 37225baa539a1114aad9ce6c4640c584, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6330133320608618008, guid: 37225baa539a1114aad9ce6c4640c584, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6330133320661874027, guid: 37225baa539a1114aad9ce6c4640c584, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6330133320661874036, guid: 37225baa539a1114aad9ce6c4640c584, type: 3}
       propertyPath: m_LocalPosition.x
@@ -10259,6 +10362,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4463561712627088}
     m_Modifications:
+    - target: {fileID: 6848739073341297851, guid: f1419c2a3f5ecf44e824039f908fea60, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 6848739073341297853, guid: f1419c2a3f5ecf44e824039f908fea60, type: 3}
       propertyPath: m_EffectColor.b
       value: 0
@@ -10271,10 +10378,18 @@ PrefabInstance:
       propertyPath: m_EffectColor.r
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6848739073373570981, guid: f1419c2a3f5ecf44e824039f908fea60, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 6848739073373570983, guid: f1419c2a3f5ecf44e824039f908fea60, type: 3}
       propertyPath: getHealthSystemGameObject
       value: 
       objectReference: {fileID: 1601947692949862}
+    - target: {fileID: 6848739073536652050, guid: f1419c2a3f5ecf44e824039f908fea60, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 6848739073536652053, guid: f1419c2a3f5ecf44e824039f908fea60, type: 3}
       propertyPath: m_FillAmount
       value: 1
@@ -10282,6 +10397,10 @@ PrefabInstance:
     - target: {fileID: 6848739074368699834, guid: f1419c2a3f5ecf44e824039f908fea60, type: 3}
       propertyPath: m_Name
       value: Health Bar
+      objectReference: {fileID: 0}
+    - target: {fileID: 6848739074368699834, guid: f1419c2a3f5ecf44e824039f908fea60, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6848739074368699838, guid: f1419c2a3f5ecf44e824039f908fea60, type: 3}
       propertyPath: m_Pivot.x
@@ -10393,6 +10512,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4463561712627088}
     m_Modifications:
+    - target: {fileID: 202211402367818639, guid: 2d54d468aab80df4a92849c48661c081, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 323817395096994555, guid: 2d54d468aab80df4a92849c48661c081, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 323817396223275061, guid: 2d54d468aab80df4a92849c48661c081, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 323817396673911132, guid: 2d54d468aab80df4a92849c48661c081, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 323817397067111341, guid: 2d54d468aab80df4a92849c48661c081, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 1007919433217068805, guid: 2d54d468aab80df4a92849c48661c081, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -10442,8 +10581,28 @@ PrefabInstance:
       value: Powering Up Attack Aura
       objectReference: {fileID: 0}
     - target: {fileID: 1007919433217068806, guid: 2d54d468aab80df4a92849c48661c081, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1007919433217068806, guid: 2d54d468aab80df4a92849c48661c081, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1480623214996610099, guid: 2d54d468aab80df4a92849c48661c081, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2430857835407132142, guid: 2d54d468aab80df4a92849c48661c081, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6705362722576528680, guid: 2d54d468aab80df4a92849c48661c081, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8492801280358967028, guid: 2d54d468aab80df4a92849c48661c081, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2d54d468aab80df4a92849c48661c081, type: 3}

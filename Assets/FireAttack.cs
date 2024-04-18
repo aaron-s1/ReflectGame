@@ -74,7 +74,7 @@ public class FireAttack : MonoBehaviour, IEnemyFire, IGetHealthSystem
 
     [HideInInspector] public Vector3 originalPosition;
 
-    [HideInInspector] Vector3 positionOfVeryFirstPlayerSprite;
+    [SerializeField] Vector3 positionOfVeryFirstPlayerSprite;
 
 
     Vector3 posDiffBetweenFirstAndCurrentPlayer;
@@ -92,40 +92,50 @@ public class FireAttack : MonoBehaviour, IEnemyFire, IGetHealthSystem
         originalPosition = transform.position;
     }
 
-    void OnSceneLoad() =>
-        AdjustAttackPositionsOnSceneLoad();
+    // void OnSceneLoad() =>
+        // AdjustAttackPositionsOnSceneLoad();
 
 
     // Offsets attack particle positions to sync with the position of a new level's player sprite.
     void AdjustAttackPositionsOnSceneLoad()
     {
-        currentPlayer = PlayerController.Instance;
+        Debug.Log("AdjustAttackPositionsOnSceneLoad()");
+        // currentPlayer = PlayerController.Instance;
 
         // For first level.
         // if (SceneManager.GetActiveScene() == SceneManager.GetSceneAt(2))
-        if (currentPlayer.transform.position == positionOfVeryFirstPlayerSprite)
-        {
+        // if (currentPlayer.transform.position == positionOfVeryFirstPlayerSprite)
+        // {
             originalAttackParticlePosition = attackParticle.gameObject.transform.position;
             originalAttackParticleRotation = attackParticle.gameObject.transform.eulerAngles;
             return;
-        }
+        // }
 
-        posDiffBetweenFirstAndCurrentPlayer  = positionOfVeryFirstPlayerSprite - currentPlayer.transform.position;
+        // posDiffBetweenFirstAndCurrentPlayer  = positionOfVeryFirstPlayerSprite - currentPlayer.transform.position;
         
-        originalAttackParticlePosition = new Vector3(originalAttackParticlePosition.x - posDiffBetweenFirstAndCurrentPlayer.x,
-                                                    originalAttackParticlePosition.y,
-                                                    originalAttackParticlePosition.z);        
+        // Debug.Log($"originalAttackParticlePosition for {gameObject} before adjustment: {originalAttackParticlePosition}");
+        // originalAttackParticlePosition = new Vector3(originalAttackParticlePosition.x - posDiffBetweenFirstAndCurrentPlayer.x,
+        //                                             originalAttackParticlePosition.y,
+        //                                             originalAttackParticlePosition.z);
+        // Debug.Log($"originalAttackParticlePosition for {gameObject} POST-adjustment: {originalAttackParticlePosition}");
     }
     
     void Start() {
         // player = PlayerController.Instance;
         gameManager = GameManager.Instance;
-        positionOfVeryFirstPlayerSprite = PlayerController.Instance.transform.position;
+        // positionOfVeryFirstPlayerSprite = PlayerController.Instance.transform.position;
 
         if (countdownToAttackObject != null)
             countdownToAttackTMPro = countdownToAttackObject.GetComponentInChildren<TextMeshProUGUI>();
 
-        AdjustAttackPositionsOnSceneLoad();        
+        AdjustAttackPositionsOnSceneLoad();
+        Invoke("FindPlayer", 1f);
+        // FindNewAttackParticlePositionAndRotation(false);
+    }
+    void FindPlayer()
+    {
+        currentPlayer = PlayerController.Instance;
+        FindNewAttackParticlePositionAndRotation(false);
     }
 
 
@@ -187,6 +197,7 @@ public class FireAttack : MonoBehaviour, IEnemyFire, IGetHealthSystem
         FindNewAttackParticlePositionAndRotation(false);
         SetActivityOfParticle(auraParticle, false);
         SetActivityOfParticle(attackParticle, true);
+        // Debug.Break();  
 
         
         StartCoroutine(EnterDamageStep());
@@ -415,7 +426,7 @@ public class FireAttack : MonoBehaviour, IEnemyFire, IGetHealthSystem
     
     void FindNewAttackParticlePositionAndRotation(bool playerReflected)
     {
-        // Player's attacks never move.
+        // Player's attacks typically don't move.
         if (IsPlayer())
         {
             if (playerIsMage)
@@ -436,11 +447,31 @@ public class FireAttack : MonoBehaviour, IEnemyFire, IGetHealthSystem
         }
 
         if (!playerReflected)
-        {
-            attackParticle.gameObject.transform.eulerAngles = originalAttackParticleRotation;
-            attackParticle.gameObject.transform.position = originalAttackParticlePosition;
+        {            
+            if (!heroIsArcher)
+            {
+                attackParticle.gameObject.transform.eulerAngles = originalAttackParticleRotation;
+            // attackParticle.gameObject.transform.position = originalAttackParticlePosition;
+
+                // originalAttackParticlePosition
+                attackParticle.transform.position = new Vector3
+                                                           (currentPlayer.transform.position.x,
+                                                           originalAttackParticlePosition.y,
+                                                           originalAttackParticlePosition.z);
+            }
+
+            else 
+            {
+                // originalAttackParticlePosition
+                attackParticle.transform.position = new Vector3(originalAttackParticlePosition.x + posDiffBetweenFirstAndCurrentPlayer.x,
+                                                    originalAttackParticlePosition.y,
+                                                    originalAttackParticlePosition.z);
+            }
+
+            // attackParticle.transform.position = originalAttackParticlePosition;
         }
 
+        // Player reflected.
         else
         {
             if (!heroIsArcher)
@@ -460,7 +491,7 @@ public class FireAttack : MonoBehaviour, IEnemyFire, IGetHealthSystem
             else
             {
                 attackParticle.transform.eulerAngles = Vector3.zero;
-                attackParticle.gameObject.transform.position = new Vector3(originalAttackParticlePosition.x + x_PosReflectOffset, // currentPlayer.transform.position.x + x_PosReflectOffset, //currentPlayer.transform.position.x, //originalAttackParticlePosition.x - posDiffBetweenFirstAndCurrentPlayer.x,
+                attackParticle.gameObject.transform.position = new Vector3(originalAttackParticlePosition.x + x_PosReflectOffset,
                                                                            originalAttackParticlePosition.y,
                                                                            originalAttackParticlePosition.z);
 

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 61113090}
   - component: {fileID: 61113092}
   - component: {fileID: 61113091}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Effect_14_ImpactRing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4891,7 +4891,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 316409669}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Effect_14_InitExplosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4925,7 +4925,7 @@ GameObject:
   - component: {fileID: 392638468}
   - component: {fileID: 392638470}
   - component: {fileID: 392638469}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Effect_14_NukeOutsideBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9816,7 +9816,7 @@ GameObject:
   - component: {fileID: 688328157}
   - component: {fileID: 688328159}
   - component: {fileID: 688328158}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Effect_14_NukeOutsideHead
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14708,7 +14708,7 @@ GameObject:
   - component: {fileID: 866383002}
   - component: {fileID: 866383001}
   - component: {fileID: 866383000}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14808,7 +14808,7 @@ GameObject:
   - component: {fileID: 1016449589}
   - component: {fileID: 171175363}
   - component: {fileID: 171175362}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Dark Mage Explosion Attack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19622,7 +19622,7 @@ GameObject:
   - component: {fileID: 1138944968}
   - component: {fileID: 1138944970}
   - component: {fileID: 1138944969}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Effect_14_NukeOutsideBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24513,7 +24513,7 @@ GameObject:
   - component: {fileID: 1336815130}
   - component: {fileID: 1336815132}
   - component: {fileID: 1336815131}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Effect_14_ImpactRing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29395,7 +29395,7 @@ GameObject:
   - component: {fileID: 1444077373}
   - component: {fileID: 1444077375}
   - component: {fileID: 1444077374}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Effect_14_NukeOutsideHead
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34284,7 +34284,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1473050349}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Effect_14_NukeEffects
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34323,7 +34323,7 @@ GameObject:
   - component: {fileID: 1879261591}
   - component: {fileID: 1879261593}
   - component: {fileID: 1879261592}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Effect_14_ImpactRing_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39203,7 +39203,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1986583803}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Countdown To Attack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39237,7 +39237,7 @@ GameObject:
   - component: {fileID: 2109327936}
   - component: {fileID: 2109327938}
   - component: {fileID: 2109327937}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39378,9 +39378,12 @@ GameObject:
   - component: {fileID: 3702823361107468620}
   - component: {fileID: 514142388580533425}
   - component: {fileID: 2075093747}
-  m_Layer: 0
+  - component: {fileID: 2075093744}
+  - component: {fileID: 2075093743}
+  - component: {fileID: 2075093742}
+  m_Layer: 7
   m_Name: mage_dark
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -39489,7 +39492,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd1b6a80fbcac394a8b0901c2aed2729, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
+  health: 100
   damage: 20
   numberOfDamageHits: 1
   timeBeforeAttack: 2
@@ -39504,6 +39507,7 @@ MonoBehaviour:
   x_PosReflectOffset: 0
   renderer: {fileID: 0}
   originalPosition: {x: 0, y: 0, z: 0}
+  positionOfVeryFirstPlayerSprite: {x: 1.05, y: -0.142, z: 0}
 --- !u!198 &3702823361107468620
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -44297,6 +44301,65 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthAmountMax: 100
   startingHealthAmount: 100
+--- !u!50 &2075093744
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1589123261345258}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!61 &2075093743
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1589123261345258}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.1518204, y: -0.114732206}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.1636363, y: 1.1636363}
+    newSize: {x: 1.1636363, y: 1.1636363}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.3873721, y: 0.5562308}
+  m_EdgeRadius: 0
+--- !u!114 &2075093742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1589123261345258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cba5232f292da8a499708e8573024ed8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1506763017
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -44307,6 +44370,10 @@ PrefabInstance:
     - target: {fileID: 1590306844097778, guid: 48b754faadd6ec34e9b94acfe06ce5c5, type: 3}
       propertyPath: m_Name
       value: Reflection Targeting Arrow (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1590306844097778, guid: 48b754faadd6ec34e9b94acfe06ce5c5, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1590306844097778, guid: 48b754faadd6ec34e9b94acfe06ce5c5, type: 3}
       propertyPath: m_IsActive
@@ -44390,6 +44457,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4710395557788888}
     m_Modifications:
+    - target: {fileID: 6848739073341297851, guid: f1419c2a3f5ecf44e824039f908fea60, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 6848739073341297853, guid: f1419c2a3f5ecf44e824039f908fea60, type: 3}
       propertyPath: m_EffectColor.b
       value: 0
@@ -44402,10 +44473,18 @@ PrefabInstance:
       propertyPath: m_EffectColor.r
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6848739073373570981, guid: f1419c2a3f5ecf44e824039f908fea60, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 6848739073373570983, guid: f1419c2a3f5ecf44e824039f908fea60, type: 3}
       propertyPath: getHealthSystemGameObject
       value: 
       objectReference: {fileID: 1589123261345258}
+    - target: {fileID: 6848739073536652050, guid: f1419c2a3f5ecf44e824039f908fea60, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 6848739073536652053, guid: f1419c2a3f5ecf44e824039f908fea60, type: 3}
       propertyPath: m_FillAmount
       value: 1
@@ -44413,6 +44492,10 @@ PrefabInstance:
     - target: {fileID: 6848739074368699834, guid: f1419c2a3f5ecf44e824039f908fea60, type: 3}
       propertyPath: m_Name
       value: Health Bar
+      objectReference: {fileID: 0}
+    - target: {fileID: 6848739074368699834, guid: f1419c2a3f5ecf44e824039f908fea60, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6848739074368699834, guid: f1419c2a3f5ecf44e824039f908fea60, type: 3}
       propertyPath: m_IsActive
@@ -44558,6 +44641,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4710395557788888}
     m_Modifications:
+    - target: {fileID: 202211402367818639, guid: 2d54d468aab80df4a92849c48661c081, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 323817395096994555, guid: 2d54d468aab80df4a92849c48661c081, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 323817396223275061, guid: 2d54d468aab80df4a92849c48661c081, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 323817396673911132, guid: 2d54d468aab80df4a92849c48661c081, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 323817397067111341, guid: 2d54d468aab80df4a92849c48661c081, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 1007919433217068805, guid: 2d54d468aab80df4a92849c48661c081, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -44607,8 +44710,28 @@ PrefabInstance:
       value: Powering Up Attack Aura
       objectReference: {fileID: 0}
     - target: {fileID: 1007919433217068806, guid: 2d54d468aab80df4a92849c48661c081, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1007919433217068806, guid: 2d54d468aab80df4a92849c48661c081, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1480623214996610099, guid: 2d54d468aab80df4a92849c48661c081, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2430857835407132142, guid: 2d54d468aab80df4a92849c48661c081, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6705362722576528680, guid: 2d54d468aab80df4a92849c48661c081, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8492801280358967028, guid: 2d54d468aab80df4a92849c48661c081, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2d54d468aab80df4a92849c48661c081, type: 3}
