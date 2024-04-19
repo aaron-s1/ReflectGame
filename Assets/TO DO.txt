@@ -10,9 +10,6 @@ player attacks again.
 players then fade.
 normal gameplay resumes.
 
-Bug:
-level 4.
-last divider for key sequence does not show.
 
 
 Issues:
