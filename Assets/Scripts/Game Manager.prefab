@@ -47,7 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackerList: []
   enemyHeroes: {fileID: 0}
-  nextAttackerDelay: 1.25
+  nextAttackerDelay: 1.5
   lastHeroToAttack: {fileID: 0}
   heroList: []
   delayAttacksOnSceneLoad: 0

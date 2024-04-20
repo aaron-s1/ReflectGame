@@ -99,7 +99,7 @@ public class FireAttack : MonoBehaviour, IEnemyFire, IGetHealthSystem
     // Offsets attack particle positions to sync with the position of a new level's player sprite.
     void AdjustAttackPositionsOnSceneLoad()
     {
-        Debug.Log("AdjustAttackPositionsOnSceneLoad()");
+        // Debug.Log("AdjustAttackPositionsOnSceneLoad()");
         // currentPlayer = PlayerController.Instance;
 
         // For first level.
@@ -285,7 +285,7 @@ public class FireAttack : MonoBehaviour, IEnemyFire, IGetHealthSystem
         if (target != null)
             yield return StartCoroutine(ApplyDamage(damageValue, target));
 
-        // No target directly assigned means attack is AoE.
+        // No target explicitly assigned means attack is AoE.
         else if (attackIsAoE)
         {
             foreach (var hero in gameManager.heroList)
@@ -300,26 +300,32 @@ public class FireAttack : MonoBehaviour, IEnemyFire, IGetHealthSystem
         }
 
 
-        // Syncs up with GameManager for weird issues I don't understand.
+        // Syncs up with GameManager's attacker delay, for weird issues I still don't understand.
         yield return new WaitForSeconds(GameManager.Instance.nextAttackerDelay);
-        // yield return new WaitUntil(() => gameManager.nextAttackerCanAttack);
-        yield return null;
-        yield return StartCoroutine(KillDeadHeroes());
-        
+        yield return null;  // padding.
 
+        yield return new WaitUntil(() => !attackParticle.isPlaying);
+        yield return StartCoroutine(KillDeadHeroes());
+
+        // for testing.
+        if (IsPlayer())
+        {
+            Time.timeScale = 1;
+            Debug.Break();
+        }
 
         if (anim)
             yield return new WaitUntil(() => !anim.IsInTransition(0));
 
-        yield return new WaitUntil(() => !attackParticle.isPlaying);
+
 
         SetActivityOfParticle(attackParticle, false);        
 
-        // Attack is now finally fully completed.
-        
         StartCoroutine(gameManager.FindNextAttacker());
         yield break;
     }
+
+    
     
 
     // Multi-hit example: Attack lasts 1 seconds, with a firstDamageStepAttackPercent of 25% and 10 hits.
@@ -367,6 +373,7 @@ public class FireAttack : MonoBehaviour, IEnemyFire, IGetHealthSystem
         // Fade out dead heroes, then remove them from heroList. Don't yield.
         foreach (var hero in heroesThatDied)
         {
+            // Debug.Log($"{gameObject} called KillDeadHeroes() on {hero}");
             StartCoroutine(hero.FadeSpriteOnDeath(deathFadeTime, true));
             StartCoroutine(gameManager.RemoveHeroFromAttackerLists(hero));
         }

@@ -82,6 +82,7 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator FindNextAttacker()
     {
+        Debug.Log("FindNextAttacker() called");
         yield return new WaitUntil(() => delayAttacksOnSceneLoad);
 
         // Player died...
@@ -168,6 +169,7 @@ public class GameManager : MonoBehaviour
     {
         heroList.Remove(character);
         attackerList.Remove(character);
+        // Debug.Log($"GameManager removed {character.gameObject} from lists");
 
         attackerIndex--;
 

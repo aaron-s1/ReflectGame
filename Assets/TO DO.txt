@@ -1,16 +1,12 @@
 
 
 
-Bug:
-level 5.
-player kills all heroes at once.
-moves to Knight attacker.
-heroes do not fade.
-player attacks again.
-players then fade.
-normal gameplay resumes.
 
+Test:
+Reflected AoE attack kills self, but not others
 
+Test:
+Reflected AoE attack kills others, but not self
 
 Issues:
 Archer attack is too far away.
