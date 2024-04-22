@@ -4,19 +4,12 @@
 
 
 
-After done testing:
-    - Revert health on heroes
-    - Revert damage on certain player characters
-    - Reset time scales
 
 
 
 ~~~~~  ON COMPLETION  ~~~~~
 
-    ~~ Project ~~ 
-        ~ Script clean-up, including variable hierachies {at top of scripts}
-        ~ Refactor/extract scripts
-        ~ Rename project/scenes as needed
+    ~~ Project ~~         
         ~ Extract, safe commits/pushes
             ~ Delete unnecessary assets
                 ~ Commit/push new, shrunken down build
