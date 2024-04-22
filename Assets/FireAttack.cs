@@ -380,7 +380,9 @@ public class FireAttack : MonoBehaviour, IEnemyFire, IGetHealthSystem
 
         // Yields only once, so all heroes that died from last attack fade simultaneously.
         if (heroesThatDied.Count >= 1)
+        {
             yield return new WaitForSeconds(deathFadeTime);
+        }
     }
 
 

@@ -102,16 +102,17 @@ public class GameManager : MonoBehaviour
             }
         }
 
+        Debug.Log($"attackerIndex was {attackerIndex}");
         attackerIndex++;
 
         if (attackerIndex >= attackerList.Count)
             attackerIndex = 0;
 
+        Debug.Log($"attackerIndex became {attackerIndex}");
         currentAttacker = attackerList[attackerIndex];
 
         StartCoroutine(RotateToNextAttacker());
 
-        // yield return new WaitUntil(() => RotateToNextAttacker.);
         yield break;
     }
 
@@ -164,6 +165,7 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
+    int attackerIndexDecrement;
 
     public IEnumerator RemoveHeroFromAttackerLists(FireAttack character)    
     {
@@ -171,7 +173,8 @@ public class GameManager : MonoBehaviour
         attackerList.Remove(character);
         // Debug.Log($"GameManager removed {character.gameObject} from lists");
 
-        attackerIndex--;
+        attackerIndexDecrement++;
+        // attackerIndex--;
 
         yield break;
     }

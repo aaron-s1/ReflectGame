@@ -2,13 +2,7 @@
 
 
 
-Test:
-Reflected AoE attack kills self, but not others
 
-Test:
-Reflected AoE attack kills others, but not self
-
-Issues:
 Archer attack is too far away.
 Knight's attack is a little too far to the right.
 

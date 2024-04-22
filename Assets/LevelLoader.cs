@@ -91,7 +91,7 @@ public class LevelLoader : MonoBehaviour
     {        
         fadeTransition.SetTrigger("Start");
 
-        if (fadeTransition.GetCurrentAnimatorClipInfo(0)[0].clip != null)
+        if (fadeTransition?.GetCurrentAnimatorClipInfo(0)[0].clip != null)
             fadeTransitionTime = fadeTransition.GetCurrentAnimatorClipInfo(0)[0].clip.length;
 
         yield return new WaitForSeconds(fadeTransitionTime);
