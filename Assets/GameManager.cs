@@ -2,8 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Runtime.CompilerServices;
-// using System.Net;
-// using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -28,8 +26,6 @@ public class GameManager : MonoBehaviour
     FireAttack currentAttacker;
 
     List<Vector3> originalHeroPositions;
-    // Vector3 originalPositions;
-
 
     int attackerIndex = -1;
 
@@ -47,13 +43,10 @@ public class GameManager : MonoBehaviour
 
     void Start() =>
         StartCoroutine(PopulateAttackerLists());
-        // finalSceneIndex = SceneManager.sceneCountInBuildSettings - 1;
         
 
     IEnumerator PopulateAttackerLists()
     {
-        // player = PlayerController.Instance;
-        // attackerList.Add(player.gameObject.GetComponent<FireAttack>());
         foreach (Transform hero in enemyHeroes.transform)
         {
             if (!hero.gameObject.activeInHierarchy)
@@ -78,7 +71,7 @@ public class GameManager : MonoBehaviour
 
 
 
-    #region HANDLE ROTATIONS OF HEROES
+    #region Handle hero (enemy) rotation.
 
     public IEnumerator FindNextAttacker()
     {
@@ -102,13 +95,11 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        Debug.Log($"attackerIndex was {attackerIndex}");
         attackerIndex++;
 
         if (attackerIndex >= attackerList.Count)
             attackerIndex = 0;
 
-        Debug.Log($"attackerIndex became {attackerIndex}");
         currentAttacker = attackerList[attackerIndex];
 
         StartCoroutine(RotateToNextAttacker());
@@ -116,33 +107,25 @@ public class GameManager : MonoBehaviour
         yield break;
     }
 
-    // bool initialAttackerDelayOnStartupPassed;
 
     IEnumerator RotateToNextAttacker()
     {
         yield return new WaitUntil(() => delayAttacksOnSceneLoad);
 
         if (currentAttacker.IsPlayer())
-        {            
-            // yield return new WaitForSeconds(delayBeforeNewAttackerFires);
-
             StartCoroutine(currentAttacker.BeginAttackSequence());            
-        }
 
         else
         {
             if (!currentAttacker.IsDead())
             {
                 yield return StartCoroutine(RotateAllHeroPositions());
-                                    
-                // yield return new WaitForSeconds(delayBeforeNewAttackerFires);
                 
                 lastHeroToAttack = currentAttacker;
                 StartCoroutine(currentAttacker.BeginAttackSequence());
             }
 
             else
-                // Debug.Log("GameManager called RotateToNextAttacker() ");
                 StartCoroutine(FindNextAttacker());
         }
     }
@@ -163,25 +146,21 @@ public class GameManager : MonoBehaviour
 
         yield break;
     }
+
     #endregion
 
-    int attackerIndexDecrement;
 
     public IEnumerator RemoveHeroFromAttackerLists(FireAttack character)    
     {
         heroList.Remove(character);
         attackerList.Remove(character);
-        // Debug.Log($"GameManager removed {character.gameObject} from lists");
-
-        attackerIndexDecrement++;
-        // attackerIndex--;
 
         yield break;
     }
 
 
 
-    #region LEVEL TRANSITIONS
+    #region Level transitions.
     
     public void OnSceneLoad()
     {
@@ -190,8 +169,8 @@ public class GameManager : MonoBehaviour
     }
 
     // First level: Adds buffer time.
-    // Later levels: Buffer time, allows sand transition to smoothly finish.
-    // Remember that "delayBeforeNewAttackerFires" also applies.
+    // Later levels: Above, and  allows sand transition to smoothly finish.
+    // Remember that "delayBeforeNewAttackerFires" is also applying.
     public IEnumerator DelayHeroAttacksOnSceneLoad()
     {
         yield return new WaitForSeconds(attackDelayOnNewScene);
@@ -199,8 +178,6 @@ public class GameManager : MonoBehaviour
     }
 
     # endregion
-
-
 
 
 
@@ -214,6 +191,7 @@ public class GameManager : MonoBehaviour
         else if (locationInMethod == 3)
             UnityEngine.Debug.Log($"Reached end of {caller}().");
     }
+    
 
     public FireAttack FindRandomAliveHero() =>
         heroList[UnityEngine.Random.Range(0, heroList.Count)];    

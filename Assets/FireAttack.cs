@@ -92,57 +92,28 @@ public class FireAttack : MonoBehaviour, IEnemyFire, IGetHealthSystem
         originalPosition = transform.position;
     }
 
-    // void OnSceneLoad() =>
-        // AdjustAttackPositionsOnSceneLoad();
-
-
-    // Offsets attack particle positions to sync with the position of a new level's player sprite.
-    void AdjustAttackPositionsOnSceneLoad()
-    {
-        // Debug.Log("AdjustAttackPositionsOnSceneLoad()");
-        // currentPlayer = PlayerController.Instance;
-
-        // For first level.
-        // if (SceneManager.GetActiveScene() == SceneManager.GetSceneAt(2))
-        // if (currentPlayer.transform.position == positionOfVeryFirstPlayerSprite)
-        // {
-            originalAttackParticlePosition = attackParticle.gameObject.transform.position;
-            originalAttackParticleRotation = attackParticle.gameObject.transform.eulerAngles;
-            return;
-        // }
-
-        // posDiffBetweenFirstAndCurrentPlayer  = positionOfVeryFirstPlayerSprite - currentPlayer.transform.position;
-        
-        // Debug.Log($"originalAttackParticlePosition for {gameObject} before adjustment: {originalAttackParticlePosition}");
-        // originalAttackParticlePosition = new Vector3(originalAttackParticlePosition.x - posDiffBetweenFirstAndCurrentPlayer.x,
-        //                                             originalAttackParticlePosition.y,
-        //                                             originalAttackParticlePosition.z);
-        // Debug.Log($"originalAttackParticlePosition for {gameObject} POST-adjustment: {originalAttackParticlePosition}");
-    }
-    
     void Start() {
-        // player = PlayerController.Instance;
         gameManager = GameManager.Instance;
-        // positionOfVeryFirstPlayerSprite = PlayerController.Instance.transform.position;
 
         if (countdownToAttackObject != null)
             countdownToAttackTMPro = countdownToAttackObject.GetComponentInChildren<TextMeshProUGUI>();
 
         AdjustAttackPositionsOnSceneLoad();
         Invoke("FindPlayer", 1f);
-        // FindNewAttackParticlePositionAndRotation(false);
-    }
-
-    
-    void FindPlayer()
-    {
-        currentPlayer = PlayerController.Instance;
-        FindNewAttackParticlePositionAndRotation(false);
     }
 
 
     void Update() =>
-        UpdateTimeBeforeAttackText();
+        UpdateTimeBeforeAttackText();    
+
+
+    // Offsets attack particle positions to sync with the position of a new level's player sprite.
+    void AdjustAttackPositionsOnSceneLoad()
+    {
+        originalAttackParticlePosition = attackParticle.gameObject.transform.position;
+        originalAttackParticleRotation = attackParticle.gameObject.transform.eulerAngles;
+        return;
+    }
 
 
     void UpdateTimeBeforeAttackText()
@@ -159,6 +130,8 @@ public class FireAttack : MonoBehaviour, IEnemyFire, IGetHealthSystem
     }
 
 
+
+    #region Handle attacks, damaging.
 
     public IEnumerator BeginAttackSequence()
     {
@@ -199,7 +172,6 @@ public class FireAttack : MonoBehaviour, IEnemyFire, IGetHealthSystem
         FindNewAttackParticlePositionAndRotation(false);
         SetActivityOfParticle(auraParticle, false);
         SetActivityOfParticle(attackParticle, true);
-        // Debug.Break();  
 
         
         StartCoroutine(EnterDamageStep());
@@ -243,8 +215,6 @@ public class FireAttack : MonoBehaviour, IEnemyFire, IGetHealthSystem
 
                 SetActivityOfParticle(attackParticle, true);
 
-                // SetActivityOfParticle(player.reflectParticleObj.GetComponent<ParticleSystem>(), true);
-
                 // Add another damage step for when the reflected damage applies.
                 // For now, for simplicity purposes, it uses the original attacker's time until its first damage step
 
@@ -262,21 +232,6 @@ public class FireAttack : MonoBehaviour, IEnemyFire, IGetHealthSystem
         }
 
         yield break;
-    }
-
-
-    // Always target hero that's in front. Except with Mage, whom targets furthest hero.
-    FireAttack GetHeroToDamage()
-    {
-        if (playerIsMage)
-        {            
-            if (gameManager.heroList.Count % 2 == 0)
-                return gameManager.heroList[gameManager.heroList.Count - 1];
-            else
-                return gameManager.heroList[gameManager.heroList.Count / 2];
-        }
-        else
-            return gameManager.heroList[0];        
     }
 
 
@@ -307,12 +262,7 @@ public class FireAttack : MonoBehaviour, IEnemyFire, IGetHealthSystem
         yield return new WaitUntil(() => !attackParticle.isPlaying);
         yield return StartCoroutine(KillDeadHeroes());
 
-        // for testing.
-        if (IsPlayer())
-        {
-            Time.timeScale = 1;
-            Debug.Break();
-        }
+
 
         if (anim)
             yield return new WaitUntil(() => !anim.IsInTransition(0));
@@ -324,8 +274,6 @@ public class FireAttack : MonoBehaviour, IEnemyFire, IGetHealthSystem
         StartCoroutine(gameManager.FindNextAttacker());
         yield break;
     }
-
-    
     
 
     // Multi-hit example: Attack lasts 1 seconds, with a firstDamageStepAttackPercent of 25% and 10 hits.
@@ -373,17 +321,31 @@ public class FireAttack : MonoBehaviour, IEnemyFire, IGetHealthSystem
         // Fade out dead heroes, then remove them from heroList. Don't yield.
         foreach (var hero in heroesThatDied)
         {
-            // Debug.Log($"{gameObject} called KillDeadHeroes() on {hero}");
             StartCoroutine(hero.FadeSpriteOnDeath(deathFadeTime, true));
             StartCoroutine(gameManager.RemoveHeroFromAttackerLists(hero));
         }
 
         // Yields only once, so all heroes that died from last attack fade simultaneously.
         if (heroesThatDied.Count >= 1)
-        {
             yield return new WaitForSeconds(deathFadeTime);
-        }
     }
+
+    #endregion
+
+
+    // Always target hero that's in front. Except with Mage, whom targets furthest hero.
+    FireAttack GetHeroToDamage()
+    {
+        if (playerIsMage)
+        {            
+            if (gameManager.heroList.Count % 2 == 0)
+                return gameManager.heroList[gameManager.heroList.Count - 1];
+            else
+                return gameManager.heroList[gameManager.heroList.Count / 2];
+        }
+        else
+            return gameManager.heroList[0];        
+    }    
 
 
     public IEnumerator FadeSpriteOnDeath(float timeToFade, bool fadeOut)
@@ -463,9 +425,7 @@ public class FireAttack : MonoBehaviour, IEnemyFire, IGetHealthSystem
             if (!heroIsArcher)
             {
                 attackParticle.gameObject.transform.eulerAngles = originalAttackParticleRotation;
-            // attackParticle.gameObject.transform.position = originalAttackParticlePosition;
 
-                // originalAttackParticlePosition
                 attackParticle.transform.position = new Vector3
                                                            (currentPlayer.transform.position.x,
                                                            originalAttackParticlePosition.y,
@@ -475,14 +435,12 @@ public class FireAttack : MonoBehaviour, IEnemyFire, IGetHealthSystem
             // Not player, did not reflect, is archer.
             else 
             {
-                // originalAttackParticlePosition
                 attackParticle.gameObject.transform.eulerAngles = originalAttackParticleRotation;
                 attackParticle.transform.position = new Vector3(originalAttackParticlePosition.x + posDiffBetweenFirstAndCurrentPlayer.x,
                                                     originalAttackParticlePosition.y,
                                                     originalAttackParticlePosition.z);
             }
 
-            // attackParticle.transform.position = originalAttackParticlePosition;
         }
 
         // Player reflected.
@@ -511,68 +469,14 @@ public class FireAttack : MonoBehaviour, IEnemyFire, IGetHealthSystem
 
             }
         }
-
-
-
-
-        // if (heroIsMage)
-        // {
-        //     // Adjust static particle Mage attack to land on only remaining hero.
-        //     if (gameManager.heroList.Count == 1)
-        //     {
-        //         attackParticle.gameObject.transform.position = new Vector3(
-        //                                                         gameManager.heroList[0].transform.position.x,
-        //                                                         originalAttackParticlePosition.y, 
-        //                                                         originalAttackParticlePosition.z);
-        //     }
-        // }
-        // else
-            // attackParticle.gameObject.transform.position = originalAttackParticlePosition;
-
-
-                        // if (playerReflected && !IsPlayer() && 
-                        // {
-                        //     // Vector3 playerPos = pla
-                        //     // Offset aiming towards middle hero.
-                        //     var middleHeroPosition = gameManager.heroList[1].gameObject.transform.position;
-                        //     if (middleHeroPosition == null)
-                        //         middleHeroPosition = gameManager.heroList[0].gameObject.transform.position;
-
-                        //     Vector3 attackPosOffsetToNewPlayerSprite = originalAttackParticlePosition - PlayerController.Instance.transform.position;
-
-                        //     // var positionDiffBetweenMiddleHeroAndPlayer = 
-                        //     // middleHeroPosition - newPlayerSpritePosition;
-
-                        //     reflectedPosition = new Vector3(
-                        //                         attackParticle.transform.position.x + attackPosOffsetToNewPlayerSprite.x + x_ReflectOffset,
-                        //                         // attackParticle.transform.position.x + positionDiffBetweenMiddleHeroAndPlayer.x + x_ReflectOffset,
-                        //                         originalAttackParticlePosition.y,
-                        //                         originalAttackParticlePosition.z);                        
-
-
-                        //     attackParticle.gameObject.transform.position = reflectedPosition;
-                        //     attackParticle.transform.eulerAngles = Vector3.zero;
-                        // }
-
-                        // else
-                        //     attackParticle.transform.eulerAngles = originalRotationOfAttackParticle;
     }
+    
 
-    // IEnumerator TriggerAnimationOf(FireAttack target, string triggerName, bool waitForAnimationToEnd = false)
-    // {
-    //     Animator animator = target.animator;
-
-    //     // if (animator)
-    //         // animator.SetTrigger("getHit");
-
-    //     if (waitForAnimationToEnd)
-    //     {
-    //         while (animator.GetCurrentAnimatorStateInfo(0).IsName("getHit"))
-    //            yield return null;
-    //     }
-
-    //     yield break;
-    // }
+    void FindPlayer()
+    {
+        currentPlayer = PlayerController.Instance;
+        FindNewAttackParticlePositionAndRotation(false);
+    }
 
 
     public void Heal(int value) =>
@@ -584,6 +488,4 @@ public class FireAttack : MonoBehaviour, IEnemyFire, IGetHealthSystem
     public HealthSystem GetHealthSystem() => healthSystem;
     public bool IsFiring() => isFiring;
     public bool IsDead() => healthSystem.IsDead();
-
-    // public bool IsTargetable() => isTargetable;
 }

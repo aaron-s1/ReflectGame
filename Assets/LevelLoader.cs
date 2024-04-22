@@ -4,8 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-    // Rename later.
-    // public class SceneLoader : MonoBehaviour
+
 public class LevelLoader : MonoBehaviour
 {
     [HideInInspector] public static LevelLoader Instance { get { return instance; } }
@@ -17,8 +16,6 @@ public class LevelLoader : MonoBehaviour
 
     [Tooltip("How long transition particle plays for before next scene loads.")]
     [SerializeField] float preSceneLoadParticlePersistenceLength = 2f;
-    // [Tooltip("How long into new scene the transition particle keeps making new particles.")]
-    // [SerializeField] float postSceneLoadParticlePersistenceLength = 0.5f;
 
 
     int activeSceneIndex;
@@ -67,7 +64,6 @@ public class LevelLoader : MonoBehaviour
             
             yield return new WaitForSeconds(preSceneLoadParticlePersistenceLength);
             SceneManager.LoadScene(activeSceneIndex + 1);
-            // PlayerController.Instance.CanReflect(false);
         }
         
         else
@@ -77,7 +73,6 @@ public class LevelLoader : MonoBehaviour
 
     public IEnumerator ReloadCurrentScene()
     {
-        // Debug.Log("Level Loader is attempting to REload next scene.");
         yield return StartCoroutine(HandleCameraFadeAnimation());
         
         SceneManager.LoadScene(activeSceneIndex);
