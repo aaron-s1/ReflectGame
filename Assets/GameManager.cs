@@ -75,7 +75,6 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator FindNextAttacker()
     {
-        Debug.Log("FindNextAttacker() called");
         yield return new WaitUntil(() => delayAttacksOnSceneLoad);
 
         // Player died...

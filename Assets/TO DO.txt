@@ -3,17 +3,6 @@
 
 
 
-Archer attack is too far away.
-Knight's attack is a little too far to the right.
-
-
-
-- Lots of testing, bug fixing.
-
-
-- Clear certain Instances between levels?
-
-
 
 After done testing:
     - Revert health on heroes
