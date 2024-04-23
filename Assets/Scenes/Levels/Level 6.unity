@@ -12115,14 +12115,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1722574001}
     m_Modifications:
-    - target: {fileID: 1611372162229531278, guid: ee5dd46408837c6429e8a743942620c9, type: 3}
-      propertyPath: damage
-      value: 200
-      objectReference: {fileID: 0}
-    - target: {fileID: 1611372162229531278, guid: ee5dd46408837c6429e8a743942620c9, type: 3}
-      propertyPath: testDelayForFade
-      value: 0.9
-      objectReference: {fileID: 0}
     - target: {fileID: 5369606847668078359, guid: ee5dd46408837c6429e8a743942620c9, type: 3}
       propertyPath: m_Name
       value: Player (Arcane Mage)
@@ -12169,10 +12161,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5369606847668078361, guid: ee5dd46408837c6429e8a743942620c9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7733295194438330779, guid: ee5dd46408837c6429e8a743942620c9, type: 3}
-      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

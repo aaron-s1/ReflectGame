@@ -1704,6 +1704,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1756605212}
     m_Modifications:
+    - target: {fileID: 1375392821, guid: 588d570a52e35c5458973a7d067a2875, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1907433739, guid: 588d570a52e35c5458973a7d067a2875, type: 3}
+      propertyPath: positionOfVeryFirstPlayerSprite.x
+      value: 0.9
+      objectReference: {fileID: 0}
     - target: {fileID: 1726022557058710, guid: 588d570a52e35c5458973a7d067a2875, type: 3}
       propertyPath: m_Name
       value: Knight
@@ -1947,7 +1955,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5739112585893576809, guid: 3bd81bb7a5dea17448d266d0d6f6ebbf, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.05
+      value: 0.9
       objectReference: {fileID: 0}
     - target: {fileID: 5739112585893576809, guid: 3bd81bb7a5dea17448d266d0d6f6ebbf, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3451,10 +3459,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4463561712627088, guid: 7aed946b5664405459098c6b3528627a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6330133319764727251, guid: 7aed946b5664405459098c6b3528627a, type: 3}
-      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

@@ -1,9 +1,9 @@
+using System.IO.IsolatedStorage;
 using System.Xml.Schema;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
 
 public class LevelLoader : MonoBehaviour
 {
@@ -37,7 +37,7 @@ public class LevelLoader : MonoBehaviour
 
     void Start() 
     {
-        if (activeSceneIndex != (sceneCount - 1))
+        if (!IsLastLevel())
             StartCoroutine(AsyncLoadNextScene());
             
         StartCoroutine(GameManager.Instance.DelayHeroAttacksOnSceneLoad());
@@ -83,12 +83,23 @@ public class LevelLoader : MonoBehaviour
 
     // The end transition already occurs automatically on new scene load.
     IEnumerator HandleCameraFadeAnimation()
-    {        
+    {
+        if (IsLastLevel())
+            yield break;
+
         fadeTransition.SetTrigger("Start");
 
-        if (fadeTransition?.GetCurrentAnimatorClipInfo(0)[0].clip != null)
-            fadeTransitionTime = fadeTransition.GetCurrentAnimatorClipInfo(0)[0].clip.length;
+        // if (fadeTransition.GetCurrentAnimatorClipInfo(0)[0].clip != null)
+        fadeTransitionTime = fadeTransition.GetCurrentAnimatorClipInfo(0)[0].clip.length;
 
         yield return new WaitForSeconds(fadeTransitionTime);
+    }
+
+
+    bool IsLastLevel()
+    {
+        if (activeSceneIndex == (sceneCount - 1))
+            return true;
+        return false;
     }
 }

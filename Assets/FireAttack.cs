@@ -135,6 +135,7 @@ public class FireAttack : MonoBehaviour, IEnemyFire, IGetHealthSystem
 
     public IEnumerator BeginAttackSequence()
     {
+
         if (IsDead())
         {
             Debug.Log($"{gameObject} is dead and failed to fire attack. Moved to next attacker.");
@@ -172,6 +173,7 @@ public class FireAttack : MonoBehaviour, IEnemyFire, IGetHealthSystem
         FindNewAttackParticlePositionAndRotation(false);
         SetActivityOfParticle(auraParticle, false);
         SetActivityOfParticle(attackParticle, true);
+        Debug.Break();
 
         
         StartCoroutine(EnterDamageStep());

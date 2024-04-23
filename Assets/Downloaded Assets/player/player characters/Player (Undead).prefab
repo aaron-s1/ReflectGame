@@ -14727,11 +14727,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2946937339466278007, guid: db597a214a8fc4f4fa9949941d13a561, type: 3}
       propertyPath: reflectSequence.Array.data[1].holdDurationNeeded
-      value: 2
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2946937339466278007, guid: db597a214a8fc4f4fa9949941d13a561, type: 3}
       propertyPath: reflectSequence.Array.data[2].holdDurationNeeded
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2946937339466278007, guid: db597a214a8fc4f4fa9949941d13a561, type: 3}
       propertyPath: reflectSequence.Array.data[3].holdDurationNeeded
@@ -14775,7 +14775,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8376006388758794721, guid: db597a214a8fc4f4fa9949941d13a561, type: 3}
       propertyPath: attackIsAoE
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8376006388758794721, guid: db597a214a8fc4f4fa9949941d13a561, type: 3}
       propertyPath: attackParticle
