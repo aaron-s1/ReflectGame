@@ -7,7 +7,6 @@ public class GameManager : MonoBehaviour
 {
     
     [HideInInspector] public static GameManager Instance { get { return instance; } }
-    [HideInInspector] public static GameManager playerInstance;
     static GameManager instance;
 
     public List<FireAttack> attackerList;
@@ -79,53 +78,46 @@ public class GameManager : MonoBehaviour
 
         // Player died...
         if (player.gameObject.GetComponent<FireAttack>().IsDead())
-        {
-            yield return StartCoroutine(LevelLoader.Instance.ReloadCurrentScene());
-            yield break;
-        }
+            StartCoroutine(LevelLoader.Instance.ReloadCurrentScene());
 
-        // .. or was the only character left (level is over)
-        if (heroList.Count == 0)
+        // Player was only character left (level is won)
+        else if (heroList.Count == 0)
         {
             if (attackerList[0] == player.gameObject.GetComponent<FireAttack>())
             {
-                yield return StartCoroutine(LevelLoader.Instance.LoadNextScene());
+                StartCoroutine(LevelLoader.Instance.LoadNextScene());
                 yield break;
             }
         }
 
         attackerIndex++;
 
+
         if (attackerIndex >= attackerList.Count)
             attackerIndex = 0;
 
-        currentAttacker = attackerList[attackerIndex];
+
+        if (attackerIndex >= 0)
+            currentAttacker = attackerList[attackerIndex];
 
         StartCoroutine(RotateToNextAttacker());
-
-        yield break;
     }
 
 
+    // Inherent: Player is alive. At least one hero is alive.
     IEnumerator RotateToNextAttacker()
     {
         yield return new WaitUntil(() => delayAttacksOnSceneLoad);
 
-        if (currentAttacker.IsPlayer())
-            StartCoroutine(currentAttacker.BeginAttackSequence());            
+        if (currentAttacker.IsDead())
+            StartCoroutine(FindNextAttacker());
 
         else
         {
-            if (!currentAttacker.IsDead())
-            {
-                yield return StartCoroutine(RotateAllHeroPositions());
-                
-                lastHeroToAttack = currentAttacker;
-                StartCoroutine(currentAttacker.BeginAttackSequence());
-            }
+            yield return StartCoroutine(RotateAllHeroPositions());
+            lastHeroToAttack = currentAttacker;
 
-            else
-                StartCoroutine(FindNextAttacker());
+            StartCoroutine(currentAttacker.BeginAttackSequence());
         }
     }
 
@@ -134,8 +126,12 @@ public class GameManager : MonoBehaviour
     IEnumerator RotateAllHeroPositions()
     {
         var attackerIndex = heroList.IndexOf(currentAttacker);
-        heroList.RemoveAt(attackerIndex);
-        heroList.Insert(0, currentAttacker);
+
+        if (attackerIndex >= 0)
+        {
+            heroList.RemoveAt(attackerIndex);
+            heroList.Insert(0, currentAttacker);
+        }
 
         foreach (FireAttack hero in heroList)
         {
@@ -148,12 +144,15 @@ public class GameManager : MonoBehaviour
 
     #endregion
 
+    // int heroesDeadFromLastAttack;
 
     public IEnumerator RemoveHeroFromAttackerLists(FireAttack character)    
     {
         heroList.Remove(character);
         attackerList.Remove(character);
 
+        attackerIndex--;
+        
         yield break;
     }
 

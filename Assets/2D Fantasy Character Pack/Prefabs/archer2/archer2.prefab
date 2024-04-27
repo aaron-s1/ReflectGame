@@ -408,7 +408,7 @@ MonoBehaviour:
   attackParticle: {fileID: 2051744134}
   auraParticle: {fileID: 911217991}
   countdownToAttackObject: {fileID: 1039715520}
-  attackIsAoE: 1
+  attackIsAoE: 0
   playerIsMage: 0
   heroIsArcher: 1
   x_PosReflectOffset: -1.4

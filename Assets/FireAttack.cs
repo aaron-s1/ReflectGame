@@ -143,6 +143,11 @@ public class FireAttack : MonoBehaviour, IEnemyFire, IGetHealthSystem
             yield break;
         }
 
+        // if (heroIsArcher)
+            // Time.timeScale = 0.7f;
+        // else
+            // Time.timeScale = 4f;
+
         SetActivityOfParticle(auraParticle, true);
 
         // Open up Player's reflect window.
@@ -173,7 +178,7 @@ public class FireAttack : MonoBehaviour, IEnemyFire, IGetHealthSystem
         FindNewAttackParticlePositionAndRotation(false);
         SetActivityOfParticle(auraParticle, false);
         SetActivityOfParticle(attackParticle, true);
-        Debug.Break();
+        // Debug.Break();
 
         
         StartCoroutine(EnterDamageStep());
@@ -202,6 +207,10 @@ public class FireAttack : MonoBehaviour, IEnemyFire, IGetHealthSystem
 
         else if (!IsPlayer())
         {
+            // if (heroIsArcher)
+            // {
+            //     currentPlayer.CanReflect(true);
+            // }
             if (!currentPlayer.PlayerReflected())
             {
                 FindNewAttackParticlePositionAndRotation(false);
@@ -273,6 +282,7 @@ public class FireAttack : MonoBehaviour, IEnemyFire, IGetHealthSystem
 
         SetActivityOfParticle(attackParticle, false);        
 
+
         StartCoroutine(gameManager.FindNextAttacker());
         yield break;
     }
@@ -320,7 +330,7 @@ public class FireAttack : MonoBehaviour, IEnemyFire, IGetHealthSystem
             }
         }
 
-        // Fade out dead heroes, then remove them from heroList. Don't yield.
+        // Do NOT yield. Fade out dead heroes, then remove them from heroList. 
         foreach (var hero in heroesThatDied)
         {
             StartCoroutine(hero.FadeSpriteOnDeath(deathFadeTime, true));

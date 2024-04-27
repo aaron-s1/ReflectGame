@@ -65,7 +65,7 @@ public class EndGame : MonoBehaviour
             yield break;
         }
 
-        Debug.Log("Level Loader tried to advance, but found no next scene.");
+        // Debug.Log("Level Loader tried to advance, but found no next scene.");
 
         Time.timeScale = 1f;
 
@@ -141,8 +141,6 @@ public class EndGame : MonoBehaviour
     {
         foreach (Transform hero in enemyHeroes.transform)
         {
-            Debug.Log($"{hero.gameObject} began walking");
-
             Animator heroAnim = hero.GetComponent<Animator>();
             heroAnim.ResetTrigger("idle");
             heroAnim.SetTrigger("walk");

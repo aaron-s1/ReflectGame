@@ -63,6 +63,7 @@ public class LevelLoader : MonoBehaviour
             var newTransitionParticle = Instantiate(levelTransitionParticle, levelTransitionParticle.transform.position, Quaternion.identity);
             
             yield return new WaitForSeconds(preSceneLoadParticlePersistenceLength);
+
             SceneManager.LoadScene(activeSceneIndex + 1);
         }
         
