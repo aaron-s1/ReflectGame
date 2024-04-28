@@ -148,6 +148,10 @@ public class EndGame : MonoBehaviour
             hero.GetComponent<MoveToExitOnGameOver>().MoveToGate(entryGateHeroKillPoint, heroWalkSpeedToGate);
         }
 
+        // Adjust so Player doesn't look weirdly positioned when zoomed in on.
+        Vector3 playerPos = PlayerController.Instance.gameObject.transform.position;
+        PlayerController.Instance.gameObject.transform.position = new Vector3(playerPos.x, playerPos.y - .01f, playerPos.z);
+
         // Heroes call this via KillHeroAsItExitsGate.cs
         yield return new WaitUntil(() => heroesLeftToDestroy == 0);
     }
