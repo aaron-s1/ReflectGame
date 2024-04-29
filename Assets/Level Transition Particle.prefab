@@ -429,7 +429,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 19900004, guid: cdd71635203c8ed47a18dcefce87463e, type: 3}
       propertyPath: m_SortingLayer
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 19900004, guid: cdd71635203c8ed47a18dcefce87463e, type: 3}
       propertyPath: m_SortingOrder
@@ -437,7 +437,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 19900004, guid: cdd71635203c8ed47a18dcefce87463e, type: 3}
       propertyPath: m_SortingLayerID
-      value: -1005652443
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 19900004, guid: cdd71635203c8ed47a18dcefce87463e, type: 3}
       propertyPath: m_MaxParticleSize
