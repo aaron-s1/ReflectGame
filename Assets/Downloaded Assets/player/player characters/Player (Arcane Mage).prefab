@@ -293,6 +293,10 @@ PrefabInstance:
       propertyPath: lengthInSec
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1979909179705787627, guid: 8dadee4828aadbf4d9a42f1d0b128fce, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2143352515297882852, guid: 8dadee4828aadbf4d9a42f1d0b128fce, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -340,6 +344,18 @@ PrefabInstance:
     - target: {fileID: 2143352515297882854, guid: 8dadee4828aadbf4d9a42f1d0b128fce, type: 3}
       propertyPath: m_Name
       value: Wind Storm Attack
+      objectReference: {fileID: 0}
+    - target: {fileID: 2143352515492870722, guid: 8dadee4828aadbf4d9a42f1d0b128fce, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2143352516234503237, guid: 8dadee4828aadbf4d9a42f1d0b128fce, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2143352516420784093, guid: 8dadee4828aadbf4d9a42f1d0b128fce, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2143352515297882855, guid: 8dadee4828aadbf4d9a42f1d0b128fce, type: 3}

@@ -12241,10 +12241,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1722574001}
     m_Modifications:
-    - target: {fileID: 6179509645278858199, guid: 300581fd3c99054478ddfe833c7bb92f, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6847842546359126935, guid: 300581fd3c99054478ddfe833c7bb92f, type: 3}
       propertyPath: m_Name
       value: Player (Flame Horse)

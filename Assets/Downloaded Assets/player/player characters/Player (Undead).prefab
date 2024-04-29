@@ -14523,6 +14523,10 @@ PrefabInstance:
       propertyPath: m_makeObjs.Array.data[0]
       value: 
       objectReference: {fileID: 5206109435325817649, guid: a15c7d8d06df2be4f83d890f63e512b9, type: 3}
+    - target: {fileID: 3053178315256697454, guid: ae9ac4eaff1941340884f286a61c1a98, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4193282101358328013, guid: ae9ac4eaff1941340884f286a61c1a98, type: 3}
       propertyPath: m_Name
       value: Multi-Spear Attack
@@ -14775,7 +14779,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8376006388758794721, guid: db597a214a8fc4f4fa9949941d13a561, type: 3}
       propertyPath: attackIsAoE
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8376006388758794721, guid: db597a214a8fc4f4fa9949941d13a561, type: 3}
       propertyPath: attackParticle
