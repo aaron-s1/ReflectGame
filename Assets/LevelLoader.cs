@@ -56,12 +56,12 @@ public class LevelLoader : MonoBehaviour
 
 
 
-    public IEnumerator LoadNextScene() 
+    public IEnumerator LoadNextScene()
     {
         if (activeSceneIndex + 1 < sceneCount)
         {
             var newTransitionParticle = Instantiate(levelTransitionParticle, levelTransitionParticle.transform.position, Quaternion.identity);
-            
+            // newTransitionParticle.Play();
             yield return new WaitForSeconds(preSceneLoadParticlePersistenceLength);
 
             SceneManager.LoadScene(activeSceneIndex + 1);
