@@ -50,9 +50,6 @@ public class EndGame : MonoBehaviour
 
             cameraAnim = Camera.main.GetComponent<Animator>();
         }
-
-        // temp for testing.
-        // StartCoroutine(SwapSlimeSprite());
     }
 
 
@@ -67,12 +64,10 @@ public class EndGame : MonoBehaviour
 
         // Debug.Log("Level Loader tried to advance, but found no next scene.");
 
-        Time.timeScale = 1f;
-
         
         DeleteAllUIs();
 
-
+        
         yield return StartCoroutine(FadeEnemiesBackIn());
         yield return StartCoroutine(PanCameraToGate());
         yield return StartCoroutine(OpenGate());
