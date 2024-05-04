@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class DontDestroyThisOnLoad : MonoBehaviour
 {
-    [SerializeField] Material testSelfMat;
     [SerializeField] bool dontDestroy = true;
     [SerializeField] float destroyAfter;
 
@@ -17,19 +16,12 @@ public class DontDestroyThisOnLoad : MonoBehaviour
             if (destroyAfter > 0)
                 Invoke("DeleteObject", destroyAfter);
         }
-
-        // GetComponent<ParticleSystem>().Play();
     }
-    void Start() 
-    {
-        // GetComponent<Material>().mainTexture = testSelfMat.mainTexture;        
 
-        // Debug.Log(GetComponent<Material>().mainTexture);
-        // return;
-        // // Debug.Log(GetComponent<Material>().get);
-        // Debug.Log(GetComponent<Material>().color);
-        // Debug.Log(GetComponent<Material>().shader);
-        GetComponent<ParticleSystem>().Play();
+    void Start()
+    {
+        if (GetComponent<ParticleSystem>() != null)
+            GetComponent<ParticleSystem>().Play();
     }
 
     void DeleteObject() 

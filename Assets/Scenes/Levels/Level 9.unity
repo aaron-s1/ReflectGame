@@ -4495,7 +4495,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1659328576}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &903050409
 GameObject:
@@ -5403,11 +5403,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!224 &1080223060 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 5385780997181778982, guid: 0a3e90c7fe5ed124399a6797d7c524e0, type: 3}
-  m_PrefabInstance: {fileID: 5385780998261918066}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1112793925
 GameObject:
   m_ObjectHideFlags: 0
@@ -6248,6 +6243,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1241488798 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5385780996970982601, guid: 0a3e90c7fe5ed124399a6797d7c524e0, type: 3}
+  m_PrefabInstance: {fileID: 5385780998261918066}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1252827531
 GameObject:
   m_ObjectHideFlags: 0
@@ -8635,7 +8641,6 @@ Transform:
   m_Children:
   - {fileID: 1421548684}
   - {fileID: 7608620324599865628}
-  - {fileID: 1080223060}
   - {fileID: 889956285}
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -8724,6 +8729,24 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1673592812 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5385780997181778978, guid: 0a3e90c7fe5ed124399a6797d7c524e0, type: 3}
+  m_PrefabInstance: {fileID: 5385780998261918066}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1673592813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1673592812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c9d0262aff1e8d448185ef2c0b94a82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelText: {fileID: 1241488798}
 --- !u!1 &1676193370
 GameObject:
   m_ObjectHideFlags: 0
@@ -15777,7 +15800,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0061716134cd3c64ead37c575a1b636c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  testSelfMat: {fileID: 2100000, guid: 5a595d561ddb2ac4aad808dc54e08e6a, type: 2}
   dontDestroy: 1
   destroyAfter: 10
 --- !u!199 &2045408802
@@ -21357,7 +21379,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1659328576}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 5385780997181778978, guid: 0a3e90c7fe5ed124399a6797d7c524e0, type: 3}
       propertyPath: m_Name
@@ -21373,7 +21395,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5385780997181778982, guid: 0a3e90c7fe5ed124399a6797d7c524e0, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5385780997181778982, guid: 0a3e90c7fe5ed124399a6797d7c524e0, type: 3}
       propertyPath: m_AnchorMax.x
