@@ -16601,6 +16601,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1722574001}
     m_Modifications:
+    - target: {fileID: 3402702434992538523, guid: 952b70cbfd013b0488a863eaeeda3bbe, type: 3}
+      propertyPath: health
+      value: 85
+      objectReference: {fileID: 0}
     - target: {fileID: 5992315986943864831, guid: 952b70cbfd013b0488a863eaeeda3bbe, type: 3}
       propertyPath: m_Name
       value: FX_Smoke (Slime's faux attack)
@@ -16656,6 +16660,14 @@ PrefabInstance:
     - target: {fileID: 8349886315033032204, guid: 952b70cbfd013b0488a863eaeeda3bbe, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8349886315033032205, guid: 952b70cbfd013b0488a863eaeeda3bbe, type: 3}
+      propertyPath: reflectSequence.Array.data[2].holdDurationNeeded
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8349886315033032205, guid: 952b70cbfd013b0488a863eaeeda3bbe, type: 3}
+      propertyPath: reflectSequence.Array.data[3].holdDurationNeeded
+      value: 0.25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 952b70cbfd013b0488a863eaeeda3bbe, type: 3}

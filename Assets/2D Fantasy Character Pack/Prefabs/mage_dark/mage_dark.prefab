@@ -39493,7 +39493,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
-  damage: 20
+  damage: 25
   numberOfDamageHits: 1
   timeBeforeAttack: 2
   firstDamageStepAttackPercent: 5

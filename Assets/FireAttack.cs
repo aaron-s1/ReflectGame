@@ -207,10 +207,6 @@ public class FireAttack : MonoBehaviour, IEnemyFire, IGetHealthSystem
 
         else if (!IsPlayer())
         {
-            // if (heroIsArcher)
-            // {
-            //     currentPlayer.CanReflect(true);
-            // }
             if (!currentPlayer.PlayerReflected())
             {
                 FindNewAttackParticlePositionAndRotation(false);
@@ -266,7 +262,7 @@ public class FireAttack : MonoBehaviour, IEnemyFire, IGetHealthSystem
         }
 
 
-        // Syncs up with GameManager's attacker delay, for weird issues I still don't understand.
+        // Syncs up with GameManager's attacker delay, for weird issues I still don't understand?
         yield return new WaitForSeconds(GameManager.Instance.nextAttackerDelay);
         yield return null;  // padding.
 
@@ -274,10 +270,8 @@ public class FireAttack : MonoBehaviour, IEnemyFire, IGetHealthSystem
         yield return StartCoroutine(KillDeadHeroes());
 
 
-
         if (anim)
             yield return new WaitUntil(() => !anim.IsInTransition(0));
-
 
 
         SetActivityOfParticle(attackParticle, false);        
@@ -303,15 +297,16 @@ public class FireAttack : MonoBehaviour, IEnemyFire, IGetHealthSystem
                     yield return new WaitForSeconds(remainderOfAttackDuration / numberOfDamageHits);
                     target.healthSystem.Damage(damageValue / numberOfDamageHits);
                 }
-
             }
 
             else
                 target.healthSystem.Damage(damageValue);
 
-
+            
             if (target.healthSystem.IsDead())
+            {
                 yield return new WaitUntil(() => !attackParticle.isPlaying);
+            }
         }
     }
 
@@ -319,7 +314,7 @@ public class FireAttack : MonoBehaviour, IEnemyFire, IGetHealthSystem
     public IEnumerator KillDeadHeroes() 
     {
         // yield return new WaitForSeconds(0.5f);
-        List<FireAttack> heroesThatDied = new List<FireAttack>();
+        List<FireAttack> heroesThatDied = new List<FireAttack>();        
         
         foreach (var hero in gameManager.heroList)
         {
@@ -327,14 +322,29 @@ public class FireAttack : MonoBehaviour, IEnemyFire, IGetHealthSystem
             {
                 Destroy(hero.GetComponentInChildren<HealthBarUI>().gameObject);
                 heroesThatDied.Add(hero);
+                Debug.Log($"{hero} is set up to die");
+                Debug.Log(heroesThatDied.Count());
             }
+        }
+
+        // If this attacker would die, any fades/removals will now occur on other attackers first.
+        if (heroesThatDied.Contains(this))
+        {
+            heroesThatDied.Remove(this);
+            heroesThatDied.Add(this);
         }
 
         // Do NOT yield. Fade out dead heroes, then remove them from heroList. 
         foreach (var hero in heroesThatDied)
         {
-            StartCoroutine(hero.FadeSpriteOnDeath(deathFadeTime, true));
-            StartCoroutine(gameManager.RemoveHeroFromAttackerLists(hero));
+            Debug.Log($"heroesThatDied contains: {hero}");
+            
+            // if (hero != this)
+            // {
+                Debug.Log($"{hero} began fading.");
+                // StartCoroutine(hero.FadeSpriteOnDeath(deathFadeTime, true));
+                // StartCoroutine(gameManager.RemoveHeroFromAttackerLists(hero));
+            // }
         }
 
         // Yields only once, so all heroes that died from last attack fade simultaneously.

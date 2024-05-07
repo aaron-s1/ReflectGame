@@ -14815,7 +14815,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8376006388758794721, guid: db597a214a8fc4f4fa9949941d13a561, type: 3}
       propertyPath: health
-      value: 150
+      value: 160
       objectReference: {fileID: 0}
     - target: {fileID: 8376006388758794721, guid: db597a214a8fc4f4fa9949941d13a561, type: 3}
       propertyPath: attackIsAoE

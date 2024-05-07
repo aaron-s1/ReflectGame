@@ -6677,7 +6677,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1907433739, guid: 588d570a52e35c5458973a7d067a2875, type: 3}
       propertyPath: damage
-      value: 22
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 1726022557058710, guid: 588d570a52e35c5458973a7d067a2875, type: 3}
       propertyPath: m_Name
@@ -13460,7 +13460,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 247459672, guid: 7aed946b5664405459098c6b3528627a, type: 3}
       propertyPath: damage
-      value: 22
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 1601947692949862, guid: 7aed946b5664405459098c6b3528627a, type: 3}
       propertyPath: m_Name
@@ -46008,7 +46008,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2059698519, guid: bedfc2489e233ae479eff548012e1c92, type: 3}
       propertyPath: damage
-      value: 22
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 1589123261345258, guid: bedfc2489e233ae479eff548012e1c92, type: 3}
       propertyPath: m_Name
@@ -51285,26 +51285,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1722574001}
     m_Modifications:
-    - target: {fileID: 6722061378993922925, guid: a2dba57173b404141aba11e458c3268d, type: 3}
-      propertyPath: m_SortingOrder
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6722061379297258971, guid: a2dba57173b404141aba11e458c3268d, type: 3}
-      propertyPath: m_SortingOrder
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6722061379467376272, guid: a2dba57173b404141aba11e458c3268d, type: 3}
-      propertyPath: m_SortingOrder
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6722061379994402938, guid: a2dba57173b404141aba11e458c3268d, type: 3}
-      propertyPath: m_SortingOrder
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6722061380097876393, guid: a2dba57173b404141aba11e458c3268d, type: 3}
-      propertyPath: m_SortingOrder
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 6722375788021266002, guid: a2dba57173b404141aba11e458c3268d, type: 3}
       propertyPath: m_RootOrder
       value: 0
