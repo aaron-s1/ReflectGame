@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Runtime.CompilerServices;
+using CodeMonkey.HealthSystemCM;
 
 public class GameManager : MonoBehaviour
 {
@@ -28,6 +29,7 @@ public class GameManager : MonoBehaviour
 
     int attackerIndex = -1;
 
+    const float heroDeathFadeTime = 1f;
 
 
     void Awake()
@@ -76,11 +78,12 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitUntil(() => delayAttacksOnSceneLoad);
 
-        // Player died...
+        yield return StartCoroutine(KillDeadHeroes());
+
+
         if (player.gameObject.GetComponent<FireAttack>().IsDead())
             StartCoroutine(LevelLoader.Instance.ReloadCurrentScene());
-
-        // Player was only character left (level is won)
+        
         else if (heroList.Count == 0)
         {
             if (attackerList[0] == player.gameObject.GetComponent<FireAttack>())
@@ -96,7 +99,6 @@ public class GameManager : MonoBehaviour
         if (attackerIndex >= attackerList.Count)
             attackerIndex = 0;
 
-
         if (attackerIndex >= 0)
             currentAttacker = attackerList[attackerIndex];
 
@@ -104,7 +106,7 @@ public class GameManager : MonoBehaviour
     }
 
 
-    // Inherent: Player is alive. At least one hero is alive.
+    // Inherent: Player and 1 or more heroes is alive.
     IEnumerator RotateToNextAttacker()
     {
         yield return new WaitUntil(() => delayAttacksOnSceneLoad);
@@ -119,6 +121,28 @@ public class GameManager : MonoBehaviour
 
             StartCoroutine(currentAttacker.BeginAttackSequence());
         }
+    }
+
+
+    IEnumerator KillDeadHeroes()
+    {
+        List<FireAttack> heroesThatDied = new List<FireAttack>();
+
+        foreach (FireAttack hero in heroList)
+        {            
+            if (hero.IsDead())
+                heroesThatDied.Add(hero);                
+        }
+        
+        foreach (FireAttack hero in heroesThatDied)
+        {
+            Destroy(hero.GetComponentInChildren<HealthBarUI>().gameObject);
+            hero.GetComponent<FireAttack>().StartCoroutine(hero.FadeSpriteOnDeath(1f, true));
+            StartCoroutine(RemoveHeroFromAttackerLists(hero));
+        }
+
+        if (heroesThatDied.Count >= 1)
+            yield return new WaitForSeconds(heroDeathFadeTime);
     }
 
    

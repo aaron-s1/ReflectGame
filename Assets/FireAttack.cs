@@ -55,6 +55,8 @@ public class FireAttack : MonoBehaviour, IEnemyFire, IGetHealthSystem
 
     GameManager gameManager;
 
+    List<FireAttack> heroesThatDied;
+
 
     // This is also used for finding damage steps.
     float attackParticleLifetime;
@@ -100,6 +102,8 @@ public class FireAttack : MonoBehaviour, IEnemyFire, IGetHealthSystem
 
         AdjustAttackPositionsOnSceneLoad();
         Invoke("FindPlayer", 1f);
+
+        heroesThatDied = new List<FireAttack>();
     }
 
 
@@ -135,18 +139,12 @@ public class FireAttack : MonoBehaviour, IEnemyFire, IGetHealthSystem
 
     public IEnumerator BeginAttackSequence()
     {
-
         if (IsDead())
         {
             Debug.Log($"{gameObject} is dead and failed to fire attack. Moved to next attacker.");
             StartCoroutine(gameManager.FindNextAttacker());
             yield break;
         }
-
-        // if (heroIsArcher)
-            // Time.timeScale = 0.7f;
-        // else
-            // Time.timeScale = 4f;
 
         SetActivityOfParticle(auraParticle, true);
 
@@ -178,7 +176,6 @@ public class FireAttack : MonoBehaviour, IEnemyFire, IGetHealthSystem
         FindNewAttackParticlePositionAndRotation(false);
         SetActivityOfParticle(auraParticle, false);
         SetActivityOfParticle(attackParticle, true);
-        // Debug.Break();
 
         
         StartCoroutine(EnterDamageStep());
@@ -187,7 +184,7 @@ public class FireAttack : MonoBehaviour, IEnemyFire, IGetHealthSystem
 
     IEnumerator EnterDamageStep()
     {
-        // Create point where first damage step occurs.        
+        // Create point where first damage step will occur.
         timeUntilFirstDamageStep = attackParticleLifetime * firstDamageStepAttackPercent * 0.01f;
         remainderOfAttackDuration = attackParticleLifetime - timeUntilFirstDamageStep;        
 
@@ -228,6 +225,7 @@ public class FireAttack : MonoBehaviour, IEnemyFire, IGetHealthSystem
                 yield return new WaitForSeconds(timeUntilFirstDamageStep);
 
                 if (attackIsAoE)
+                    // StartCoroutine(DealDamageTo(damage, null));
                     yield return StartCoroutine(DealDamageTo(damage, null));
                 else
                     yield return StartCoroutine(DealDamageTo(damage, this));
@@ -260,14 +258,12 @@ public class FireAttack : MonoBehaviour, IEnemyFire, IGetHealthSystem
             if (!IsPlayer())
                 StartCoroutine(ApplyDamage(damageValue, this));
         }
+        
 
-
-        // Syncs up with GameManager's attacker delay, for weird issues I still don't understand?
+        // Syncs up with GameManager's attacker delay, for issues I still don't understand?
         yield return new WaitForSeconds(GameManager.Instance.nextAttackerDelay);
         yield return null;  // padding.
-
         yield return new WaitUntil(() => !attackParticle.isPlaying);
-        yield return StartCoroutine(KillDeadHeroes());
 
 
         if (anim)
@@ -294,63 +290,24 @@ public class FireAttack : MonoBehaviour, IEnemyFire, IGetHealthSystem
                 // (first hit already occurred at damage step)
                 for (int hits = 0; hits < numberOfDamageHits; hits++)
                 {
-                    yield return new WaitForSeconds(remainderOfAttackDuration / numberOfDamageHits);
+                    // swapped order (temp).
                     target.healthSystem.Damage(damageValue / numberOfDamageHits);
+                    yield return new WaitForSeconds(remainderOfAttackDuration / numberOfDamageHits);
                 }
             }
 
             else
+            {
                 target.healthSystem.Damage(damageValue);
+                // damageWindowEnded = true;
+            }
 
             
             if (target.healthSystem.IsDead())
-            {
                 yield return new WaitUntil(() => !attackParticle.isPlaying);
-            }
         }
     }
 
-
-    public IEnumerator KillDeadHeroes() 
-    {
-        // yield return new WaitForSeconds(0.5f);
-        List<FireAttack> heroesThatDied = new List<FireAttack>();        
-        
-        foreach (var hero in gameManager.heroList)
-        {
-            if (hero.healthSystem.IsDead())
-            {
-                Destroy(hero.GetComponentInChildren<HealthBarUI>().gameObject);
-                heroesThatDied.Add(hero);
-                Debug.Log($"{hero} is set up to die");
-                Debug.Log(heroesThatDied.Count());
-            }
-        }
-
-        // If this attacker would die, any fades/removals will now occur on other attackers first.
-        if (heroesThatDied.Contains(this))
-        {
-            heroesThatDied.Remove(this);
-            heroesThatDied.Add(this);
-        }
-
-        // Do NOT yield. Fade out dead heroes, then remove them from heroList. 
-        foreach (var hero in heroesThatDied)
-        {
-            Debug.Log($"heroesThatDied contains: {hero}");
-            
-            // if (hero != this)
-            // {
-                Debug.Log($"{hero} began fading.");
-                // StartCoroutine(hero.FadeSpriteOnDeath(deathFadeTime, true));
-                // StartCoroutine(gameManager.RemoveHeroFromAttackerLists(hero));
-            // }
-        }
-
-        // Yields only once, so all heroes that died from last attack fade simultaneously.
-        if (heroesThatDied.Count >= 1)
-            yield return new WaitForSeconds(deathFadeTime);
-    }
 
     #endregion
 
