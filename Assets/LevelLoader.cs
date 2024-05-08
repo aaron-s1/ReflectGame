@@ -43,11 +43,13 @@ public class LevelLoader : MonoBehaviour
         StartCoroutine(GameManager.Instance.DelayHeroAttacksOnSceneLoad());
     }
     
+    AsyncOperation asyncLoad;
     
     IEnumerator AsyncLoadNextScene()
     {
         var nextSceneName = SceneUtility.GetScenePathByBuildIndex(activeSceneIndex + 1);
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(nextSceneName);
+        // AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(nextSceneName);
+        asyncLoad = SceneManager.LoadSceneAsync(nextSceneName);        
         asyncLoad.allowSceneActivation = false;
 
         while (!asyncLoad.isDone)
@@ -61,10 +63,10 @@ public class LevelLoader : MonoBehaviour
         if (activeSceneIndex + 1 < sceneCount)
         {
             var newTransitionParticle = Instantiate(levelTransitionParticle, levelTransitionParticle.transform.position, Quaternion.identity);
-            // newTransitionParticle.Play();
             yield return new WaitForSeconds(preSceneLoadParticlePersistenceLength);
+            asyncLoad.allowSceneActivation = true;
 
-            SceneManager.LoadScene(activeSceneIndex + 1);
+            // SceneManager.LoadScene(activeSceneIndex + 1);
         }
         
         else
