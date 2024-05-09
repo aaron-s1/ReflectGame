@@ -1,3 +1,5 @@
+
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -42,7 +44,7 @@ public class PlayerController : MonoBehaviour
 
     float reflectStartTime;
 
-    float simultaneousKeyHoldTimer; 
+    float simultaneousKeyHoldTimer;
 
 
 
@@ -56,13 +58,13 @@ public class PlayerController : MonoBehaviour
     }
 
     void Start() =>
-        CompletelyResetAllKeys();
+        CompletelyResetKeySequence();
 
 
     void Update()
     {
         if (reflectedSuccessfully || !allowReflectSequence)
-            CompletelyResetAllKeys();
+            CompletelyResetKeySequence();
 
         IncrementKeyOnSuccessfulPressOrHold();
         CheckIfKeySequenceFullyCompleted();
@@ -70,7 +72,7 @@ public class PlayerController : MonoBehaviour
         reflectStartTime = Time.time;   
     }
 
-    public void CompletelyResetAllKeys()
+    public void CompletelyResetKeySequence()
     {
         currentKeyIndex = 0;
         currentKeyData.Invoke(-1, false);
@@ -88,21 +90,23 @@ public class PlayerController : MonoBehaviour
         var currentKeyCode = KeySequenceItem.KeyMap[currentKey.key];
 
 
-        // Makes sure Key increments instantly if it doesn't need held down (improves input flow)
+        // Makes sure Key increments instantly if it doesn't need held down (improves flow)
         if (currentKeyWasSuccessful)
         {
             if (!currentKey.KeyNeedsHeldDown() || Input.GetKeyUp(currentKeyCode))
             {
-                currentKeyData.Invoke(currentKeyIndex, currentKey.alsoRequiresNextKey);
-                currentKeyIndex++;
-
-                if (currentKey.alsoRequiresNextKey)
+                if (Input.GetKeyUp(currentKeyCode)) //
+                {
+                    currentKeyData.Invoke(currentKeyIndex, currentKey.alsoRequiresNextKey);
                     currentKeyIndex++;
 
-                currentKeyWasSuccessful = false;
+                    if (currentKey.alsoRequiresNextKey)
+                        currentKeyIndex++;
+
+                    currentKeyWasSuccessful = false;
+                }
             }
         }
-
 
         
         if (Input.GetKey(currentKeyCode))
@@ -165,7 +169,7 @@ public class PlayerController : MonoBehaviour
 
         // Reset if player inputs any incorrect key.
         else if (Input.anyKeyDown)
-            CompletelyResetAllKeys();
+            CompletelyResetKeySequence();
 
     }
 
