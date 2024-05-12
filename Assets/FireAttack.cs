@@ -13,7 +13,6 @@ public class FireAttack : MonoBehaviour, IEnemyFire, IGetHealthSystem
     [SerializeField] int damage;
     [SerializeField] float numberOfDamageHits = 1;
     [SerializeField] float timeBeforeAttack;
-    const float deathFadeTime = 1f;
     
     [Space(5)]
 

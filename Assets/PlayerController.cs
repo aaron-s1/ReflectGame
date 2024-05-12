@@ -32,10 +32,7 @@ public class PlayerController : MonoBehaviour
     [System.Serializable]
     public class CurrentKeyData : UnityEvent<int, bool> { }
 
-
     HealthSystem healthSystem;
-
-    // Vector3 locationOfHeroTarget;
 
     bool currentKeyWasSuccessful;
 
@@ -46,7 +43,7 @@ public class PlayerController : MonoBehaviour
 
     float simultaneousKeyHoldTimer;
 
-
+    bool lockoutKeyHold;
 
     void Awake()
     {        
@@ -94,23 +91,31 @@ public class PlayerController : MonoBehaviour
         if (currentKeyWasSuccessful)
         {
             if (!currentKey.KeyNeedsHeldDown() || Input.GetKeyUp(currentKeyCode))
-            {
-                if (Input.GetKeyUp(currentKeyCode)) //
-                {
-                    currentKeyData.Invoke(currentKeyIndex, currentKey.alsoRequiresNextKey);
-                    currentKeyIndex++;
-
-                    if (currentKey.alsoRequiresNextKey)
-                        currentKeyIndex++;
-
-                    currentKeyWasSuccessful = false;
-                }
-            }
+                AdvanceToNextKey();
         }
 
-        
+        #region Hold key mechanics.
+
+        // Improves INTENDED input flow by first demanding the preceding non-hold Key first be keyed up.
+        // This is especially important if the previous key had the same Key requirement
+        // (e.g. Left, non-hold --> Left, hold), as otherwise holdDuration on currentKey would automatically 
+        // start accruing without direct player input, making that bit of the sequence easier to cheese.
+        if (lockoutKeyHold && currentKeyIndex != 0)
+        {
+            KeySequenceItem lastKey = reflectSequence[currentKeyIndex - 1];
+            
+            if (Input.GetKeyUp(KeySequenceItem.KeyMap[lastKey.key]))
+            {
+                lockoutKeyHold = false;
+                return;
+            }
+            else return;
+        }
+        //
+
         if (Input.GetKey(currentKeyCode))
         {
+
             if (!currentKey.KeyNeedsHeldDown())
             {
                 if (Input.GetKeyDown(currentKeyCode))
@@ -125,8 +130,7 @@ public class PlayerController : MonoBehaviour
             {
                 if (!currentKey.alsoRequiresNextKey)
                     currentKey.timeHeld += Time.deltaTime;
-
-                // Requires next key to be held simultaneously.
+                
                 else
                 {
                     // currentKey is last of sequence, so ignore needing to hold next key (as there isn't one).
@@ -154,15 +158,17 @@ public class PlayerController : MonoBehaviour
                 // Pass data to UI display arrows.
                 currentKeyData.Invoke(currentKeyIndex, currentKey.alsoRequiresNextKey);
 
-                // currentKey finished. Simply increase index, and currentKey changes on next frame.
+                // Held key success. currentKey will increase next frame.
                 if (currentKey.timeHeld >= currentKey.holdDurationNeeded)
                 {
                     currentKeyWasSuccessful = true;
                     return;
                 }
 
-            }                
+            }
         }
+        #endregion
+        
 
         else if (Input.GetKeyUp(currentKeyCode))
             simultaneousKeyHoldTimer = 0;
@@ -171,6 +177,27 @@ public class PlayerController : MonoBehaviour
         else if (Input.anyKeyDown)
             CompletelyResetKeySequence();
 
+    }
+
+
+    void AdvanceToNextKey()
+    {
+        currentKeyData.Invoke(currentKeyIndex, currentKey.alsoRequiresNextKey);
+        currentKeyIndex++;
+
+        if (currentKey.alsoRequiresNextKey)
+            currentKeyIndex++;
+
+        currentKeyWasSuccessful = false;
+
+        // Works with IncrementKeyOnSuccessfulPressOrHold() to prevent any accidental holdDuration increases.
+        // (currentKey is local, and may not be updated for a frame)
+        if (currentKeyIndex < reflectSequence.Count)
+        {
+            KeySequenceItem soonToBeCurrentKey = reflectSequence[currentKeyIndex];
+            if (soonToBeCurrentKey.KeyNeedsHeldDown())
+                lockoutKeyHold = true;
+        }
     }
 
 
@@ -222,7 +249,7 @@ public class PlayerController : MonoBehaviour
 
     public bool KeyNeedsHeldDown() =>
         holdDurationNeeded > 0;
-        
+
     }
 
 
