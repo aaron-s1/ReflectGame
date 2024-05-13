@@ -16,8 +16,8 @@ public class EndGame : MonoBehaviour
     [SerializeField] GameObject enemyHeroes;
     [SerializeField] GameObject reflectSequenceUIs;
 
+    [SerializeField] GameObject heroesExpelledText;
     [SerializeField] GameObject youWinVictoryText;
-    [SerializeField] GameObject thanksForPlayingText;    
     [SerializeField] ParticleSystem gameWonVictoryParticleObj;
     [Space(10)]
     [SerializeField] Animator entryWayGateAnim;
@@ -62,9 +62,8 @@ public class EndGame : MonoBehaviour
             yield break;
         }
 
-        // Debug.Log("Level Loader tried to advance, but found no next scene.");
 
-        
+        Destroy(GameManager.Instance.GetComponent<PauseGame>());
         DeleteAllUIs();
 
         
@@ -80,7 +79,8 @@ public class EndGame : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         youWinVictoryText.SetActive(true);
         yield return new WaitForSeconds(0.5f);
-        thanksForPlayingText.SetActive(true);   
+        heroesExpelledText.SetActive(true);
+        // thanksForPlayingText.SetActive(true);
 
         yield return new WaitForSeconds(0.5f);
         StartCoroutine(SwapSlimeSprite());

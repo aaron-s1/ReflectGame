@@ -13706,6 +13706,18 @@ PrefabInstance:
       value: Player (Gargoyle)
       objectReference: {fileID: 0}
     - target: {fileID: 1523337979319437224, guid: 0fe39b79a0c41e442b654a5fa307db77, type: 3}
+      propertyPath: reflectSequence.Array.data[1].holdDurationNeeded
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1523337979319437224, guid: 0fe39b79a0c41e442b654a5fa307db77, type: 3}
+      propertyPath: reflectSequence.Array.data[4].holdDurationNeeded
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1523337979319437224, guid: 0fe39b79a0c41e442b654a5fa307db77, type: 3}
+      propertyPath: reflectSequence.Array.data[1].alsoRequiresNextKey
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1523337979319437224, guid: 0fe39b79a0c41e442b654a5fa307db77, type: 3}
       propertyPath: currentKeyData.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 464152927}

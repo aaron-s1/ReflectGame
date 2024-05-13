@@ -9,9 +9,6 @@
             ~ Delete unnecessary assets
                 ~ Commit/push new, shrunken down build
 
-    ~~ Setup itch.io game page ~~    
-        ~ explain controls 
-        ~ description
 
 
 

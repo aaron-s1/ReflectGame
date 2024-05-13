@@ -11803,6 +11803,10 @@ PrefabInstance:
       propertyPath: reflectSequence.Array.data[3].key
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 138910745685299403, guid: 5832ccfd9a67d4047b8d5c302f8e1b1c, type: 3}
+      propertyPath: reflectSequence.Array.data[2].holdDurationNeeded
+      value: 0.2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5832ccfd9a67d4047b8d5c302f8e1b1c, type: 3}
 --- !u!4 &1905691158 stripped
