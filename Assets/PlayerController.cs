@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using CodeMonkey.HealthSystemCM;
 using System;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
@@ -61,7 +62,12 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         if (reflectedSuccessfully || !allowReflectSequence)
+        {
             CompletelyResetKeySequence();
+            // return;
+            // CompletelyResetKeySequence();
+        }
+        // if (reflectedSuccessfully)
 
         IncrementKeyOnSuccessfulPressOrHold();
         CheckIfKeySequenceFullyCompleted();
@@ -81,7 +87,7 @@ public class PlayerController : MonoBehaviour
     void IncrementKeyOnSuccessfulPressOrHold()
     {
         if (currentKeyIndex > reflectSequence.Count)
-            return;
+            return;           
 
         currentKey = reflectSequence[currentKeyIndex];
         var currentKeyCode = KeySequenceItem.KeyMap[currentKey.key];
@@ -96,20 +102,27 @@ public class PlayerController : MonoBehaviour
 
         #region Hold key mechanics.
 
-        // Improves INTENDED input flow by first demanding the preceding non-hold Key first be keyed up.
+        // Improves intended input flow by first demanding the preceding non-hold Key first be keyed up.
         // This is especially important if the previous key had the same Key requirement
         // (e.g. Left, non-hold --> Left, hold), as otherwise holdDuration on currentKey would automatically 
         // start accruing without direct player input, making that bit of the sequence easier to cheese.
+        
         if (lockoutKeyHold && currentKeyIndex != 0)
+        // if (currentKeyIndex == 0 && reflectedSuccessfully && Input.GetKey(currentKeyCode))
         {
-            KeySequenceItem lastKey = reflectSequence[currentKeyIndex - 1];
-            
-            if (Input.GetKeyUp(KeySequenceItem.KeyMap[lastKey.key]))
+            float lastKeyIndex = currentKeyIndex - 1;
+
+            if (lastKeyIndex >= 0)
             {
-                lockoutKeyHold = false;
-                return;
+                KeySequenceItem lastKey = reflectSequence[currentKeyIndex - 1];
+                
+                if (Input.GetKeyUp(KeySequenceItem.KeyMap[lastKey.key]))
+                {
+                    lockoutKeyHold = false;
+                    return;
+                }
+                else return;
             }
-            else return;
         }
         //
 
@@ -212,9 +225,9 @@ public class PlayerController : MonoBehaviour
 
             allowReflectSequence = false;
             GetComponent<FireAttack>().SetActivityOfParticle(reflectParticleObj.GetComponent<ParticleSystem>(), true);
-            // reflectParticleObj.SetActive(true);
 
             reflectedSuccessfully = true;
+            CompletelyResetKeySequence();
         }
     }
 
@@ -290,6 +303,6 @@ public class PlayerController : MonoBehaviour
         // healthSystem.Heal(value);        
 
 
-    // public HealthSystem GetHealthSystem() => 
-        // healthSystem;
+    public HealthSystem GetHealthSystem() => 
+        healthSystem;
 }

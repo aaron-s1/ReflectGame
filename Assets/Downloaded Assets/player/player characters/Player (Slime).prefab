@@ -14785,7 +14785,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100000, guid: ab1112643ee572748b01dede71158272, type: 3}
       propertyPath: m_Name
-      value: FX_Smoke (Slime's temp attack)
+      value: FX_Smoke (Slime's faux attack)
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: ab1112643ee572748b01dede71158272, type: 3}
       propertyPath: m_IsActive
@@ -14923,7 +14923,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2946937339466278006, guid: db597a214a8fc4f4fa9949941d13a561, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.752
+      value: -0.742
       objectReference: {fileID: 0}
     - target: {fileID: 2946937339466278006, guid: db597a214a8fc4f4fa9949941d13a561, type: 3}
       propertyPath: m_LocalPosition.z
@@ -14967,7 +14967,7 @@ PrefabInstance:
       objectReference: {fileID: 16573807}
     - target: {fileID: 2946937339466278007, guid: db597a214a8fc4f4fa9949941d13a561, type: 3}
       propertyPath: reflectSequence.Array.size
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 2946937339466278007, guid: db597a214a8fc4f4fa9949941d13a561, type: 3}
       propertyPath: reflectSequence.Array.data[0].key
@@ -14983,14 +14983,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2946937339466278007, guid: db597a214a8fc4f4fa9949941d13a561, type: 3}
       propertyPath: reflectSequence.Array.data[4].key
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2946937339466278007, guid: db597a214a8fc4f4fa9949941d13a561, type: 3}
       propertyPath: reflectSequence.Array.data[5].key
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2946937339466278007, guid: db597a214a8fc4f4fa9949941d13a561, type: 3}
+      propertyPath: reflectSequence.Array.data[6].key
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2946937339466278007, guid: db597a214a8fc4f4fa9949941d13a561, type: 3}
       propertyPath: reflectSequence.Array.data[7].key
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2946937339466278007, guid: db597a214a8fc4f4fa9949941d13a561, type: 3}
+      propertyPath: reflectSequence.Array.data[8].key
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2946937339466278007, guid: db597a214a8fc4f4fa9949941d13a561, type: 3}
@@ -14999,11 +15007,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2946937339466278007, guid: db597a214a8fc4f4fa9949941d13a561, type: 3}
       propertyPath: reflectSequence.Array.data[2].holdDurationNeeded
-      value: 0.2
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 2946937339466278007, guid: db597a214a8fc4f4fa9949941d13a561, type: 3}
       propertyPath: reflectSequence.Array.data[3].holdDurationNeeded
-      value: 0.2
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 2946937339466278007, guid: db597a214a8fc4f4fa9949941d13a561, type: 3}
       propertyPath: reflectSequence.Array.data[0].alsoRequiresNextKey
@@ -15023,11 +15031,11 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: efaadfa9f7877b7438893d7b9bacf452, type: 3}
     - target: {fileID: 8376006388758794721, guid: db597a214a8fc4f4fa9949941d13a561, type: 3}
       propertyPath: damage
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8376006388758794721, guid: db597a214a8fc4f4fa9949941d13a561, type: 3}
       propertyPath: health
-      value: 75
+      value: 85
       objectReference: {fileID: 0}
     - target: {fileID: 8376006388758794721, guid: db597a214a8fc4f4fa9949941d13a561, type: 3}
       propertyPath: attackIsAoE

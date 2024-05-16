@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4498378414706085854}
   - component: {fileID: 4498378414706085853}
   m_Layer: 0
-  m_Name: Player (Fire Lord) possibly old
+  m_Name: Player (Fire Lord) OLD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

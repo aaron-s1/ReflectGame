@@ -45,11 +45,13 @@ public class LevelLoader : MonoBehaviour
     
     AsyncOperation asyncLoad;
     
+
+    
     IEnumerator AsyncLoadNextScene()
     {
         var nextSceneName = SceneUtility.GetScenePathByBuildIndex(activeSceneIndex + 1);
-        // AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(nextSceneName);
-        asyncLoad = SceneManager.LoadSceneAsync(nextSceneName);        
+
+        asyncLoad = SceneManager.LoadSceneAsync(nextSceneName);
         asyncLoad.allowSceneActivation = false;
 
         while (!asyncLoad.isDone)
@@ -59,14 +61,13 @@ public class LevelLoader : MonoBehaviour
 
 
     public IEnumerator LoadNextScene()
-    {
+    {        
         if (activeSceneIndex + 1 < sceneCount)
         {
             var newTransitionParticle = Instantiate(levelTransitionParticle, levelTransitionParticle.transform.position, Quaternion.identity);
             yield return new WaitForSeconds(preSceneLoadParticlePersistenceLength);
             asyncLoad.allowSceneActivation = true;
-
-            // SceneManager.LoadScene(activeSceneIndex + 1);
+            SceneManager.LoadScene(activeSceneIndex + 1);
         }
         
         else

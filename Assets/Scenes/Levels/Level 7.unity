@@ -51329,6 +51329,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6722375788021266003, guid: a2dba57173b404141aba11e458c3268d, type: 3}
+      propertyPath: reflectSequence.Array.data[0].key
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6722375788021266003, guid: a2dba57173b404141aba11e458c3268d, type: 3}
+      propertyPath: reflectSequence.Array.data[1].key
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6722375788021266003, guid: a2dba57173b404141aba11e458c3268d, type: 3}
+      propertyPath: reflectSequence.Array.data[0].holdDurationNeeded
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6722375788021266003, guid: a2dba57173b404141aba11e458c3268d, type: 3}
+      propertyPath: reflectSequence.Array.data[1].holdDurationNeeded
+      value: 0.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 6722375788021266003, guid: a2dba57173b404141aba11e458c3268d, type: 3}
+      propertyPath: reflectSequence.Array.data[2].holdDurationNeeded
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6722375788021266003, guid: a2dba57173b404141aba11e458c3268d, type: 3}
+      propertyPath: reflectSequence.Array.data[3].holdDurationNeeded
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6722375788021266012, guid: a2dba57173b404141aba11e458c3268d, type: 3}
       propertyPath: m_Name
       value: Player (Undead King)

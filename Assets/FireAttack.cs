@@ -239,12 +239,12 @@ public class FireAttack : MonoBehaviour, IEnemyFire, IGetHealthSystem
     }
 
 
+    // (no target explicitly assigned means attack is AoE)
     public IEnumerator DealDamageTo(float damageValue, FireAttack target = null)
     {                
         if (target != null)
             yield return StartCoroutine(ApplyDamage(damageValue, target));
 
-        // No target explicitly assigned means attack is AoE.
         else if (attackIsAoE)
         {
             foreach (var hero in gameManager.heroList)
@@ -286,20 +286,16 @@ public class FireAttack : MonoBehaviour, IEnemyFire, IGetHealthSystem
         {
             if (numberOfDamageHits > 1)
             {                
-                // (first hit already occurred at damage step)
+                // Remember: First damage tick has already occurred.
                 for (int hits = 0; hits < numberOfDamageHits; hits++)
                 {
-                    // swapped order (temp).
                     target.healthSystem.Damage(damageValue / numberOfDamageHits);
                     yield return new WaitForSeconds(remainderOfAttackDuration / numberOfDamageHits);
                 }
             }
 
             else
-            {
                 target.healthSystem.Damage(damageValue);
-                // damageWindowEnded = true;
-            }
 
             
             if (target.healthSystem.IsDead())

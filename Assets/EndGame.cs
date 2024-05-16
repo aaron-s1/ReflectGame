@@ -77,10 +77,9 @@ public class EndGame : MonoBehaviour
         Instantiate(gameWonVictoryParticleObj, PlayerController.Instance.transform.position + victoryParticlePosOffset, Quaternion.identity);
 
         yield return new WaitForSeconds(0.5f);
-        youWinVictoryText.SetActive(true);
-        yield return new WaitForSeconds(0.5f);
         heroesExpelledText.SetActive(true);
-        // thanksForPlayingText.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+        youWinVictoryText.SetActive(true);
 
         yield return new WaitForSeconds(0.5f);
         StartCoroutine(SwapSlimeSprite());
